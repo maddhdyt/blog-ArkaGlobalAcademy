@@ -183,9 +183,9 @@
                     <form action="{{ route('newsletter.subscribe') }}" method="POST" class="mt-6 space-y-4">
                         @csrf
                         <input type="text" name="name" value="{{ old('name') }}" placeholder="Nama Lengkap"
-                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:border-slate-900 focus:bg-white focus:ring-2 focus:ring-slate-900/10 transition-all text-sm @error('name') border-red-500 @enderror">
+                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:border-orange-500 focus:bg-white focus:ring-4 focus:ring-orange-500/20 focus:outline-none transition-all duration-300 text-sm @error('name') border-red-500 @enderror">
                         <input type="email" name="email" value="{{ old('email') }}" placeholder="Alamat Email"
-                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:border-slate-900 focus:bg-white focus:ring-2 focus:ring-slate-900/10 transition-all text-sm @error('email') border-red-500 @enderror" required>
+                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:border-orange-500 focus:bg-white focus:ring-4 focus:ring-orange-500/20 focus:outline-none transition-all duration-300 text-sm @error('email') border-red-500 @enderror" required>
                         @error('email')
                             <p class="text-xs text-red-600">{{ $message }}</p>
                         @enderror
