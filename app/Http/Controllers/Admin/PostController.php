@@ -121,7 +121,12 @@ class PostController extends Controller
         
         $validated['content'] = clean($validated['content']);
         
-        if ($request->hasFile('thumbnail')) {
+        if ($request->has('remove_thumbnail') && $request->remove_thumbnail == '1') {
+            if ($post->thumbnail) {
+                Storage::disk('public')->delete($post->thumbnail);
+            }
+            $validated['thumbnail'] = null;
+        } elseif ($request->hasFile('thumbnail')) {
             // Delete old thumbnail
             if ($post->thumbnail) {
                 Storage::disk('public')->delete($post->thumbnail);

@@ -170,13 +170,21 @@
                     <h3 class="text-sm font-bold text-slate-700 mb-4 pb-2 border-b border-slate-100 uppercase tracking-wider">Media</h3>
                     <div>
                         <label class="form-label" for="thumbnail">Thumbnail Image</label>
-                        @if ($post->thumbnail)
-                            <div class="mb-4 border border-slate-100">
-                                <img src="{{ $post->thumbnail_url }}" alt="Current thumbnail" class="w-full h-auto object-cover block">
-                                <div class="bg-slate-50 border-t border-slate-100 p-2 text-center text-xs font-bold uppercase tracking-wider text-slate-700">Current Thumbnail</div>
-                            </div>
-                        @endif
-                        <input type="file" name="thumbnail" id="thumbnail" class="form-input" accept="image/*">
+                        <div class="relative group" id="thumbnail-preview-container">
+                            @if ($post->thumbnail)
+                                <div class="mb-4 border border-slate-100 relative">
+                                    <img src="{{ $post->thumbnail_url }}" alt="Current thumbnail" class="w-full h-auto object-cover block">
+                                    <div class="bg-slate-50 border-t border-slate-100 p-2 text-center text-xs font-bold uppercase tracking-wider text-slate-700">Current Thumbnail</div>
+                                </div>
+                            @endif
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <input type="file" name="thumbnail" id="thumbnail" class="form-input flex-1" accept="image/*">
+                            <button type="button" id="remove-thumbnail-btn" class="p-3 text-red-500 bg-red-50 hover:bg-red-100 border border-red-200 rounded-xl transition-colors shrink-0" title="Hapus Thumbnail">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                            </button>
+                        </div>
+                        <input type="hidden" name="remove_thumbnail" id="remove_thumbnail" value="0">
                         <p class="text-xs font-bold text-gray-500 mt-2 uppercase tracking-wider">PNG, JPG, GIF up to 2MB</p>
                     </div>
                 </div>
@@ -390,6 +398,35 @@
 
         // Initialize restore
         setTimeout(restoreDraft, 500);
+
+        // Thumbnail removal logic
+        const removeThumbnailBtn = document.getElementById('remove-thumbnail-btn');
+        const thumbnailInput = document.getElementById('thumbnail');
+        const removeThumbnailInput = document.getElementById('remove_thumbnail');
+        const thumbnailPreview = document.getElementById('thumbnail-preview-container');
+
+        if (removeThumbnailBtn) {
+            removeThumbnailBtn.addEventListener('click', () => {
+                // Clear the file input
+                if (thumbnailInput) thumbnailInput.value = '';
+                // Set hidden input to 1 so backend knows to delete existing DB image
+                if (removeThumbnailInput) removeThumbnailInput.value = '1';
+                // Hide preview if it exists
+                if (thumbnailPreview) thumbnailPreview.style.display = 'none';
+                
+                // Trigger change to autosave
+                if (thumbnailInput) thumbnailInput.dispatchEvent(new Event('change'));
+            });
+        }
+        
+        // If user selects a new file, reset the remove flag
+        if (thumbnailInput) {
+            thumbnailInput.addEventListener('change', () => {
+                if (thumbnailInput.value && removeThumbnailInput) {
+                    removeThumbnailInput.value = '0';
+                }
+            });
+        }
 
     </script>
     <script src="{{ asset('js/seo-analyzer.js') }}"></script>

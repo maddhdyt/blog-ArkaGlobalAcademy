@@ -169,7 +169,12 @@
                     <h3 class="text-sm font-bold text-slate-700 mb-4 pb-2 border-b border-slate-100 uppercase tracking-wider">Media</h3>
                     <div>
                         <label class="form-label" for="thumbnail">Thumbnail Image</label>
-                        <input type="file" name="thumbnail" id="thumbnail" class="form-input" accept="image/*">
+                        <div class="flex items-center gap-2">
+                            <input type="file" name="thumbnail" id="thumbnail" class="form-input flex-1" accept="image/*">
+                            <button type="button" id="remove-thumbnail-btn" class="p-3 text-red-500 bg-red-50 hover:bg-red-100 border border-red-200 rounded-xl transition-colors shrink-0" title="Batal Pilih">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                            </button>
+                        </div>
                         <p class="text-xs font-bold text-gray-500 mt-2 uppercase tracking-wider">PNG, JPG, GIF up to 2MB</p>
                     </div>
                 </div>
@@ -398,6 +403,15 @@
 
         // Initialize restore
         setTimeout(restoreDraft, 500);
+
+        // Thumbnail removal logic
+        const removeThumbnailBtn = document.getElementById('remove-thumbnail-btn');
+        const thumbnailInput = document.getElementById('thumbnail');
+        if (removeThumbnailBtn && thumbnailInput) {
+            removeThumbnailBtn.addEventListener('click', () => {
+                thumbnailInput.value = '';
+            });
+        }
 
     </script>
     <script src="{{ asset('js/seo-analyzer.js') }}"></script>
