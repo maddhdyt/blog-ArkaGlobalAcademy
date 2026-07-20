@@ -15,8 +15,8 @@
 @section('structured_data')
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "Article",
+  "@@context": "https://schema.org",
+  "@@type": "Article",
   "headline": "{{ $post->title }}",
   "image": [
     "{{ $post->thumbnail ? asset('storage/' . $post->thumbnail) : '' }}"
@@ -24,7 +24,7 @@
   "datePublished": "{{ optional($post->published_at)->toIso8601String() }}",
   "dateModified": "{{ $post->updated_at->toIso8601String() }}",
   "author": [{
-      "@type": "Person",
+      "@@type": "Person",
       "name": "{{ $post->user->name ?? 'Admin' }}"
   }]
 }
