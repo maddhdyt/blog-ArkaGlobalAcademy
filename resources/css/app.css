@@ -57,3 +57,21 @@
         @apply absolute left-0 top-0 bottom-0 w-1.5 bg-orange-600;
     }
 }
+
+/* Quill Editor Overrides */
+.ql-toolbar.ql-snow {
+    border: none !important;
+    border-bottom: 1px solid #f1f5f9 !important; /* slate-100 */
+    padding: 1rem !important;
+    background-color: transparent !important;
+}
+.ql-container.ql-snow {
+    border: none !important;
+    font-family: inherit !important;
+}
+.ql-editor {
+    padding: 1.5rem !important;
+}
+.ql-editor.ql-blank::before {
+    left: 1.5rem !important;
+}
