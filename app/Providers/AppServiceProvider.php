@@ -25,10 +25,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer(['frontend.partials.navbar', 'frontend.partials.footer'], function ($view) {
+        View::composer('*', function ($view) {
             $sidebarSetting = Cache::rememberForever('sidebar_setting', function () {
                 return SidebarSetting::first();
             });
+            $siteLogo = optional($sidebarSetting)->site_logo_url ?: 'https://ik.imagekit.io/yqhp1cmbp/logo%20nusa%20education.png?tr=w-640,q-75,f-auto';
+            
+            $view->with('siteLogo', $siteLogo);
+            // We can also share sidebarSetting globally if needed
             $view->with('sidebarSetting', $sidebarSetting);
         });
 
@@ -36,11 +40,7 @@ class AppServiceProvider extends ServiceProvider
             $menus = Cache::rememberForever('navbar_menus', function () {
                 return Menu::active()->parentOnly()->with('children')->orderBy('order')->get();
             });
-            
-            $sidebarSetting = $view->getData()['sidebarSetting'] ?? SidebarSetting::first();
-            $siteLogo = optional($sidebarSetting)->site_logo_url ?: 'https://ik.imagekit.io/yqhp1cmbp/logo%20nusa%20education.png?tr=w-640,q-75,f-auto';
-            
-            $view->with('menus', $menus)->with('siteLogo', $siteLogo);
+            $view->with('menus', $menus);
         });
 
         View::composer('frontend.partials.footer', function ($view) {
