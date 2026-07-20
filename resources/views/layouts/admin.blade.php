@@ -27,11 +27,11 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-slate-50 text-slate-800 font-sans" x-data="{ sidebarOpen: true }">
-    <div class="flex min-h-screen overflow-hidden">
+<body class="bg-slate-100 text-slate-800 font-sans p-4 sm:p-6 lg:p-8 min-h-screen flex" x-data="{ sidebarOpen: true }">
+    <div class="flex flex-1 bg-white rounded-[2.5rem] shadow-2xl overflow-hidden h-[calc(100vh-2rem)] sm:h-[calc(100vh-3rem)] lg:h-[calc(100vh-4rem)] border border-slate-200/50">
         <!-- Sidebar -->
-        <aside :class="sidebarOpen ? 'ml-0' : '-ml-64'" class="w-64 shrink-0 bg-white border-r border-slate-200 flex flex-col transition-all duration-300 h-screen overflow-hidden">
-            <div class="h-20 border-b border-slate-200 flex items-center justify-start px-8 shrink-0">
+        <aside :class="sidebarOpen ? 'ml-0' : '-ml-72'" class="w-72 shrink-0 bg-white flex flex-col transition-all duration-300 h-full overflow-hidden">
+            <div class="h-24 flex items-center justify-start px-8 shrink-0">
                 <a href="{{ route('admin.dashboard') }}" class="inline-block">
                     <img src="{{ $siteLogo }}" alt="Arka Global Academy" class="h-10 w-auto object-contain">
                 </a>
@@ -150,9 +150,9 @@
         </aside>
 
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col overflow-hidden h-screen">
+        <div class="flex-1 flex flex-col overflow-hidden h-full bg-slate-50/50 rounded-tl-3xl border-l border-t border-slate-200/60 shadow-[inset_4px_4px_12px_rgba(0,0,0,0.02)]">
             <!-- Header -->
-            <header class="bg-white border-b border-slate-200 shadow-sm h-20 shrink-0">
+            <header class="bg-transparent h-24 shrink-0">
                 <div class="flex items-center justify-between px-8 h-full">
                     <div class="flex items-center gap-4">
                         <button @click="sidebarOpen = !sidebarOpen" class="text-slate-800 hover:text-brand-primary transition-colors focus:outline-none">
@@ -186,7 +186,7 @@
             </header>
 
             <!-- Content -->
-            <main class="flex-1 p-6 overflow-y-auto overflow-x-hidden">
+            <main class="flex-1 p-6 lg:p-10 overflow-y-auto overflow-x-hidden">
                 @if (session('success'))
                     <div x-data="{ show: true }" x-show="show" class="mb-6 p-4 bg-green-50 border border-green-200 text-green-700 font-semibold text-sm flex justify-between items-center rounded-xl">
                         <span>{{ session('success') }}</span>
