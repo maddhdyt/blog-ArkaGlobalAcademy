@@ -53,8 +53,12 @@
                             top: 50% !important;
                             opacity: 0 !important;
                         }
-                        /* Increase Editor Text Size */
-                        .ql-editor {
+                            /* Increase Editor Text Size & Override Pasted Inline Styles */
+                        .ql-editor,
+                        .ql-editor p,
+                        .ql-editor li,
+                        .ql-editor span {
+                            font-family: inherit !important;
                             font-size: 18px !important;
                             line-height: 1.7 !important;
                         }
