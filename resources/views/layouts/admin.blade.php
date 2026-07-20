@@ -19,9 +19,9 @@
     <!-- NProgress CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" />
     <style>
-        #nprogress .bar { background: #0a1435 !important; height: 3px !important; }
-        #nprogress .peg { box-shadow: 0 0 10px #0a1435, 0 0 5px #0a1435 !important; }
-        #nprogress .spinner-icon { border-top-color: #0a1435 !important; border-left-color: #0a1435 !important; }
+        #nprogress .bar { background: slate-900 !important; height: 3px !important; }
+        #nprogress .peg { box-shadow: 0 0 10px slate-900, 0 0 5px slate-900 !important; }
+        #nprogress .spinner-icon { border-top-color: slate-900 !important; border-left-color: slate-900 !important; }
     </style>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])

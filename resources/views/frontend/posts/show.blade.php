@@ -105,8 +105,8 @@
             }
         }
         .quill-content pre {
-            background: #0a1435;
-            color: #FDF6F0;
+            background: slate-900;
+            color: slate-50;
             padding: 1.5rem;
             border-radius: 0;
             overflow: auto;

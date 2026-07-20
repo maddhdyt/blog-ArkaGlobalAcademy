@@ -24,7 +24,7 @@
                         
                         <!-- Left Column: Featured Hero Post (col-span-8) -->
                         <div class="lg:col-span-8">
-                            <article class="flex flex-col group bg-white">
+                            <article class="flex flex-col group bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow">
                                 @if($heroPost->thumbnail_url)
                                 <a href="{{ route('posts.show', $heroPost->slug) }}" class="block overflow-hidden">
                                     <img src="{{ $heroPost->thumbnail_url }}" alt="{{ $heroPost->title }}" class="w-full h-[400px] sm:h-[500px] object-cover hover:scale-[1.02] transition duration-700">
@@ -52,7 +52,7 @@
                         </div>
 
                         <!-- Right Column: Popular / Sorotan Posts (col-span-4) -->
-                        <div class="lg:col-span-4 h-full flex flex-col pt-8 lg:pt-12 relative before:hidden lg:before:block before:absolute before:-left-6 before:top-12 before:bottom-12 before:w-px before:bg-[#e2d5cf]">
+                        <div class="lg:col-span-4 h-full flex flex-col pt-8 lg:pt-12 relative before:hidden lg:before:block before:absolute before:-left-6 before:top-12 before:bottom-12 before:w-px before:bg-[slate-200]">
                             <h3 class="text-3xl lg:text-[40px] font-normal text-faux-medium text-slate-900 font-heading mb-8 self-start whitespace-nowrap bg-white pr-3 py-0 leading-none relative z-10">
                                 Sorotan Minggu Ini
                             </h3>
@@ -93,7 +93,7 @@
                 <div class="flex items-center justify-between pb-4 border-b border-gray-200">
                     <h2 class="text-3xl font-normal text-faux-semibold text-gray-900 font-heading">Artikel Terbaru</h2>
                     <a href="{{ route('posts.index') }}"
-                        class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-slate-900 border border-slate-900 hover:bg-slate-900 hover:text-white transition-colors duration-200">
+                        class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-slate-900 border border-slate-900 hover:bg-slate-900 hover:text-white transition-colors duration-200 rounded-full">
                         Lihat semua
                     </a>
                 </div>
@@ -103,7 +103,7 @@
                         @php
                             $image = $post->thumbnail_url ?? 'https://placehold.co/900x600?text=No+Image';
                         @endphp
-                        <article class="flex flex-col group bg-white">
+                        <article class="flex flex-col group bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow">
                             <a href="{{ route('posts.show', $post->slug) }}" class="block overflow-hidden aspect-video w-full">
                                 <img src="{{ $image }}" alt="{{ $post->title }}"
                                     class="h-full w-full object-cover group-hover:scale-105 transition duration-700">
@@ -139,7 +139,7 @@
                         <p class="text-[15px] text-gray-600">Klik foto untuk melihat ukuran penuh.</p>
                     </div>
                     <a href="{{ route('gallery.index') }}"
-                        class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-slate-900 border border-slate-900 hover:bg-slate-900 hover:text-white transition-colors duration-200">Lihat semua</a>
+                        class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-slate-900 border border-slate-900 hover:bg-slate-900 hover:text-white transition-colors duration-200 rounded-full">Lihat semua</a>
                 </div>
 
                 @if ($galleryItems->isEmpty())
@@ -149,11 +149,11 @@
                         @foreach ($galleryItems as $item)
                             <button type="button" data-title="{{ $item->title }}"
                                 data-description="{{ $item->description }}" data-image="{{ $item->image_url }}"
-                                class="group relative h-80 overflow-hidden bg-black">
+                                class="group relative h-80 overflow-hidden bg-black rounded-2xl shadow-sm">
                                 <img src="{{ $item->image_url }}" alt="{{ $item->title }}"
                                     class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
                                     loading="lazy">
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#0a1435]/90 via-[#0a1435]/20 to-transparent">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[slate-900]/90 via-[slate-900]/20 to-transparent">
                                 </div>
                                 <div class="relative flex h-full flex-col justify-end p-6 text-white text-left">
                                     <div class="inline-flex items-center gap-2 text-[11px] uppercase tracking-widest font-mono text-white/80 mb-3">
@@ -172,20 +172,20 @@
 
             {{-- Newsletter + trending list --}}
             <section class="grid gap-8 lg:grid-cols-3">
-                <div class="bg-white p-8 border border-slate-200 shadow-sm">
+                <div class="bg-white p-8 border border-slate-200 shadow-sm rounded-2xl">
                     <h3 class="text-2xl font-normal text-faux-medium text-slate-900 font-heading">Berlangganan Buletin</h3>
                     <p class="mt-4 text-[15px] text-slate-600 leading-relaxed">Dapatkan wawasan terbaru dan notifikasi artikel langsung di kotak masuk Anda.</p>
 
                     <form action="{{ route('newsletter.subscribe') }}" method="POST" class="mt-6 space-y-4">
                         @csrf
                         <input type="text" name="name" value="{{ old('name') }}" placeholder="Nama Lengkap"
-                            class="w-full px-4 py-3 bg-slate-50 border border-transparent focus:border-slate-900 focus:bg-white focus:ring-0 transition-colors text-sm @error('name') border-red-500 @enderror">
+                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:border-slate-900 focus:bg-white focus:ring-2 focus:ring-slate-900/10 transition-all text-sm @error('name') border-red-500 @enderror">
                         <input type="email" name="email" value="{{ old('email') }}" placeholder="Alamat Email"
-                            class="w-full px-4 py-3 bg-slate-50 border border-transparent focus:border-slate-900 focus:bg-white focus:ring-0 transition-colors text-sm @error('email') border-red-500 @enderror" required>
+                            class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:border-slate-900 focus:bg-white focus:ring-2 focus:ring-slate-900/10 transition-all text-sm @error('email') border-red-500 @enderror" required>
                         @error('email')
                             <p class="text-xs text-red-600">{{ $message }}</p>
                         @enderror
-                        <button type="submit" class="w-full px-6 py-3.5 text-sm font-bold tracking-widest text-white uppercase bg-slate-900 hover:bg-black transition-colors font-mono">
+                        <button type="submit" class="w-full px-6 py-3.5 text-sm font-bold tracking-widest text-white uppercase bg-slate-900 hover:bg-black transition-colors font-mono rounded-xl">
                             Berlangganan
                         </button>
                     </form>
@@ -197,17 +197,17 @@
                     </div>
                 </div>
 
-                <div class="lg:col-span-2 bg-white p-8 border border-slate-200 shadow-sm flex flex-col">
+                <div class="lg:col-span-2 bg-white p-8 border border-slate-200 shadow-sm flex flex-col rounded-2xl">
                     <div class="flex items-center justify-between pb-4 border-b border-gray-200 mb-6">
                         <h3 class="text-2xl font-normal text-faux-medium text-slate-900 font-heading">
                             {{ optional($sidebar)->trending_title ?? 'Sedang Tren' }}
                         </h3>
                         @if (optional($sidebar)->trending_link_url && optional($sidebar)->trending_link_text)
                             <a href="{{ optional($sidebar)->trending_link_url }}"
-                                class="inline-flex items-center justify-center px-4 py-1.5 text-sm font-semibold text-slate-900 border border-slate-900 hover:bg-slate-900 hover:text-white transition-colors duration-200">{{ optional($sidebar)->trending_link_text }}</a>
+                                class="inline-flex items-center justify-center px-4 py-1.5 text-sm font-semibold text-slate-900 border border-slate-900 hover:bg-slate-900 hover:text-white transition-colors duration-200 rounded-full">{{ optional($sidebar)->trending_link_text }}</a>
                         @else
                             <a href="{{ route('posts.index') }}"
-                                class="inline-flex items-center justify-center px-4 py-1.5 text-sm font-semibold text-slate-900 border border-slate-900 hover:bg-slate-900 hover:text-white transition-colors duration-200">Lihat semua</a>
+                                class="inline-flex items-center justify-center px-4 py-1.5 text-sm font-semibold text-slate-900 border border-slate-900 hover:bg-slate-900 hover:text-white transition-colors duration-200 rounded-full">Lihat semua</a>
                         @endif
                     </div>
                     

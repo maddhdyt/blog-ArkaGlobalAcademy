@@ -32,7 +32,7 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased text-[#433836] bg-white">
+    <body class="font-sans antialiased text-[slate-600] bg-white">
         <div class="min-h-screen flex flex-col justify-center items-center py-12 sm:px-6 lg:px-8">
             <div class="w-full sm:max-w-md px-6 py-8">
                 {{ $slot }}
