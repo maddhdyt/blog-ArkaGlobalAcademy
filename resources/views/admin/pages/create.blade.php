@@ -37,12 +37,12 @@
 
                 <!-- Editor -->
                 <div class="card p-0 !overflow-visible">
-                    <div id="editor-header" class="sticky top-0 z-20 bg-white/90 backdrop-blur-md rounded-t-2xl shadow-sm border border-slate-200 -mx-[1px] -mt-[1px] transition-all duration-300">
+                    <div id="editor-header" class="sticky top-0 z-20 bg-white/90 backdrop-blur-md rounded-t-2xl shadow-sm border border-slate-100 -mx-[1px] -mt-[1px] transition-all duration-300">
                         <div class="p-4 border-b border-slate-100/50">
                             <label class="form-label mb-0" for="content-editor">Content *</label>
                         </div>
                     </div>
-                    <div id="content-editor" class="bg-white min-h-[500px] text-lg text-[#433836]" aria-label="Content editor">{!! old('content') !!}</div>
+                    <div id="content-editor" class="bg-white min-h-[500px] text-lg text-[#433836] rounded-b-2xl overflow-hidden" aria-label="Content editor">{!! old('content') !!}</div>
                     <input type="hidden" name="content" id="content" value="{{ old('content') }}" required>
                     @error('content')
                         <div class="p-4 bg-red-50"><p class="text-red-500 text-xs font-bold">{{ $message }}</p></div>
