@@ -195,7 +195,7 @@
 
                 try {
                     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-                    const response = await fetch('{{ route('admin.posts.upload-image') }}', {
+                    const response = await fetch("{{ route('admin.posts.upload-image') }}", {
                         method: 'POST',
                         body: formData,
                         headers: {
@@ -205,16 +205,17 @@
 
                     if (response.ok) {
                         const data = await response.json();
-                        const range = quill.getSelection(true);
-                        quill.insertEmbed(range.index, 'image', data.url);
-                        quill.setSelection(range.index + 1);
+                        let range = quill.getSelection();
+                        let index = range ? range.index : quill.getLength();
+                        quill.insertEmbed(index, 'image', data.url);
+                        quill.setSelection(index + 1);
                     } else {
-                        console.error('Upload failed');
-                        alert('Gagal mengunggah gambar. Pastikan ukuran di bawah 5MB.');
+                        console.error('Upload failed', await response.text());
+                        alert('Gagal mengunggah gambar. Pastikan format benar dan ukuran di bawah 5MB.');
                     }
                 } catch (error) {
                     console.error('Error:', error);
-                    alert('Terjadi kesalahan saat mengunggah gambar.');
+                    alert('Terjadi kesalahan JavaScript saat mengunggah gambar. Lihat console untuk detailnya.');
                 }
             };
         }
