@@ -45,8 +45,8 @@
                     </div>
 
                     <!-- Sticky Pill Wrapper -->
-                    <div class="sticky top-0 z-50 w-full flex justify-end -mt-12 mb-2 pointer-events-none px-4">
-                        <div id="toolbar-container" class="pointer-events-auto w-max max-w-full bg-white/95 backdrop-blur-md rounded-full shadow-lg border border-slate-200/60 transition-all">
+                    <div class="sticky top-0 z-50 w-full flex justify-end -mt-12 mb-2 pointer-events-none px-4" id="sticky-toolbar-wrapper">
+                        <div id="toolbar-container" class="pointer-events-auto w-max max-w-full bg-transparent rounded-full shadow-none border border-transparent transition-all duration-300">
                         </div>
                     </div>
                     <div id="content-editor" class="bg-white min-h-[500px] text-lg text-[#433836] rounded-b-2xl overflow-hidden" aria-label="Content editor">{!! old('content', $page->content) !!}</div>
@@ -126,6 +126,26 @@
 
         const toolbar = quill.getModule('toolbar').container;
         document.getElementById('toolbar-container').appendChild(toolbar);
+
+        const stickyWrapper = document.getElementById('sticky-toolbar-wrapper');
+        const tbContainer = document.getElementById('toolbar-container');
+        const mainScroll = document.querySelector('main');
+        
+        if (stickyWrapper && tbContainer && mainScroll) {
+            mainScroll.addEventListener('scroll', () => {
+                const rect = stickyWrapper.getBoundingClientRect();
+                const mainRect = mainScroll.getBoundingClientRect();
+                if (rect.top <= mainRect.top + 5) {
+                    tbContainer.classList.remove('bg-transparent', 'border-transparent', 'shadow-none');
+                    tbContainer.classList.add('bg-white/95', 'backdrop-blur-md', 'border-slate-200/60', 'shadow-lg');
+                } else {
+                    tbContainer.classList.add('bg-transparent', 'border-transparent', 'shadow-none');
+                    tbContainer.classList.remove('bg-white/95', 'backdrop-blur-md', 'border-slate-200/60', 'shadow-lg');
+                }
+            });
+            setTimeout(() => mainScroll.dispatchEvent(new Event('scroll')), 100);
+        }
+
 
         const contentInput = document.getElementById('content');
         quill.on('text-change', () => {
