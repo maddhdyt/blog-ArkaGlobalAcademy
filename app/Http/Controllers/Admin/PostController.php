@@ -203,4 +203,23 @@ class PostController extends Controller
 
         return $slug;
     }
+
+    /**
+     * Handle image upload from rich text editor (Quill).
+     */
+    public function uploadImage(Request $request)
+    {
+        $request->validate([
+            'image' => 'required|image|max:5120', // Max 5MB
+        ]);
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('post-images', 'public');
+            return response()->json([
+                'url' => Storage::url($path)
+            ]);
+        }
+
+        return response()->json(['error' => 'Image upload failed'], 400);
+    }
 }

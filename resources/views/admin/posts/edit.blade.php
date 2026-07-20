@@ -189,28 +189,70 @@
     <link href="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.snow.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.min.js"></script>
     <script>
+        function imageHandler() {
+            const input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', 'image/*');
+            input.click();
+
+            input.onchange = async () => {
+                const file = input.files[0];
+                const formData = new FormData();
+                formData.append('image', file);
+
+                try {
+                    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                    const response = await fetch('{{ route('admin.posts.upload-image') }}', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken
+                        }
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        const range = quill.getSelection(true);
+                        quill.insertEmbed(range.index, 'image', data.url);
+                        quill.setSelection(range.index + 1);
+                    } else {
+                        console.error('Upload failed');
+                        alert('Gagal mengunggah gambar. Pastikan ukuran di bawah 5MB.');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Terjadi kesalahan saat mengunggah gambar.');
+                }
+            };
+        }
+
         const quill = new Quill('#content-editor', {
             theme: 'snow',
             placeholder: 'Tulis konten di sini...',
             scrollingContainer: 'main',
             modules: {
-                toolbar: [
-                    [{
-                        header: [1, 2, 3, false]
-                    }],
-                    ['bold', 'italic', 'underline', 'strike'],
-                    [{
-                        list: 'ordered'
-                    }, {
-                        list: 'bullet'
-                    }],
-                    ['link', 'image'],
-                    ['blockquote', 'code-block'],
-                    [{
-                        align: []
-                    }],
-                    ['clean']
-                ]
+                toolbar: {
+                    container: [
+                        [{
+                            header: [1, 2, 3, false]
+                        }],
+                        ['bold', 'italic', 'underline', 'strike'],
+                        [{
+                            list: 'ordered'
+                        }, {
+                            list: 'bullet'
+                        }],
+                        ['link', 'image'],
+                        ['blockquote', 'code-block'],
+                        [{
+                            align: []
+                        }],
+                        ['clean']
+                    ],
+                    handlers: {
+                        image: imageHandler
+                    }
+                }
             }
         });
 
