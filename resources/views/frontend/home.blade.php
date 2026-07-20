@@ -177,8 +177,8 @@
             {{-- Newsletter + trending list --}}
             <section class="grid gap-8 lg:grid-cols-3">
                 <div class="bg-white p-8 border border-slate-200 shadow-sm rounded-2xl">
-                    <h3 class="text-2xl font-normal text-faux-medium text-slate-900 font-heading">Berlangganan Buletin</h3>
-                    <p class="mt-4 text-[15px] text-slate-600 leading-relaxed">Dapatkan wawasan terbaru dan notifikasi artikel langsung di kotak masuk Anda.</p>
+                    <h3 class="text-2xl font-normal text-faux-medium text-slate-900 font-heading">Dapatkan Insight Terbaru</h3>
+                    <p class="mt-4 text-[15px] text-slate-600 leading-relaxed">Tingkatkan wawasan digitalmu. Kami kirimkan artikel dan strategi terbaik langsung ke emailmu.</p>
 
                     <form action="{{ route('newsletter.subscribe') }}" method="POST" class="mt-6 space-y-4">
                         @csrf
@@ -190,7 +190,7 @@
                             <p class="text-xs text-red-600">{{ $message }}</p>
                         @enderror
                         <button type="submit" class="w-full px-6 py-3.5 text-sm font-bold tracking-widest text-white uppercase bg-slate-900 hover:bg-black transition-colors font-mono rounded-xl">
-                            Berlangganan
+                            Subscribe
                         </button>
                     </form>
                     <p class="mt-4 text-[13px] text-gray-400">Kami menjaga privasi Anda. Berhenti kapan saja.</p>
