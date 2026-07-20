@@ -10,7 +10,7 @@
         </a>
     </div>
 
-    <form action="{{ route('admin.posts.update', $post) }}" method="POST" enctype="multipart/form-data" class="block">
+    <form action="{{ route('admin.posts.update', $post) }}" method="POST" enctype="multipart/form-data" class="block" id="post-form">
         @csrf
         @method('PUT')
         <div class="grid grid-cols-1 xl:grid-cols-12 gap-8">
@@ -142,8 +142,9 @@
                             <label class="form-label" for="published_at">Publish Date</label>
                             <input type="datetime-local" name="published_at" id="published_at" class="form-input" value="{{ old('published_at', $post->published_at?->format('Y-m-d\TH:i')) }}">
                         </div>
-                        <div class="pt-4 border-t border-slate-100 flex gap-3">
+                        <div class="pt-4 border-t border-slate-100 flex flex-col gap-2">
                             <button type="submit" class="w-full btn-primary py-3">Update Post</button>
+                            <p id="autosave-indicator" class="text-xs text-slate-400 text-center font-medium opacity-0 transition-opacity duration-300"></p>
                         </div>
                     </div>
                 </div>
@@ -247,6 +248,106 @@
             contentInput.value = quill.root.innerHTML;
         });
         contentInput.value = quill.root.innerHTML;
+
+        // Auto-Save Logic (LocalStorage)
+        const form = document.getElementById('post-form');
+        const indicator = document.getElementById('autosave-indicator');
+        const draftKey = 'arka_post_draft_{{ $post->id }}';
+        let autoSaveTimer;
+
+        // Restore draft on load
+        function restoreDraft() {
+            const draftStr = localStorage.getItem(draftKey);
+            if (draftStr) {
+                try {
+                    const draft = JSON.parse(draftStr);
+                    let hasRestored = false;
+                    
+                    // In edit mode, we overwrite the blade-provided values with our local draft
+                    // because the draft represents the user's latest unsaved changes.
+                    if (draft.title) { document.getElementById('title').value = draft.title; hasRestored = true; }
+                    if (draft.slug !== undefined) document.getElementById('slug').value = draft.slug;
+                    if (draft.excerpt !== undefined) document.getElementById('excerpt').value = draft.excerpt;
+                    if (draft.meta_description !== undefined) document.getElementById('meta_description').value = draft.meta_description;
+                    if (draft.focus_keyword !== undefined) document.getElementById('focus_keyword').value = draft.focus_keyword;
+                    if (draft.category_id) document.getElementById('category_id').value = draft.category_id;
+                    if (draft.status) document.getElementById('status').value = draft.status;
+                    
+                    if (draft.content) {
+                        quill.clipboard.dangerouslyPasteHTML(draft.content);
+                        hasRestored = true;
+                    }
+                    
+                    if (hasRestored) {
+                        indicator.textContent = 'Memulihkan draft lokal...';
+                        indicator.classList.remove('opacity-0');
+                        setTimeout(() => indicator.classList.add('opacity-0'), 3000);
+                        
+                        // trigger input event to update SEO preview
+                        document.getElementById('title').dispatchEvent(new Event('input'));
+                        document.getElementById('meta_description').dispatchEvent(new Event('input'));
+                    }
+                } catch (e) {
+                    console.error("Error restoring draft", e);
+                }
+            }
+        }
+
+        // Save draft
+        function saveDraft() {
+            const draft = {
+                title: document.getElementById('title').value,
+                slug: document.getElementById('slug').value,
+                excerpt: document.getElementById('excerpt').value,
+                meta_description: document.getElementById('meta_description').value,
+                focus_keyword: document.getElementById('focus_keyword').value,
+                category_id: document.getElementById('category_id').value,
+                status: document.getElementById('status').value,
+                content: quill.root.innerHTML
+            };
+            
+            localStorage.setItem(draftKey, JSON.stringify(draft));
+            
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+            
+            indicator.textContent = `Tersimpan di browser pukul ${timeStr}`;
+            indicator.classList.remove('opacity-0');
+        }
+
+        // Listen for changes on form elements
+        const inputElements = form.querySelectorAll('input, select, textarea');
+        inputElements.forEach(el => {
+            el.addEventListener('input', () => {
+                if (el.type === 'file') return; // Don't auto-save file inputs
+                clearTimeout(autoSaveTimer);
+                indicator.textContent = 'Menyimpan...';
+                indicator.classList.remove('opacity-0');
+                autoSaveTimer = setTimeout(saveDraft, 2000);
+            });
+            el.addEventListener('change', () => {
+                if (el.type === 'file') return;
+                clearTimeout(autoSaveTimer);
+                saveDraft();
+            });
+        });
+
+        // Listen for changes on Quill
+        quill.on('text-change', () => {
+            clearTimeout(autoSaveTimer);
+            indicator.textContent = 'Menyimpan...';
+            indicator.classList.remove('opacity-0');
+            autoSaveTimer = setTimeout(saveDraft, 2000);
+        });
+
+        // Clear draft on successful submit
+        form.addEventListener('submit', () => {
+            localStorage.removeItem(draftKey);
+        });
+
+        // Initialize restore
+        setTimeout(restoreDraft, 500);
+
     </script>
     <script src="{{ asset('js/seo-analyzer.js') }}"></script>
 @endsection
