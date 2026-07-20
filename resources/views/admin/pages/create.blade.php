@@ -62,7 +62,7 @@
 
             <!-- Right Column: Settings Area -->
             <div class="xl:col-span-4">
-                <div class="space-y-6 sticky top-6">
+                <div class="space-y-6 sticky top-0">
                     <!-- Action Card -->
                     <div class="card p-6">
                         <h3 class="text-sm font-bold text-slate-700 mb-4 pb-2 border-b border-slate-100 uppercase tracking-wider mt-0">Publish</h3>
