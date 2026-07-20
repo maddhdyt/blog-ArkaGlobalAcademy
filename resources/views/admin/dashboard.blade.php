@@ -16,7 +16,7 @@
             <div class="flex items-start justify-between">
                 <div>
                     <p class="text-slate-500 text-sm font-bold tracking-wider uppercase mb-1">Total Menus</p>
-                    <p class="text-4xl font-heading font-bold text-slate-900">{{ $stats['menus'] }}</p>
+                    <p class="text-4xl font-heading font-bold text-slate-700">{{ $stats['menus'] }}</p>
                 </div>
                 <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-orange-500 group-hover:text-white transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -29,7 +29,7 @@
             <div class="flex items-start justify-between">
                 <div>
                     <p class="text-slate-500 text-sm font-bold tracking-wider uppercase mb-1">Total Pages</p>
-                    <p class="text-4xl font-heading font-bold text-slate-900">{{ $stats['pages'] }}</p>
+                    <p class="text-4xl font-heading font-bold text-slate-700">{{ $stats['pages'] }}</p>
                 </div>
                 <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-orange-500 group-hover:text-white transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
@@ -42,7 +42,7 @@
             <div class="flex items-start justify-between">
                 <div>
                     <p class="text-slate-500 text-sm font-bold tracking-wider uppercase mb-1">Categories</p>
-                    <p class="text-4xl font-heading font-bold text-slate-900">{{ $stats['categories'] }}</p>
+                    <p class="text-4xl font-heading font-bold text-slate-700">{{ $stats['categories'] }}</p>
                 </div>
                 <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-orange-500 group-hover:text-white transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path></svg>
@@ -55,7 +55,7 @@
             <div class="flex items-start justify-between">
                 <div>
                     <p class="text-slate-500 text-sm font-bold tracking-wider uppercase mb-1">Total Posts</p>
-                    <p class="text-4xl font-heading font-bold text-slate-900">{{ $stats['posts'] }}</p>
+                    <p class="text-4xl font-heading font-bold text-slate-700">{{ $stats['posts'] }}</p>
                     <p class="text-xs font-semibold text-slate-400 mt-1">{{ $stats['published_posts'] }} published &middot; {{ $stats['draft_posts'] }} drafts</p>
                 </div>
                 <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-colors">
@@ -69,7 +69,7 @@
             <div class="flex items-start justify-between">
                 <div>
                     <p class="text-slate-500 text-sm font-bold tracking-wider uppercase mb-1">Total Views</p>
-                    <p class="text-4xl font-heading font-bold text-slate-900">{{ number_format($stats['views']) }}</p>
+                    <p class="text-4xl font-heading font-bold text-slate-700">{{ number_format($stats['views']) }}</p>
                 </div>
                 <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
@@ -82,7 +82,7 @@
             <div class="flex items-start justify-between">
                 <div>
                     <p class="text-slate-500 text-sm font-bold tracking-wider uppercase mb-1">Total Users</p>
-                    <p class="text-4xl font-heading font-bold text-slate-900">{{ $stats['users'] }}</p>
+                    <p class="text-4xl font-heading font-bold text-slate-700">{{ $stats['users'] }}</p>
                 </div>
                 <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-orange-500 group-hover:text-white transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
@@ -95,7 +95,7 @@
             <div class="flex items-start justify-between">
                 <div>
                     <p class="text-slate-500 text-sm font-bold tracking-wider uppercase mb-1">Subscribers</p>
-                    <p class="text-4xl font-heading font-bold text-slate-900">{{ $stats['subscribers'] }}</p>
+                    <p class="text-4xl font-heading font-bold text-slate-700">{{ $stats['subscribers'] }}</p>
                 </div>
                 <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-orange-500 group-hover:text-white transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
@@ -108,7 +108,7 @@
             <div class="flex items-start justify-between">
                 <div>
                     <p class="text-slate-500 text-sm font-bold tracking-wider uppercase mb-1">Galleries</p>
-                    <p class="text-4xl font-heading font-bold text-slate-900">{{ $stats['galleries'] }}</p>
+                    <p class="text-4xl font-heading font-bold text-slate-700">{{ $stats['galleries'] }}</p>
                 </div>
                 <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-orange-500 group-hover:text-white transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
