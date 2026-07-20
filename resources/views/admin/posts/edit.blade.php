@@ -182,7 +182,7 @@
         });
 
         const toolbar = quill.getModule('toolbar').container;
-        document.getElementById('editor-header').appendChild(toolbar);
+        document.getElementById('toolbar-container').appendChild(toolbar);
 
         const contentInput = document.getElementById('content');
         quill.on('text-change', () => {
