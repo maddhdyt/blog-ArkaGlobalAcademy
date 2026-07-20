@@ -29,8 +29,8 @@
                             </button>
 
                             <div
-                                class="absolute left-1/2 top-full mt-2 w-[480px] -translate-x-1/2 bg-white/95 backdrop-blur-xl border border-white/50 shadow-2xl rounded-3xl opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all z-50 ring-1 ring-slate-900/5 overflow-hidden">
-                                <div class="p-6 grid gap-4">
+                                class="absolute left-1/2 top-full mt-2 w-[320px] -translate-x-1/2 bg-white/95 backdrop-blur-xl border border-white/50 shadow-2xl rounded-3xl opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all z-50 ring-1 ring-slate-900/5 overflow-hidden">
+                                <div class="p-5 grid gap-3">
                                     @foreach ($menu->children as $child)
                                         @php
                                             $iconClass = 'h-5 w-5';
