@@ -37,8 +37,10 @@
 
                 <!-- Editor -->
                 <div class="card p-0 !overflow-visible">
-                    <div class="p-4 border-b border-slate-100">
-                        <label class="form-label mb-0" for="content-editor">Content *</label>
+                    <div id="editor-header" class="sticky top-0 z-20 bg-white/85 backdrop-blur-md rounded-t-2xl shadow-[0_10px_15px_-3px_rgba(0,0,0,0.03)] border-b border-slate-200">
+                        <div class="p-4 border-b border-slate-100/50">
+                            <label class="form-label mb-0" for="content-editor">Content *</label>
+                        </div>
                     </div>
                     <div id="content-editor" class="bg-white min-h-[500px] text-lg text-[#433836]" aria-label="Content editor">{!! old('content') !!}</div>
                     <input type="hidden" name="content" id="content" value="{{ old('content') }}" required>
@@ -114,6 +116,9 @@
                 ]
             }
         });
+
+        const toolbar = quill.getModule('toolbar').container;
+        document.getElementById('editor-header').appendChild(toolbar);
 
         const contentInput = document.getElementById('content');
         quill.on('text-change', () => {
