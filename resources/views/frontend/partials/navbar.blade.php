@@ -32,18 +32,34 @@
                                 class="absolute left-1/2 top-full mt-2 w-[480px] -translate-x-1/2 bg-white/95 backdrop-blur-xl border border-white/50 shadow-2xl rounded-3xl opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all z-50 ring-1 ring-slate-900/5 overflow-hidden">
                                 <div class="p-6 grid gap-4">
                                     @foreach ($menu->children as $child)
+                                        @php
+                                            $titleLower = strtolower($child->title);
+                                            $iconClass = 'h-5 w-5';
+                                            if (str_contains($titleLower, 'seo') || str_contains($titleLower, 'search')) {
+                                                $icon = '<svg class="'.$iconClass.'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.5 7.5v6m3-3h-6" /></svg>';
+                                                $bgColor = 'bg-blue-500';
+                                            } elseif (str_contains($titleLower, 'tech') || str_contains($titleLower, 'web') || str_contains($titleLower, 'dev')) {
+                                                $icon = '<svg class="'.$iconClass.'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M4 17h16a1 1 0 001-1V8a1 1 0 00-1-1H4a1 1 0 00-1 1v8a1 1 0 001 1z" /></svg>';
+                                                $bgColor = 'bg-emerald-500';
+                                            } elseif (str_contains($titleLower, 'market') || str_contains($titleLower, 'sosial') || str_contains($titleLower, 'social')) {
+                                                $icon = '<svg class="'.$iconClass.'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" /></svg>';
+                                                $bgColor = 'bg-orange-500';
+                                            } elseif (str_contains($titleLower, 'bisnis') || str_contains($titleLower, 'business') || str_contains($titleLower, 'finance')) {
+                                                $icon = '<svg class="'.$iconClass.'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>';
+                                                $bgColor = 'bg-purple-500';
+                                            } elseif (str_contains($titleLower, 'design') || str_contains($titleLower, 'ui')) {
+                                                $icon = '<svg class="'.$iconClass.'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.813-6.837c.31-.555.05-1.282-.575-1.477a1.35 1.35 0 00-1.632.7c-1.326 2.65-2.652 5.3-4.628 7.373z" /></svg>';
+                                                $bgColor = 'bg-pink-500';
+                                            } else {
+                                                $icon = '<svg class="'.$iconClass.'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>';
+                                                $bgColor = 'bg-slate-800';
+                                            }
+                                        @endphp
                                         <a href="{{ $child->getUrl() }}"
-                                            class="flex items-start gap-4 p-3 hover:bg-slate-50 transition group/child">
+                                            class="flex items-start gap-4 p-3 hover:bg-slate-50 transition group/child rounded-2xl">
                                             <span
-                                                class="inline-flex h-10 w-10 shrink-0 items-center justify-center bg-slate-900 text-white">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                    fill="none" stroke="currentColor" stroke-width="1.5"
-                                                    class="h-5 w-5">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M6.75 3.75h10.5a3 3 0 0 1 3 3v10.5a3 3 0 0 1-3 3H6.75a3 3 0 0 1-3-3V6.75a3 3 0 0 1 3-3Z" />
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M9 9h6M9 12h6M9 15h3" />
-                                                </svg>
+                                                class="inline-flex h-10 w-10 shrink-0 items-center justify-center {{ $bgColor }} text-white rounded-xl shadow-sm group-hover/child:scale-110 transition-transform">
+                                                {!! $icon !!}
                                             </span>
                                             <span class="flex flex-col gap-1">
                                                 <span
