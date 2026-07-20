@@ -164,11 +164,11 @@
                                 </td>
                                 <td class="py-3 px-4">
                                     @if ($post->status === 'published')
-                                        <span class="inline-flex items-center px-2 py-1 border border-slate-900 bg-[#b4f3b4] text-slate-900 text-[10px] font-bold uppercase tracking-wider">
+                                        <span class="inline-flex items-center px-2 py-1 bg-green-100 text-green-700 rounded-md px-2 py-0.5 text-[10px] font-semibold tracking-wider">
                                             Published
                                         </span>
                                     @else
-                                        <span class="inline-flex items-center px-2 py-1 border border-slate-900 bg-[#ffe499] text-slate-900 text-[10px] font-bold uppercase tracking-wider">
+                                        <span class="inline-flex items-center px-2 py-1 bg-orange-100 text-orange-700 rounded-md px-2 py-0.5 text-[10px] font-semibold tracking-wider">
                                             Draft
                                         </span>
                                     @endif

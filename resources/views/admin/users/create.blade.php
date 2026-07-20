@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="mb-6 flex items-center justify-between">
-        <a href="{{ route('admin.users.index') }}" class="text-[#0a1435] hover:text-brand-primary font-bold text-sm uppercase tracking-wider transition flex items-center gap-2">
+        <a href="{{ route('admin.users.index') }}" class="text-[slate-900] hover:text-brand-primary font-bold text-sm uppercase tracking-wider transition flex items-center gap-2">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
             Kembali
         </a>
@@ -37,7 +37,7 @@
 
                 <!-- Security Details -->
                 <div class="card p-6 space-y-6">
-                    <h3 class="text-sm font-bold text-[#0a1435] mb-4 pb-2 border-b border-[#0a1435] uppercase tracking-wider mt-0">Keamanan</h3>
+                    <h3 class="text-sm font-bold text-[slate-900] mb-4 pb-2 border-b border-[slate-900] uppercase tracking-wider mt-0">Keamanan</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label class="form-label" for="password">Password *</label>
@@ -60,7 +60,7 @@
                 <div class="space-y-6 sticky top-6">
                     <!-- Role Card -->
                     <div class="card p-6">
-                        <h3 class="text-sm font-bold text-[#0a1435] mb-4 pb-2 border-b border-[#0a1435] uppercase tracking-wider mt-0">Role & Akses</h3>
+                        <h3 class="text-sm font-bold text-[slate-900] mb-4 pb-2 border-b border-[slate-900] uppercase tracking-wider mt-0">Role & Akses</h3>
                         <div class="space-y-4">
                             <div>
                                 <label class="form-label" for="role">Role *</label>
@@ -75,7 +75,7 @@
                                     <p class="text-red-500 text-xs mt-1 font-bold">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <div class="pt-4 border-t border-[#0a1435] flex gap-3">
+                            <div class="pt-4 border-t border-[slate-900] flex gap-3">
                                 <button type="submit" class="w-full btn-primary py-3">Create User</button>
                             </div>
                         </div>
