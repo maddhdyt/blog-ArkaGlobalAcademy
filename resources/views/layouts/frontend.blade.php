@@ -5,22 +5,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ isset($title) ? $title . ' - ' . config('app.name', 'Nusa Education') : config('app.name', 'Nusa Education') }}</title>
-    <meta name="description" content="@yield('meta_description', 'Blog Nusa Education - Wawasan & Strategi Digital Terkini.')">
+    <title>{{ isset($title) ? $title . ' - ' . config('app.name', 'Arka Global Academy') : config('app.name', 'Arka Global Academy') }}</title>
+    <meta name="description" content="@yield('meta_description', 'Blog Arka Global Academy - Wawasan & Strategi Digital Terkini.')">
     <link rel="canonical" href="{{ url()->current() }}">
     
     <!-- Open Graph / Social -->
     <meta property="og:type" content="@yield('og_type', 'website')">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:title" content="{{ isset($title) ? $title . ' - ' . config('app.name', 'Nusa Education') : config('app.name', 'Nusa Education') }}">
-    <meta property="og:description" content="@yield('meta_description', 'Blog Nusa Education - Wawasan & Strategi Digital Terkini.')">
+    <meta property="og:title" content="{{ isset($title) ? $title . ' - ' . config('app.name', 'Arka Global Academy') : config('app.name', 'Arka Global Academy') }}">
+    <meta property="og:description" content="@yield('meta_description', 'Blog Arka Global Academy - Wawasan & Strategi Digital Terkini.')">
     <meta property="og:image" content="@yield('og_image', 'https://ik.imagekit.io/yqhp1cmbp/Logo%20Nusa%203%20(1).png?updatedAt=1783657933278')">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ url()->current() }}">
-    <meta property="twitter:title" content="{{ isset($title) ? $title . ' - ' . config('app.name', 'Nusa Education') : config('app.name', 'Nusa Education') }}">
-    <meta property="twitter:description" content="@yield('meta_description', 'Blog Nusa Education - Wawasan & Strategi Digital Terkini.')">
+    <meta property="twitter:title" content="{{ isset($title) ? $title . ' - ' . config('app.name', 'Arka Global Academy') : config('app.name', 'Arka Global Academy') }}">
+    <meta property="twitter:description" content="@yield('meta_description', 'Blog Arka Global Academy - Wawasan & Strategi Digital Terkini.')">
     <meta property="twitter:image" content="@yield('og_image', 'https://ik.imagekit.io/yqhp1cmbp/Logo%20Nusa%203%20(1).png?updatedAt=1783657933278')">
 
     @yield('meta')
@@ -37,15 +37,15 @@
     <!-- NProgress CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" />
     <style>
-        #nprogress .bar { background: #0a1435 !important; height: 3px !important; }
-        #nprogress .peg { box-shadow: 0 0 10px #0a1435, 0 0 5px #0a1435 !important; }
-        #nprogress .spinner-icon { border-top-color: #0a1435 !important; border-left-color: #0a1435 !important; }
+        #nprogress .bar { background: #ea580c !important; height: 3px !important; }
+        #nprogress .peg { box-shadow: 0 0 10px #ea580c, 0 0 5px #ea580c !important; }
+        #nprogress .spinner-icon { border-top-color: #ea580c !important; border-left-color: #ea580c !important; }
     </style>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-[#FDF6F0] text-[#433836] font-sans antialiased">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
     @if (empty($hideNavbar))
         @include('frontend.partials.navbar')
     @endif

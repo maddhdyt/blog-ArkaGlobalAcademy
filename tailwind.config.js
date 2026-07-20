@@ -12,14 +12,14 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Geist', ...defaultTheme.fontFamily.sans],
-                heading: ['Feature', 'serif', ...defaultTheme.fontFamily.serif],
+                sans: ['Karla', ...defaultTheme.fontFamily.sans],
+                heading: ['"Playfair Display"', 'serif', ...defaultTheme.fontFamily.serif],
             },
             colors: {
                 brand: {
-                    primary: '#1786F8',
-                    secondary: '#ADDEFA',
-                    accent: '#FF9F1C',
+                    primary: '#0f172a',
+                    secondary: '#f8fafc',
+                    accent: '#ea580c',
                 },
             },
         },
