@@ -32,7 +32,22 @@
 
                 <!-- Editor -->
                 <div class="card p-0 !overflow-visible">
-                    <div id="editor-header" class="rounded-t-2xl transition-all duration-300">
+                    <style>
+                        #toolbar-container {
+                            background-color: transparent !important;
+                            border-color: transparent !important;
+                            box-shadow: none !important;
+                            transition: all 0.3s ease !important;
+                        }
+                        #toolbar-container.is-stuck {
+                            background-color: rgba(255, 255, 255, 0.95) !important;
+                            backdrop-filter: blur(12px) !important;
+                            border-color: rgba(226, 232, 240, 0.6) !important;
+                            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+                        }
+                    </style>
+                    <div id="editor-header" class="rounded-t-2xl transition-all duration-300 relative">
+                        <div id="sticky-sentinel" class="absolute w-full h-px pointer-events-none" style="top: 8px;"></div>
                         <div class="p-4 border-b border-slate-100/50">
                             <label class="form-label mb-0" for="content-editor">Content *</label>
                         </div>
@@ -177,24 +192,25 @@
         const toolbar = quill.getModule('toolbar').container;
         document.getElementById('toolbar-container').appendChild(toolbar);
 
-        const stickyWrapper = document.getElementById('sticky-toolbar-wrapper');
+        
+        const sentinel = document.getElementById('sticky-sentinel');
         const tbContainer = document.getElementById('toolbar-container');
         const mainScroll = document.querySelector('main');
         
-        if (stickyWrapper && tbContainer && mainScroll) {
-            mainScroll.addEventListener('scroll', () => {
-                const rect = stickyWrapper.getBoundingClientRect();
-                const mainRect = mainScroll.getBoundingClientRect();
-                if (rect.top <= mainRect.top + 5) {
-                    tbContainer.classList.remove('bg-transparent', 'border-transparent', 'shadow-none');
-                    tbContainer.classList.add('bg-white/95', 'backdrop-blur-md', 'border-slate-200/60', 'shadow-lg');
+        if (sentinel && tbContainer && mainScroll) {
+            const observer = new IntersectionObserver((entries) => {
+                if (!entries[0].isIntersecting) {
+                    tbContainer.classList.add('is-stuck');
                 } else {
-                    tbContainer.classList.add('bg-transparent', 'border-transparent', 'shadow-none');
-                    tbContainer.classList.remove('bg-white/95', 'backdrop-blur-md', 'border-slate-200/60', 'shadow-lg');
+                    tbContainer.classList.remove('is-stuck');
                 }
+            }, {
+                root: mainScroll,
+                threshold: 0
             });
-            setTimeout(() => mainScroll.dispatchEvent(new Event('scroll')), 100);
+            observer.observe(sentinel);
         }
+
 
 
         const contentInput = document.getElementById('content');
