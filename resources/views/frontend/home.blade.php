@@ -5,81 +5,85 @@
         @php
             $placeholder = 'https://placehold.co/900x600?text=No+Image';
         @endphp
-        <!-- Editorial Hero Section -->
+        <!-- Modern Hero Section -->
         <div class="pt-10 pb-16">
             <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
                 
-                <!-- Main Blog Header (Jasper Style) -->
+                <!-- Main Blog Header -->
                 <div class="text-center w-full mx-auto mb-16 pt-4 sm:pt-8 px-4">
-                    <span class="inline-block px-1 mb-6 text-sm font-bold text-gray-600 bg-white tracking-widest font-mono">
-                        Arka Global Academy
+                    <span class="inline-block px-3 py-1 mb-6 text-xs font-bold text-orange-600 bg-orange-50 rounded-full tracking-widest uppercase">
+                        {{ config('app.name', 'Arka Global Academy') }}
                     </span>
-                    <h2 class="text-3xl sm:text-5xl lg:text-6xl font-normal text-faux-semibold text-gray-900 tracking-tight font-heading leading-[1.1]">
-                        Wawasan & Strategi Digital Terkini
+                    <h2 class="text-4xl sm:text-5xl lg:text-[64px] font-bold text-slate-900 tracking-tight font-heading leading-[1.1]">
+                        Wawasan & Strategi <br class="hidden sm:block"/> <span class="text-orange-600">Digital Terkini</span>
                     </h2>
                 </div>
 
                 @if ($heroPost)
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                        
-                        <!-- Left Column: Featured Hero Post (col-span-8) -->
-                        <div class="lg:col-span-8">
-                            <article class="flex flex-col group bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow">
+                    <div class="relative bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden group hover:shadow-lg transition-all duration-300">
+                        <div class="grid lg:grid-cols-2 items-stretch">
+                            <!-- Left: Image -->
+                            <div class="relative min-h-[300px] lg:min-h-[400px] bg-slate-100 overflow-hidden">
                                 @if($heroPost->thumbnail_url)
-                                <a href="{{ route('posts.show', $heroPost->slug) }}" class="block overflow-hidden">
-                                    <img src="{{ $heroPost->thumbnail_url }}" alt="{{ $heroPost->title }}" class="w-full h-[400px] sm:h-[500px] object-cover hover:scale-[1.02] transition duration-700">
-                                </a>
+                                    <a href="{{ route('posts.show', $heroPost->slug) }}" class="absolute inset-0">
+                                        <img src="{{ $heroPost->thumbnail_url }}" alt="{{ $heroPost->title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                                    </a>
                                 @endif
-                                
-                                <div class="p-6 lg:p-8 flex flex-col">
-                                    <h1 class="text-3xl sm:text-4xl lg:text-[42px] font-normal text-faux-medium text-slate-900 tracking-tight font-heading leading-[1.1] mb-4">
-                                        <a href="{{ route('posts.show', $heroPost->slug) }}" class="hover:text-brand-primary transition">
-                                            {{ $heroPost->title }}
-                                        </a>
-                                    </h1>
-                                    
-                                    <p class="text-[15px] sm:text-base text-gray-800 mb-5 leading-relaxed max-w-3xl">
-                                        {{ \Illuminate\Support\Str::limit($heroPost->excerpt ?: strip_tags($heroPost->content ?? ''), 160) }}
-                                    </p>
-                                    
-                                    <div class="inline-flex items-center self-start gap-2 text-xs text-slate-500 bg-orange-50 px-2 py-0.5 font-mono">
-                                        <span>{{ optional($heroPost->published_at ?? $heroPost->created_at)->translatedFormat('F j, Y') }}</span>
-                                        <span>|</span>
-                                        <span>{{ $heroPost->user->name ?? 'Admin' }}</span>
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-
-                        <!-- Right Column: Popular / Sorotan Posts (col-span-4) -->
-                        <div class="lg:col-span-4 h-full flex flex-col pt-8 lg:pt-12 relative before:hidden lg:before:block before:absolute before:-left-6 before:top-12 before:bottom-12 before:w-px before:bg-[slate-200]">
-                            <h3 class="text-3xl lg:text-[40px] font-normal text-faux-medium text-slate-900 font-heading mb-8 self-start whitespace-nowrap bg-white pr-3 py-0 leading-none relative z-10">
-                                Sorotan Minggu Ini
-                            </h3>
+                            </div>
                             
-                            <div class="flex flex-col gap-2">
-                                @forelse ($topStripPosts as $post)
-                                    <article class="flex flex-col group hover:bg-white p-4 -mx-4 transition-colors duration-300">
-                                        <div class="inline-flex items-center gap-1.5 text-xs text-slate-500 bg-white px-1.5 py-0 font-mono mb-2 self-start">
-                                            <time datetime="{{ optional($post->published_at ?? $post->created_at)->toDateString() }}">
-                                                {{ optional($post->published_at ?? $post->created_at)->translatedFormat('F j') }}
-                                            </time>
-                                            <span>|</span>
-                                            <span>{{ $post->user->name ?? 'Admin' }}</span>
+                            <!-- Right: Content -->
+                            <div class="p-8 lg:p-12 flex flex-col justify-center">
+                                <div class="inline-flex items-center gap-2 text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">
+                                    <span class="px-3 py-1 bg-slate-100 rounded-full">Artikel Utama</span>
+                                </div>
+                                <h3 class="text-3xl lg:text-4xl font-bold text-slate-900 leading-tight mb-4 group-hover:text-orange-600 transition">
+                                    <a href="{{ route('posts.show', $heroPost->slug) }}">
+                                        {{ $heroPost->title }}
+                                    </a>
+                                </h3>
+                                <p class="text-slate-600 text-lg mb-8 line-clamp-3">
+                                    {{ \Illuminate\Support\Str::limit($heroPost->excerpt ?: strip_tags($heroPost->content ?? ''), 160) }}
+                                </p>
+                                
+                                <div class="flex items-center justify-between mt-auto">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-500 font-bold uppercase">
+                                            {{ substr($heroPost->user->name ?? 'A', 0, 1) }}
                                         </div>
-                                        <h4 class="text-xl sm:text-[22px] font-normal text-faux-medium leading-snug text-slate-900 font-heading group-hover:text-brand-primary transition mb-2">
-                                            <a href="{{ route('posts.show', $post->slug) }}">{{ $post->title }}</a>
-                                        </h4>
-                                        <p class="text-[13px] sm:text-sm text-slate-600 line-clamp-3 leading-relaxed">
-                                            {{ \Illuminate\Support\Str::limit($post->excerpt ?: strip_tags($post->content ?? ''), 110) }}
-                                        </p>
-                                    </article>
-                                @empty
-                                    <p class="text-sm text-gray-500">Sorotan belum tersedia.</p>
-                                @endforelse
+                                        <div class="flex flex-col">
+                                            <span class="text-sm font-bold text-slate-900">{{ $heroPost->user->name ?? 'Admin' }}</span>
+                                            <span class="text-xs text-slate-500">{{ optional($heroPost->published_at ?? $heroPost->created_at)->translatedFormat('F j, Y') }}</span>
+                                        </div>
+                                    </div>
+                                    <a href="{{ route('posts.show', $heroPost->slug) }}" class="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-600 group-hover:bg-orange-600 group-hover:text-white group-hover:border-orange-600 transition-colors">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                        
+                    </div>
+                @endif
+
+                @if (isset($topStripPosts) && $topStripPosts->count() > 0)
+                    <div class="mt-16">
+                        <div class="flex items-center justify-between mb-8">
+                            <h3 class="text-2xl font-bold text-slate-900 font-heading">Sorotan Minggu Ini</h3>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            @foreach ($topStripPosts as $post)
+                                <article class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-md transition flex flex-col h-full group">
+                                    <div class="inline-flex items-center gap-2 text-[11px] text-slate-500 uppercase tracking-widest font-bold mb-3">
+                                        <span>{{ optional($post->published_at ?? $post->created_at)->translatedFormat('F j, Y') }}</span>
+                                    </div>
+                                    <h4 class="text-lg font-bold text-slate-900 leading-snug group-hover:text-orange-600 transition mb-3">
+                                        <a href="{{ route('posts.show', $post->slug) }}">{{ $post->title }}</a>
+                                    </h4>
+                                    <p class="text-sm text-slate-600 line-clamp-2 mt-auto">
+                                        {{ \Illuminate\Support\Str::limit($post->excerpt ?: strip_tags($post->content ?? ''), 80) }}
+                                    </p>
+                                </article>
+                            @endforeach
+                        </div>
                     </div>
                 @endif
             </div>
