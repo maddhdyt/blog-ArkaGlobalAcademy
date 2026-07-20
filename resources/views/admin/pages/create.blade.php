@@ -35,15 +35,13 @@
                     </div>
                 </div>
 
-                <!-- Editor Header (Sticky) -->
-                <div id="editor-header" class="card p-0 sticky top-0 z-20 bg-white/90 backdrop-blur-md mb-6 shadow-md border-slate-200 transition-all duration-300">
-                    <div class="p-4 border-b border-slate-100/50">
-                        <label class="form-label mb-0" for="content-editor">Content *</label>
+                <!-- Editor -->
+                <div class="card p-0 !overflow-visible">
+                    <div id="editor-header" class="sticky top-0 z-20 bg-white/90 backdrop-blur-md rounded-t-2xl shadow-sm border border-slate-200 -mx-[1px] -mt-[1px] transition-all duration-300">
+                        <div class="p-4 border-b border-slate-100/50">
+                            <label class="form-label mb-0" for="content-editor">Content *</label>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Editor Content -->
-                <div class="card p-0">
                     <div id="content-editor" class="bg-white min-h-[500px] text-lg text-[#433836]" aria-label="Content editor">{!! old('content') !!}</div>
                     <input type="hidden" name="content" id="content" value="{{ old('content') }}" required>
                     @error('content')
