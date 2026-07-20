@@ -52,6 +52,7 @@
                         }
                     </style>
                     <div id="editor-header" class="rounded-t-2xl transition-all duration-300 relative">
+                        <div id="sticky-sentinel" class="absolute w-full h-px pointer-events-none" style="top: 8px;"></div>
                         <div class="p-4 border-b border-slate-100/50">
                             <label class="form-label mb-0" for="content-editor">Content *</label>
                         </div>
@@ -142,21 +143,26 @@
 
         
         
+        
+        const sentinel = document.getElementById('sticky-sentinel');
         const tbContainer = document.getElementById('toolbar-container');
         const mainScroll = document.querySelector('main');
         
-        if (tbContainer && mainScroll) {
-            mainScroll.addEventListener('scroll', () => {
-                if (mainScroll.scrollTop > 20) {
+        if (sentinel && tbContainer && mainScroll) {
+            const observer = new IntersectionObserver((entries) => {
+                if (!entries[0].isIntersecting && entries[0].boundingClientRect.top <= 0) {
                     tbContainer.classList.add('is-stuck');
                 } else {
                     tbContainer.classList.remove('is-stuck');
                 }
+            }, {
+                root: mainScroll,
+                threshold: 0,
+                rootMargin: "0px"
             });
-            if (mainScroll.scrollTop > 20) {
-                tbContainer.classList.add('is-stuck');
-            }
+            observer.observe(sentinel);
         }
+
 
 
 
