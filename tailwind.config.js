@@ -13,7 +13,7 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Karla', ...defaultTheme.fontFamily.sans],
-                heading: ['"Playfair Display"', 'serif', ...defaultTheme.fontFamily.serif],
+                heading: ['Karla', ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 brand: {
