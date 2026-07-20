@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap');
+
+@font-face {
+    font-family: 'Feature';
+    src: url('/font/FeatureDisplay-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Feature';
+    src: url('/font/FeatureDisplay-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .text-faux-medium {
+        text-shadow: 0.3px 0 0 currentColor, -0.3px 0 0 currentColor, 0 0.3px 0 currentColor, 0 -0.3px 0 currentColor;
+    }
+    .text-faux-semibold {
+        text-shadow: 0.5px 0 0 currentColor, -0.5px 0 0 currentColor, 0 0.5px 0 currentColor, 0 -0.5px 0 currentColor;
+    }
+}
+
+@layer components {
+    .btn-primary {
+        @apply inline-flex items-center justify-center gap-2 bg-[#0a1435] border border-[#0a1435] px-4 py-2 text-sm font-bold uppercase tracking-wider text-white hover:bg-[#FDF6F0] hover:text-[#0a1435] focus:outline-none transition-colors;
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center justify-center gap-2 bg-white border border-[#0a1435] px-4 py-2 text-sm font-bold uppercase tracking-wider text-[#0a1435] hover:bg-[#b5dbff] focus:outline-none transition-colors;
+    }
+
+    .btn-accent {
+        @apply inline-flex items-center justify-center gap-2 bg-[#b4f3b4] border border-[#0a1435] px-4 py-2 text-sm font-bold uppercase tracking-wider text-[#0a1435] hover:bg-[#FDF6F0] focus:outline-none transition-colors;
+    }
+
+    .btn-danger {
+        @apply inline-flex items-center justify-center gap-2 bg-white border border-[#0a1435] px-4 py-2 text-sm font-bold uppercase tracking-wider text-red-600 hover:bg-[#ffccb0] hover:text-red-700 focus:outline-none transition-colors;
+    }
+
+    .btn-success {
+        @apply inline-flex items-center justify-center gap-2 bg-[#b4f3b4] border border-[#0a1435] px-4 py-2 text-sm font-bold uppercase tracking-wider text-[#0a1435] hover:bg-white focus:outline-none transition-colors;
+    }
+
+    .form-input {
+        @apply block w-full border border-[#0a1435] bg-white text-[#0a1435] font-semibold px-4 py-2 focus:outline-none focus:ring-0 focus:border-[#0a1435] focus:bg-[#FDF6F0] transition-colors rounded-none shadow-none;
+    }
+
+    .form-label {
+        @apply block text-sm font-bold uppercase tracking-wider text-[#0a1435] mb-2;
+    }
+
+    .card {
+        @apply bg-white border border-[#0a1435] rounded-none overflow-hidden shadow-[4px_4px_0_0_rgba(10,20,53,0.05)];
+    }
+
+    .sidebar-link {
+        @apply flex items-center gap-3 px-4 py-3 text-[#0a1435]/70 text-sm font-semibold uppercase tracking-wider rounded-none hover:bg-[#FDF6F0] hover:text-[#0a1435] border border-transparent hover:border-[#0a1435] transition-colors;
+    }
+
+    .sidebar-link-active {
+        @apply bg-[#0a1435] text-white font-bold uppercase tracking-wider border border-[#0a1435];
+    }
+}
