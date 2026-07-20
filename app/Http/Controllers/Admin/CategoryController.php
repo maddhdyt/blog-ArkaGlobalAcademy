@@ -83,4 +83,25 @@ class CategoryController extends Controller
         return redirect()->route('admin.categories.index')
             ->with('success', 'Category deleted successfully.');
     }
+
+    /**
+     * Store a newly created category via AJAX.
+     */
+    public function apiStore(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255|unique:categories,name',
+        ]);
+        
+        $validated['slug'] = Str::slug($validated['name']);
+        
+        $category = Category::create($validated);
+        
+        \Illuminate\Support\Facades\Cache::forget('footer_categories');
+        
+        return response()->json([
+            'id' => $category->id,
+            'name' => $category->name,
+        ]);
+    }
 }
