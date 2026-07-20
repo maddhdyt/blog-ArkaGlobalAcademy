@@ -14,20 +14,20 @@
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:title" content="{{ isset($title) ? $title . ' - ' . config('app.name', 'Arka Global Academy') : config('app.name', 'Arka Global Academy') }}">
     <meta property="og:description" content="@yield('meta_description', 'Blog Arka Global Academy - Wawasan & Strategi Digital Terkini.')">
-    <meta property="og:image" content="@yield('og_image', 'https://ik.imagekit.io/yqhp1cmbp/Logo%20Nusa%203%20(1).png?updatedAt=1783657933278')">
+    <meta property="og:image" content="@yield('og_image', $siteLogo)">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ url()->current() }}">
     <meta property="twitter:title" content="{{ isset($title) ? $title . ' - ' . config('app.name', 'Arka Global Academy') : config('app.name', 'Arka Global Academy') }}">
     <meta property="twitter:description" content="@yield('meta_description', 'Blog Arka Global Academy - Wawasan & Strategi Digital Terkini.')">
-    <meta property="twitter:image" content="@yield('og_image', 'https://ik.imagekit.io/yqhp1cmbp/Logo%20Nusa%203%20(1).png?updatedAt=1783657933278')">
+    <meta property="twitter:image" content="@yield('og_image', $siteLogo)">
 
     @yield('meta')
     @yield('structured_data')
 
     @php
-        $favicon = 'https://ik.imagekit.io/yqhp1cmbp/Logo%20Nusa%203%20(1).png?updatedAt=1783657933278';
+        $favicon = $siteLogo;
     @endphp
     @if ($favicon)
         <link rel="icon" href="{{ $favicon }}" type="image/png">
