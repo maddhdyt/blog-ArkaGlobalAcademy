@@ -273,25 +273,27 @@
                             @endif
                         </div>
                         <div class="space-y-4">
-                            @forelse ($trendingPosts ?? [] as $trend)
-                                <article class="flex gap-4 group">
-                                    <div class="w-20 h-20 shrink-0 rounded-xl overflow-hidden bg-slate-100">
-                                        @if($trend->thumbnail_url)
-                                            <img src="{{ $trend->thumbnail_url }}" alt="{{ $trend->title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                                        @endif
-                                    </div>
-                                    <div>
-                                        <h4 class="text-sm font-bold text-slate-900 leading-snug group-hover:text-orange-600 transition line-clamp-2 mb-1">
-                                            <a href="{{ route('posts.show', $trend->slug) }}">{{ $trend->title }}</a>
-                                        </h4>
-                                        <div class="text-[10px] text-slate-500 font-mono uppercase tracking-widest">
-                                            {{ optional($trend->published_at ?? $trend->created_at)->translatedFormat('d M Y') }}
+                            @if(isset($trendingPosts) && count($trendingPosts) > 0)
+                                @foreach ($trendingPosts as $trend)
+                                    <article class="flex gap-4 group">
+                                        <div class="w-20 h-20 shrink-0 rounded-xl overflow-hidden bg-slate-100">
+                                            @if($trend->thumbnail_url)
+                                                <img src="{{ $trend->thumbnail_url }}" alt="{{ $trend->title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                                            @endif
                                         </div>
-                                    </div>
-                                </article>
-                            @empty
+                                        <div>
+                                            <h4 class="text-sm font-bold text-slate-900 leading-snug group-hover:text-orange-600 transition line-clamp-2 mb-1">
+                                                <a href="{{ route('posts.show', $trend->slug) }}">{{ $trend->title }}</a>
+                                            </h4>
+                                            <div class="text-[10px] text-slate-500 font-mono uppercase tracking-widest">
+                                                {{ optional($trend->published_at ?? $trend->created_at)->translatedFormat('d M Y') }}
+                                            </div>
+                                        </div>
+                                    </article>
+                                @endforeach
+                            @else
                                 <p class="text-sm text-slate-500">Belum ada artikel tren minggu ini.</p>
-                            @endforelse
+                            @endif
                         </div>
                     </div>
 
