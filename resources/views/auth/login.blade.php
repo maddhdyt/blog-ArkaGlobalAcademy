@@ -3,11 +3,11 @@
         
         <!-- Logo -->
         <a href="{{ route('home') }}" class="inline-block mb-4">
-            <img src="https://ik.imagekit.io/yqhp1cmbp/logo%20nusa%20education.png?tr=w-640,q-75,f-auto" alt="Nusa Education" class="h-16 w-auto -ml-3">
+            <img src="https://ik.imagekit.io/yqhp1cmbp/logo%20nusa%20education.png?tr=w-640,q-75,f-auto" alt="Arka Global Academy" class="h-16 w-auto -ml-3">
         </a>
 
         <!-- Title -->
-        <h2 class="text-3xl font-heading text-[#0a1435] tracking-tight mb-8">Log in ke Blog Nusa Education</h2>
+        <h2 class="text-3xl font-heading text-slate-900 tracking-tight mb-8">Log in ke Blog Arka Global Academy</h2>
 
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />

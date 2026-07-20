@@ -3,7 +3,7 @@
         <div class="grid gap-12 lg:grid-cols-12">
             <div class="lg:col-span-4 space-y-6">
                 <div class="inline-flex items-center">
-                    <img src="https://ik.imagekit.io/yqhp1cmbp/logo%20nusa%20education.png?tr=w-640,q-75,f-auto" alt="Nusa Education" class="h-16 w-auto mix-blend-multiply">
+                    <img src="https://ik.imagekit.io/yqhp1cmbp/logo%20nusa%20education.png?tr=w-640,q-75,f-auto" alt="Arka Global Academy" class="h-16 w-auto mix-blend-multiply">
                 </div>
                 @php
                     $footerSocials = array_filter([

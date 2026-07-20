@@ -43,7 +43,7 @@
                     <div class="bg-white shadow-sm border border-[#e2d5cf] p-8">
                         <h3 class="text-2xl font-heading text-[#0a1435] leading-tight mb-4">Bergabung dengan komunitas kami</h3>
                         <p class="text-sm text-[#6b5b59] mb-6 leading-relaxed">
-                            Temukan tips, insight, dan panduan belajar terbaru langsung dari para ahli di Nusa Education.
+                            Temukan tips, insight, dan panduan belajar terbaru langsung dari para ahli di Arka Global Academy.
                         </p>
                         <a href="#" class="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-brand-primary font-mono hover:text-[#0a1435] transition-colors">
                             Langganan <span aria-hidden="true" class="text-lg leading-none">&rarr;</span>

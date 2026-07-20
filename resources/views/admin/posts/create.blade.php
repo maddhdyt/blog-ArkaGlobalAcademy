@@ -69,7 +69,7 @@
                                 <span class="bg-gray-200 w-5 h-5 rounded-full inline-block"></span> 
                                 <span id="seo-preview-url">https://blog.nusaeducation.com/post/judul-post</span>
                             </div>
-                            <div class="text-[20px] text-[#1a0dab] font-normal hover:underline cursor-pointer truncate" id="seo-preview-title">Judul Postingan Akan Muncul Di Sini - Nusa Education</div>
+                            <div class="text-[20px] text-[#1a0dab] font-normal hover:underline cursor-pointer truncate" id="seo-preview-title">Judul Postingan Akan Muncul Di Sini - Arka Global Academy</div>
                             <div class="text-[14px] text-[#4d5156] line-clamp-2 leading-[1.58] mt-1" id="seo-preview-desc">Deskripsi meta belum diisi. Masukkan deskripsi meta agar muncul di hasil pencarian Google dengan rapi.</div>
                         </div>
                     </div>

@@ -5,23 +5,23 @@
 @section('content')
     <div class="w-full">
         <div class="mb-6 flex items-center justify-between">
-            <h2 class="text-xl font-heading font-bold text-[#0a1435] tracking-tight">Sidebar Settings</h2>
-            <a href="{{ route('home') }}" target="_blank" class="inline-flex items-center px-4 py-2 bg-[#0a1435] border border-[#0a1435] text-white text-sm font-bold uppercase tracking-wider hover:bg-[#FDF6F0] hover:text-[#0a1435] transition-colors">
+            <h2 class="text-xl font-heading font-bold text-slate-900 tracking-tight">Sidebar Settings</h2>
+            <a href="{{ route('home') }}" target="_blank" class="inline-flex items-center px-4 py-2 bg-slate-900 border border-slate-900 text-white text-sm font-bold uppercase tracking-wider hover:bg-slate-50 hover:text-slate-900 transition-colors">
                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                 View Site
             </a>
         </div>
 
         <div class="card bg-white p-0">
-            <form action="{{ route('admin.sidebar-settings.update') }}" method="POST" class="divide-y divide-[#0a1435]" enctype="multipart/form-data">
+            <form action="{{ route('admin.sidebar-settings.update') }}" method="POST" class="divide-y divide-slate-900" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
                 <!-- Logo -->
                 <div class="p-6 md:p-8 grid grid-cols-1 lg:grid-cols-3 gap-8 bg-white">
                     <div class="lg:col-span-1">
-                        <h2 class="text-lg font-bold uppercase tracking-wider text-[#0a1435]">Logo & Identitas</h2>
-                        <p class="text-sm font-semibold text-[#0a1435]/70 mt-2">Atur logo utama yang ditampilkan pada website.</p>
+                        <h2 class="text-lg font-bold uppercase tracking-wider text-slate-900">Logo & Identitas</h2>
+                        <p class="text-sm font-semibold text-slate-900/70 mt-2">Atur logo utama yang ditampilkan pada website.</p>
                     </div>
                     <div class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
@@ -34,16 +34,16 @@
                             @php
                                 $activeLogo = optional($setting)->site_logo_url ?: 'https://ik.imagekit.io/yqhp1cmbp/logo%20nusa%20education.png?tr=w-640,q-75,f-auto';
                             @endphp
-                            <p class="text-xs font-bold text-[#0a1435] mt-2">Saat ini: <a href="{{ $activeLogo }}" class="text-blue-600 underline" target="_blank">Lihat Logo</a></p>
+                            <p class="text-xs font-bold text-slate-900 mt-2">Saat ini: <a href="{{ $activeLogo }}" class="text-blue-600 underline" target="_blank">Lihat Logo</a></p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Footer -->
-                <div class="p-6 md:p-8 grid grid-cols-1 lg:grid-cols-3 gap-8 bg-[#FDF6F0]">
+                <div class="p-6 md:p-8 grid grid-cols-1 lg:grid-cols-3 gap-8 bg-slate-50">
                     <div class="lg:col-span-1">
-                        <h2 class="text-lg font-bold uppercase tracking-wider text-[#0a1435]">Footer</h2>
-                        <p class="text-sm font-semibold text-[#0a1435]/70 mt-2">Deskripsi singkat dan tautan media sosial untuk bagian bawah web.</p>
+                        <h2 class="text-lg font-bold uppercase tracking-wider text-slate-900">Footer</h2>
+                        <p class="text-sm font-semibold text-slate-900/70 mt-2">Deskripsi singkat dan tautan media sosial untuk bagian bawah web.</p>
                     </div>
                     <div class="lg:col-span-2 space-y-4">
                         <div>
@@ -77,10 +77,10 @@
 
 
                 <!-- Profil Penulis -->
-                <div class="p-6 md:p-8 grid grid-cols-1 lg:grid-cols-3 gap-8 bg-[#FDF6F0]">
+                <div class="p-6 md:p-8 grid grid-cols-1 lg:grid-cols-3 gap-8 bg-slate-50">
                     <div class="lg:col-span-1">
-                        <h2 class="text-lg font-bold uppercase tracking-wider text-[#0a1435]">Profil Penulis</h2>
-                        <p class="text-sm font-semibold text-[#0a1435]/70 mt-2">Informasi pembuat atau pemilik blog yang muncul di area sidebar.</p>
+                        <h2 class="text-lg font-bold uppercase tracking-wider text-slate-900">Profil Penulis</h2>
+                        <p class="text-sm font-semibold text-slate-900/70 mt-2">Informasi pembuat atau pemilik blog yang muncul di area sidebar.</p>
                     </div>
                     <div class="lg:col-span-2 space-y-4">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -102,7 +102,7 @@
                                 <label class="form-label" for="author_avatar">Upload Avatar Lokal</label>
                                 <input type="file" name="author_avatar" id="author_avatar" class="form-input bg-white p-1.5" accept="image/*">
                                 @if (optional($setting)->author_avatar_url)
-                                    <p class="text-xs font-bold text-[#0a1435] mt-2">Saat ini: <a href="{{ optional($setting)->author_avatar_url }}" class="text-blue-600 underline" target="_blank">Lihat Avatar</a></p>
+                                    <p class="text-xs font-bold text-slate-900 mt-2">Saat ini: <a href="{{ optional($setting)->author_avatar_url }}" class="text-blue-600 underline" target="_blank">Lihat Avatar</a></p>
                                 @endif
                             </div>
                         </div>
@@ -130,8 +130,8 @@
                 <!-- CTA -->
                 <div class="p-6 md:p-8 grid grid-cols-1 lg:grid-cols-3 gap-8 bg-white">
                     <div class="lg:col-span-1">
-                        <h2 class="text-lg font-bold uppercase tracking-wider text-[#0a1435]">Banner Promosi (CTA)</h2>
-                        <p class="text-sm font-semibold text-[#0a1435]/70 mt-2">Atur tombol ajakan bertindak (Call to Action) di sidebar.</p>
+                        <h2 class="text-lg font-bold uppercase tracking-wider text-slate-900">Banner Promosi (CTA)</h2>
+                        <p class="text-sm font-semibold text-slate-900/70 mt-2">Atur tombol ajakan bertindak (Call to Action) di sidebar.</p>
                     </div>
                     <div class="lg:col-span-2 space-y-4">
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -170,10 +170,10 @@
                 </div>
 
                 <!-- Trending -->
-                <div class="p-6 md:p-8 grid grid-cols-1 lg:grid-cols-3 gap-8 bg-[#FDF6F0]">
+                <div class="p-6 md:p-8 grid grid-cols-1 lg:grid-cols-3 gap-8 bg-slate-50">
                     <div class="lg:col-span-1">
-                        <h2 class="text-lg font-bold uppercase tracking-wider text-[#0a1435]">Sedang Tren</h2>
-                        <p class="text-sm font-semibold text-[#0a1435]/70 mt-2">Widget untuk tautan cepat ke topik populer.</p>
+                        <h2 class="text-lg font-bold uppercase tracking-wider text-slate-900">Sedang Tren</h2>
+                        <p class="text-sm font-semibold text-slate-900/70 mt-2">Widget untuk tautan cepat ke topik populer.</p>
                     </div>
                     <div class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-3 gap-4">
                         <div>

@@ -3,7 +3,7 @@
         <div class="flex justify-between items-center h-20">
             <div class="flex items-center">
                 <a href="{{ route('home') }}" class="flex items-center gap-2">
-                    <img src="{{ $siteLogo }}" alt="Nusa Education" class="h-10 md:h-12 w-auto">
+                    <img src="{{ $siteLogo }}" alt="Arka Global Academy" class="h-10 md:h-12 w-auto">
                 </a>
             </div>
 
