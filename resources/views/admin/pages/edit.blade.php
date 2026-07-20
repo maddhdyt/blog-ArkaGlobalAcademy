@@ -64,7 +64,7 @@
                         <div id="toolbar-container" class="pointer-events-auto w-max max-w-full bg-transparent rounded-full shadow-none border border-transparent transition-all duration-300">
                         </div>
                     </div>
-                    <div id="content-editor" class="bg-white min-h-[500px] text-lg text-[#433836] rounded-b-2xl overflow-hidden" aria-label="Content editor">{!! old('content', $page->content) !!}</div>
+                    <div id="content-editor" class="bg-white min-h-[500px] text-lg text-[#433836] rounded-b-2xl overflow-hidden relative" aria-label="Content editor">{!! old('content', $page->content) !!}</div>
                     <input type="hidden" name="content" id="content" value="{{ old('content', $page->content) }}" required>
                     @error('content')
                         <div class="p-4 bg-red-50"><p class="text-red-500 text-xs font-bold">{{ $message }}</p></div>
