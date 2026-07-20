@@ -27,10 +27,10 @@
     @yield('structured_data')
 
     @php
-        $favicon = $siteLogo;
+        $favicon = 'https://res.cloudinary.com/dzwbyqnau/image/upload/v1772547450/logoap_ph63ev.webp';
     @endphp
     @if ($favicon)
-        <link rel="icon" href="{{ $favicon }}" type="image/png">
+        <link rel="icon" href="{{ $favicon }}" type="image/webp">
         <link rel="apple-touch-icon" href="{{ $favicon }}">
     @endif
 

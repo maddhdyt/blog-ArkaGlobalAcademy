@@ -9,10 +9,10 @@
     @php
         $sidebarSetting = \App\Models\SidebarSetting::first();
         $siteLogo = optional($sidebarSetting)->site_logo_url ?: 'https://ik.imagekit.io/yqhp1cmbp/logo%20nusa%20education.png?tr=w-640,q-75,f-auto';
-        $favicon = 'https://ik.imagekit.io/yqhp1cmbp/Logo%20Nusa%203%20(1).png?updatedAt=1783657933278';
+        $favicon = 'https://res.cloudinary.com/dzwbyqnau/image/upload/v1772547450/logoap_ph63ev.webp';
     @endphp
     @if ($favicon)
-        <link rel="icon" href="{{ $favicon }}" type="image/png">
+        <link rel="icon" href="{{ $favicon }}" type="image/webp">
         <link rel="apple-touch-icon" href="{{ $favicon }}">
     @endif
 
