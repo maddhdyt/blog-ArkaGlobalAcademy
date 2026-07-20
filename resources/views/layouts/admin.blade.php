@@ -27,10 +27,10 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-slate-50 text-slate-800 font-sans" x-data="{ sidebarOpen: true }">
-    <div class="flex min-h-screen overflow-hidden">
+<body class="bg-white text-slate-800 font-sans" x-data="{ sidebarOpen: true }">
+    <div class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
-        <aside :class="sidebarOpen ? 'ml-0' : '-ml-72'" class="w-72 shrink-0 bg-white flex flex-col transition-all duration-300 h-screen overflow-hidden">
+        <aside :class="sidebarOpen ? 'ml-0' : '-ml-72'" class="w-72 shrink-0 bg-white flex flex-col transition-all duration-300 h-full overflow-hidden">
             <div class="h-24 flex items-center justify-start px-8 shrink-0">
                 <a href="{{ route('admin.dashboard') }}" class="inline-block">
                     <img src="{{ $siteLogo }}" alt="Arka Global Academy" class="h-10 w-auto object-contain">
@@ -150,7 +150,8 @@
         </aside>
 
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col overflow-hidden h-screen bg-slate-50/30">
+        <div class="flex-1 h-full py-4 pr-4 sm:py-6 sm:pr-6 flex flex-col">
+            <div class="flex-1 flex flex-col overflow-hidden bg-slate-50/50 rounded-3xl border border-slate-200/60 shadow-sm">
             <!-- Header -->
             <header class="bg-transparent h-24 shrink-0">
                 <div class="flex items-center justify-between px-8 h-full">
@@ -220,6 +221,7 @@
 
                 @yield('content')
             </main>
+        </div>
         </div>
     </div>
 
