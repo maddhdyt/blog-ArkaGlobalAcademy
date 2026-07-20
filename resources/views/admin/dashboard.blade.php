@@ -18,7 +18,7 @@
                     <p class="text-slate-500 text-sm font-bold tracking-wider uppercase mb-1">Total Menus</p>
                     <p class="text-4xl font-heading font-bold text-slate-900">{{ $stats['menus'] }}</p>
                 </div>
-                <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-slate-900 group-hover:text-white transition-colors">
+                <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-orange-500 group-hover:text-white transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                     <p class="text-slate-500 text-sm font-bold tracking-wider uppercase mb-1">Total Pages</p>
                     <p class="text-4xl font-heading font-bold text-slate-900">{{ $stats['pages'] }}</p>
                 </div>
-                <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-slate-900 group-hover:text-white transition-colors">
+                <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-orange-500 group-hover:text-white transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                     <p class="text-slate-500 text-sm font-bold tracking-wider uppercase mb-1">Categories</p>
                     <p class="text-4xl font-heading font-bold text-slate-900">{{ $stats['categories'] }}</p>
                 </div>
-                <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-slate-900 group-hover:text-white transition-colors">
+                <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-orange-500 group-hover:text-white transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path></svg>
                 </div>
             </div>
@@ -84,7 +84,7 @@
                     <p class="text-slate-500 text-sm font-bold tracking-wider uppercase mb-1">Total Users</p>
                     <p class="text-4xl font-heading font-bold text-slate-900">{{ $stats['users'] }}</p>
                 </div>
-                <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-slate-900 group-hover:text-white transition-colors">
+                <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-orange-500 group-hover:text-white transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                 </div>
             </div>
@@ -97,7 +97,7 @@
                     <p class="text-slate-500 text-sm font-bold tracking-wider uppercase mb-1">Subscribers</p>
                     <p class="text-4xl font-heading font-bold text-slate-900">{{ $stats['subscribers'] }}</p>
                 </div>
-                <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-slate-900 group-hover:text-white transition-colors">
+                <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-orange-500 group-hover:text-white transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                 </div>
             </div>
@@ -110,7 +110,7 @@
                     <p class="text-slate-500 text-sm font-bold tracking-wider uppercase mb-1">Galleries</p>
                     <p class="text-4xl font-heading font-bold text-slate-900">{{ $stats['galleries'] }}</p>
                 </div>
-                <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-slate-900 group-hover:text-white transition-colors">
+                <div class="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-orange-500 group-hover:text-white transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                 </div>
             </div>
@@ -120,16 +120,16 @@
     <!-- Charts Section -->
     <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-8">
         <!-- Views Chart -->
-        <div class="card bg-white flex flex-col p-6">
-            <h2 class="text-xl font-heading font-bold text-slate-900 tracking-tight mb-4 uppercase">Top 7 Artikel</h2>
+        <div class="card bg-white flex flex-col p-6 border-0 shadow-sm">
+            <h2 class="text-lg font-bold text-slate-700 tracking-wide mb-4 uppercase">Top 7 Artikel</h2>
             <div class="relative flex-1 w-full" style="min-h: 300px;">
                 <canvas id="viewsChart"></canvas>
             </div>
         </div>
 
         <!-- Categories Chart -->
-        <div class="card bg-white flex flex-col p-6">
-            <h2 class="text-xl font-heading font-bold text-slate-900 tracking-tight mb-4 uppercase">Distribusi Kategori</h2>
+        <div class="card bg-white flex flex-col p-6 border-0 shadow-sm">
+            <h2 class="text-lg font-bold text-slate-700 tracking-wide mb-4 uppercase">Distribusi Kategori</h2>
             <div class="relative flex-1 w-full flex items-center justify-center" style="min-h: 300px;">
                 <canvas id="categoryChart"></canvas>
             </div>
@@ -140,40 +140,40 @@
 
     <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 mt-8">
         <!-- Recent Posts Table -->
-        <div class="card bg-white flex flex-col">
-            <div class="px-6 py-5 border-b border-slate-900 flex items-center justify-between">
-                <h2 class="text-xl font-heading font-bold text-slate-900 tracking-tight">Postingan Terbaru</h2>
-                <a href="{{ route('admin.posts.index') }}" class="text-sm font-bold uppercase tracking-wider text-slate-900 hover:underline transition-colors">Semua &rarr;</a>
+        <div class="card bg-white flex flex-col border-0 shadow-sm">
+            <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between">
+                <h2 class="text-lg font-bold text-slate-700 tracking-wide">Postingan Terbaru</h2>
+                <a href="{{ route('admin.posts.index') }}" class="text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-orange-600 transition-colors">Semua &rarr;</a>
             </div>
             <div class="overflow-x-auto flex-1">
                 <table class="w-full text-left border-collapse">
                     <thead>
-                        <tr class="bg-slate-50">
-                            <th class="py-3 px-4 text-xs font-bold text-slate-900 uppercase tracking-wider border-b border-slate-900">Artikel</th>
-                            <th class="py-3 px-4 text-xs font-bold text-slate-900 uppercase tracking-wider border-b border-slate-900">Status</th>
-                            <th class="py-3 px-4 text-xs font-bold text-slate-900 uppercase tracking-wider border-b border-slate-900 text-right">Tanggal</th>
+                        <tr class="bg-slate-50/50">
+                            <th class="py-3 px-4 text-[11px] font-bold text-slate-500 uppercase tracking-wider border-b border-slate-100">Artikel</th>
+                            <th class="py-3 px-4 text-[11px] font-bold text-slate-500 uppercase tracking-wider border-b border-slate-100">Status</th>
+                            <th class="py-3 px-4 text-[11px] font-bold text-slate-500 uppercase tracking-wider border-b border-slate-100 text-right">Tanggal</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-900/10">
+                    <tbody class="divide-y divide-slate-100">
                         @forelse ($recentPosts as $post)
                             <tr class="hover:bg-slate-50 transition-colors group">
                                 <td class="py-3 px-4">
-                                    <a href="{{ route('admin.posts.edit', $post) }}" class="font-bold text-slate-900 hover:underline transition-colors block truncate w-48">
+                                    <a href="{{ route('admin.posts.edit', $post) }}" class="font-bold text-slate-700 hover:text-orange-600 transition-colors block truncate w-48">
                                         {{ $post->title }}
                                     </a>
                                 </td>
                                 <td class="py-3 px-4">
                                     @if ($post->status === 'published')
-                                        <span class="inline-flex items-center px-2 py-1 bg-green-100 text-green-700 rounded-md px-2 py-0.5 text-[10px] font-semibold tracking-wider">
+                                        <span class="inline-flex items-center px-2 py-1 bg-green-50 text-green-600 rounded-md text-[10px] font-bold tracking-wider">
                                             Published
                                         </span>
                                     @else
-                                        <span class="inline-flex items-center px-2 py-1 bg-orange-100 text-orange-700 rounded-md px-2 py-0.5 text-[10px] font-semibold tracking-wider">
+                                        <span class="inline-flex items-center px-2 py-1 bg-orange-50 text-orange-600 rounded-md text-[10px] font-bold tracking-wider">
                                             Draft
                                         </span>
                                     @endif
                                 </td>
-                                <td class="py-3 px-4 text-[11px] font-bold uppercase tracking-wider text-slate-900/60 text-right">{{ $post->created_at->format('d M y') }}</td>
+                                <td class="py-3 px-4 text-[11px] font-bold uppercase tracking-wider text-slate-400 text-right">{{ $post->created_at->format('d M y') }}</td>
                             </tr>
                         @empty
                             <tr>
@@ -188,31 +188,31 @@
         </div>
 
         <!-- Popular Posts -->
-        <div class="card bg-white flex flex-col">
-            <div class="px-6 py-5 border-b border-slate-900 flex items-center justify-between">
-                <h2 class="text-xl font-heading font-bold text-slate-900 tracking-tight">Artikel Terpopuler</h2>
-                <span class="text-sm font-bold uppercase tracking-wider text-slate-900/60">Berdasarkan Views</span>
+        <div class="card bg-white flex flex-col border-0 shadow-sm">
+            <div class="px-6 py-5 border-b border-slate-100 flex items-center justify-between">
+                <h2 class="text-lg font-bold text-slate-700 tracking-wide">Artikel Terpopuler</h2>
+                <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Berdasarkan Views</span>
             </div>
             <div class="overflow-x-auto flex-1">
                 <table class="w-full text-left border-collapse">
                     <thead>
-                        <tr class="bg-slate-50">
-                            <th class="py-3 px-4 text-xs font-bold text-slate-900 uppercase tracking-wider border-b border-slate-900">Artikel</th>
-                            <th class="py-3 px-4 text-xs font-bold text-slate-900 uppercase tracking-wider border-b border-slate-900 text-right">Views</th>
+                        <tr class="bg-slate-50/50">
+                            <th class="py-3 px-4 text-[11px] font-bold text-slate-500 uppercase tracking-wider border-b border-slate-100">Artikel</th>
+                            <th class="py-3 px-4 text-[11px] font-bold text-slate-500 uppercase tracking-wider border-b border-slate-100 text-right">Views</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-900/10">
+                    <tbody class="divide-y divide-slate-100">
                         @forelse ($popularPosts as $post)
                             <tr class="hover:bg-slate-50 transition-colors group">
                                 <td class="py-3 px-4">
-                                    <a href="{{ route('admin.posts.edit', $post) }}" class="font-bold text-slate-900 hover:underline transition-colors block truncate w-64">
+                                    <a href="{{ route('admin.posts.edit', $post) }}" class="font-bold text-slate-700 hover:text-orange-600 transition-colors block truncate w-64">
                                         {{ $post->title }}
                                     </a>
                                 </td>
                                 <td class="py-3 px-4 text-right">
-                                    <span class="inline-flex items-center gap-1 font-bold text-slate-900">
+                                    <span class="inline-flex items-center gap-1 font-bold text-slate-600">
                                         {{ number_format($post->views) }}
-                                        <svg class="w-4 h-4 text-slate-900/60" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                                        <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                                     </span>
                                 </td>
                             </tr>
