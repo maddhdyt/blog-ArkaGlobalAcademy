@@ -70,34 +70,34 @@
         }
     </style>
 
-    <div class="bg-[slate-50] py-10 lg:py-16 min-h-[70vh]">
+    <div class="bg-slate-50 py-10 lg:py-16 min-h-[70vh]">
         <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
             
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
                 
                 {{-- Editorial Left Sidebar (Decorative/Meta) --}}
                 <div class="lg:col-span-3 hidden lg:flex flex-col items-end text-right">
-                    <div class="sticky top-24 w-full space-y-10 border-r border-[slate-200] pr-8">
+                    <div class="sticky top-24 w-full space-y-10 border-r border-slate-200 pr-8">
                         <div>
-                            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-[slate-900] font-mono mb-2">Halaman Informasi</p>
-                            <h2 class="text-4xl font-heading text-[slate-900] leading-tight">Nusa<br>Education</h2>
+                            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-900 font-mono mb-2">Halaman Informasi</p>
+                            <h2 class="text-3xl font-heading text-slate-900 leading-tight">{{ config('app.name', 'Arka Global Academy') }}</h2>
                         </div>
                         <div>
-                            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-[slate-900] font-mono mb-2">Pembaruan Terakhir</p>
-                            <p class="text-[13px] text-[#735A56] font-mono">{{ optional($page->updated_at)->translatedFormat('d M Y') ?? date('d M Y') }}</p>
+                            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-900 font-mono mb-2">Pembaruan Terakhir</p>
+                            <p class="text-[13px] text-slate-600 font-mono">{{ optional($page->updated_at)->translatedFormat('d M Y') ?? date('d M Y') }}</p>
                         </div>
                         <div>
-                            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-[slate-900] font-mono mb-2">Hak Cipta</p>
-                            <p class="text-[13px] text-[#735A56] font-mono">&copy; {{ date('Y') }} Dilindungi</p>
+                            <p class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-900 font-mono mb-2">Hak Cipta</p>
+                            <p class="text-[13px] text-slate-600 font-mono">&copy; {{ date('Y') }} Dilindungi</p>
                         </div>
                     </div>
                 </div>
 
                 {{-- Main Content Right Side --}}
                 <div class="lg:col-span-7 space-y-12">
-                    <div class="border-b border-[slate-900] pb-8">
+                    <div class="border-b border-slate-200 pb-8">
                         <p class="text-[11px] font-bold uppercase tracking-widest text-brand-primary font-mono mb-6 block lg:hidden">Halaman Informasi</p>
-                        <h1 class="text-6xl sm:text-7xl lg:text-[6rem] font-normal text-faux-medium text-[slate-900] font-heading leading-tight">{{ $page->title }}</h1>
+                        <h1 class="text-6xl sm:text-7xl lg:text-[6rem] font-normal text-faux-medium text-slate-900 font-heading leading-tight">{{ $page->title }}</h1>
                     </div>
 
                     <div class="quill-content max-w-none">
