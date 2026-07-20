@@ -38,6 +38,8 @@ class MenuController extends Controller
             'category_id' => 'nullable|exists:categories,id',
             'order' => 'required|integer|min:0',
             'is_active' => 'boolean',
+            'icon' => 'nullable|string',
+            'icon_color' => 'nullable|string|max:50',
         ]);
         
         $validated['slug'] = $validated['slug'] ?? Str::slug($validated['title']);
@@ -81,6 +83,8 @@ class MenuController extends Controller
             'category_id' => 'nullable|exists:categories,id',
             'order' => 'required|integer|min:0',
             'is_active' => 'boolean',
+            'icon' => 'nullable|string',
+            'icon_color' => 'nullable|string|max:50',
         ]);
         
         $validated['slug'] = $validated['slug'] ?? Str::slug($validated['title']);

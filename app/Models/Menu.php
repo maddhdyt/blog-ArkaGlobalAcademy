@@ -19,6 +19,8 @@ class Menu extends Model
         'category_id',
         'order',
         'is_active',
+        'icon',
+        'icon_color',
     ];
 
     protected $casts = [

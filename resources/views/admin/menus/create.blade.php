@@ -86,6 +86,30 @@
             </div>
 
             <div class="space-y-2">
+                <label class="block text-sm font-semibold text-gray-800">Icon (For Dropdown Menus)</label>
+                <select name="icon" class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white">
+                    <option value="">- Default Document -</option>
+                    <option value="search" {{ old('icon') == 'search' ? 'selected' : '' }}>Search / SEO</option>
+                    <option value="code" {{ old('icon') == 'code' ? 'selected' : '' }}>Code / Technology</option>
+                    <option value="globe" {{ old('icon') == 'globe' ? 'selected' : '' }}>Globe / Marketing</option>
+                    <option value="chart" {{ old('icon') == 'chart' ? 'selected' : '' }}>Chart / Business</option>
+                    <option value="design" {{ old('icon') == 'design' ? 'selected' : '' }}>Design / UI</option>
+                </select>
+            </div>
+
+            <div class="space-y-2">
+                <label class="block text-sm font-semibold text-gray-800">Icon Color</label>
+                <select name="icon_color" class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500 bg-white">
+                    <option value="">- Default Dark -</option>
+                    <option value="bg-blue-500" {{ old('icon_color') == 'bg-blue-500' ? 'selected' : '' }}>Blue</option>
+                    <option value="bg-emerald-500" {{ old('icon_color') == 'bg-emerald-500' ? 'selected' : '' }}>Emerald</option>
+                    <option value="bg-orange-500" {{ old('icon_color') == 'bg-orange-500' ? 'selected' : '' }}>Orange</option>
+                    <option value="bg-purple-500" {{ old('icon_color') == 'bg-purple-500' ? 'selected' : '' }}>Purple</option>
+                    <option value="bg-pink-500" {{ old('icon_color') == 'bg-pink-500' ? 'selected' : '' }}>Pink</option>
+                </select>
+            </div>
+
+            <div class="space-y-2">
                 <label class="block text-sm font-semibold text-gray-800">Order</label>
                 <input type="number" name="order" value="{{ old('order', 0) }}"
                     class="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500"
