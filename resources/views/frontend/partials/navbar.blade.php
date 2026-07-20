@@ -1,26 +1,27 @@
-<nav class="bg-white/95 backdrop-blur shadow-sm border-b border-slate-200 sticky top-0 z-50">
-    <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
-        <div class="flex justify-between items-center h-20">
-            <div class="flex items-center">
-                <a href="{{ route('home') }}" class="flex items-center gap-2">
-                    <img src="{{ $siteLogo }}" alt="Arka Global Academy" class="h-10 md:h-12 w-auto">
-                </a>
-            </div>
+<div class="fixed top-4 md:top-6 left-0 right-0 z-50 flex justify-center px-4 font-sans">
+    <nav class="w-full max-w-6xl bg-white/80 backdrop-blur-2xl backdrop-saturate-150 border border-white/50 shadow-2xl shadow-slate-400/10 rounded-full transition-all duration-300 ring-1 ring-slate-900/5 relative">
+        <div class="px-6 md:px-10">
+            <div class="flex justify-between items-center h-16 md:h-20">
+                <div class="shrink-0 flex items-center">
+                    <a href="{{ route('home') }}" class="flex items-center gap-2">
+                        <img src="{{ $siteLogo }}" alt="Arka Global Academy" class="h-8 md:h-10 w-auto">
+                    </a>
+                </div>
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center space-x-8">
                 @foreach ($menus as $menu)
                     @if ($menu->children->isEmpty())
-                        <a href="{{ $menu->getUrl() }}" class="text-[15px] font-medium text-slate-900 font-sans hover:text-brand-primary transition">
+                        <a href="{{ $menu->getUrl() }}" class="text-[14px] md:text-[15px] font-bold text-slate-600 font-sans hover:text-slate-900 transition">
                             {{ $menu->title }}
                         </a>
                     @else
                         <div class="relative group">
                             <button type="button"
-                                class="flex items-center gap-1.5 text-[15px] font-medium text-slate-900 font-sans hover:text-brand-primary transition py-2">
+                                class="flex items-center gap-1.5 text-[14px] md:text-[15px] font-bold text-slate-600 font-sans hover:text-slate-900 transition py-2">
                                 {{ $menu->title }}
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                    class="h-4 w-4 text-gray-400 group-hover:text-brand-primary transition">
+                                    class="h-4 w-4 text-slate-400 group-hover:text-slate-900 transition">
                                     <path fill-rule="evenodd"
                                         d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.25a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08Z"
                                         clip-rule="evenodd" />
@@ -28,7 +29,7 @@
                             </button>
 
                             <div
-                                class="absolute left-1/2 top-full mt-2 w-[480px] -translate-x-1/2 bg-white border border-slate-200 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all z-50">
+                                class="absolute left-1/2 top-full mt-2 w-[480px] -translate-x-1/2 bg-white/95 backdrop-blur-xl border border-white/50 shadow-2xl rounded-3xl opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all z-50 ring-1 ring-slate-900/5 overflow-hidden">
                                 <div class="p-6 grid gap-4">
                                     @foreach ($menu->children as $child)
                                         <a href="{{ $child->getUrl() }}"
@@ -103,8 +104,8 @@
                 </button>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</div>
 
 <!-- Mobile Search Overlay -->
 <div id="mobileSearchOverlay" class="fixed inset-0 bg-white z-[60] hidden flex-col">

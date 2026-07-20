@@ -50,7 +50,7 @@
         @include('frontend.partials.navbar')
     @endif
 
-    <main class="min-h-screen">
+    <main class="min-h-screen pt-24 sm:pt-28 lg:pt-32">
         @yield('content')
     </main>
 
