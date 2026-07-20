@@ -59,7 +59,7 @@
                         .ql-editor li,
                         .ql-editor span {
                             font-family: inherit !important;
-                            font-size: 18px !important;
+                            font-size: 16px !important;
                             line-height: 1.7 !important;
                         }
                     </style>
