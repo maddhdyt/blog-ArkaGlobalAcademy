@@ -117,6 +117,7 @@
         const quill = new Quill('#content-editor', {
             theme: 'snow',
             placeholder: 'Tulis konten halaman di sini...',
+            scrollingContainer: 'main',
             modules: {
                 toolbar: [
                     [{
