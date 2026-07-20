@@ -50,6 +50,17 @@
                             border-color: rgba(226, 232, 240, 0.6) !important;
                             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
                         }
+                        /* Fix Quill Paste Blink Bug */
+                        .ql-clipboard {
+                            position: fixed !important;
+                            left: 50% !important;
+                            top: 50% !important;
+                            opacity: 0 !important;
+                            width: 0 !important;
+                            height: 0 !important;
+                            overflow: hidden !important;
+                            z-index: -1 !important;
+                        }
                     </style>
                     <div id="editor-header" class="rounded-t-2xl transition-all duration-300 relative">
                         <div id="sticky-sentinel" class="absolute w-full h-px pointer-events-none" style="top: 8px;"></div>
