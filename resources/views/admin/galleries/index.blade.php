@@ -13,13 +13,13 @@
         </a>
     </div>
 
-    <div class="card bg-white p-6 border border-slate-100 rounded-none shadow-none">
+    <div class="card p-6 border-0 shadow-sm">
         @if ($items->isEmpty())
             <p class="text-slate-700 font-semibold text-center py-8">Belum ada foto.</p>
         @else
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach ($items as $item)
-                    <div class="border border-slate-100 bg-white group">
+                    <div class="border border-slate-100 bg-white group rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                         <div class="aspect-[4/3] bg-slate-50 overflow-hidden border-b border-slate-100">
                             <img src="{{ $item->image_url }}" alt="{{ $item->title }}" class="w-full h-full object-cover transition-transform group-hover:scale-105 duration-300">
                         </div>
