@@ -51,10 +51,6 @@
                             left: 50% !important;
                             top: 50% !important;
                             opacity: 0 !important;
-                            width: 0 !important;
-                            height: 0 !important;
-                            overflow: hidden !important;
-                            z-index: -1 !important;
                         }
                     </style>
                     <div id="editor-header" class="rounded-t-2xl transition-all duration-300 relative">
