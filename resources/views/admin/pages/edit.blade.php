@@ -36,6 +36,12 @@
                     </div>
                 </div>
 
+                <!-- Sticky Pill Wrapper -->
+                <div class="sticky top-6 z-50 w-full flex justify-center mb-4 pointer-events-none">
+                    <div id="toolbar-container" class="pointer-events-auto w-max max-w-full bg-white/95 backdrop-blur-md rounded-full shadow-lg border border-slate-200/60 transition-all">
+                    </div>
+                </div>
+
                 <!-- Editor -->
                 <div class="card p-0 !overflow-visible">
                     <div id="editor-header" class="rounded-t-2xl transition-all duration-300">
