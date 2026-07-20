@@ -150,7 +150,7 @@
         </aside>
 
         <!-- Main Content -->
-        <div class="flex-1 h-full py-4 pr-4 sm:py-6 sm:pr-6 flex flex-col">
+        <div class="flex-1 h-full p-4 sm:p-6 flex flex-col">
             <div class="flex-1 flex flex-col overflow-hidden bg-slate-50/50 rounded-3xl border border-slate-200/60 shadow-sm">
             <!-- Header -->
             <header class="bg-transparent h-24 shrink-0">
