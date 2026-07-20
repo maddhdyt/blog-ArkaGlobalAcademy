@@ -32,7 +32,7 @@
                 </div>
 
                 <!-- Editor -->
-                <div class="card p-0">
+                <div class="card p-0 !overflow-visible">
                     <div class="p-4 border-b border-slate-100">
                         <label class="form-label mb-0" for="content-editor">Content *</label>
                     </div>

@@ -63,7 +63,10 @@
     border: none !important;
     border-bottom: 1px solid #f1f5f9 !important; /* slate-100 */
     padding: 1rem !important;
-    background-color: transparent !important;
+    background-color: white !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 10 !important;
 }
 .ql-container.ql-snow {
     border: none !important;
