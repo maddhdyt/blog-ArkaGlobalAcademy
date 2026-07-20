@@ -5,7 +5,7 @@
 @section('content')
     <div class="mb-6 flex justify-between items-center">
         <h2 class="text-xl font-heading font-bold text-slate-700 tracking-tight">Semua Postingan</h2>
-        <a href="{{ route('admin.posts.create') }}" class="inline-flex items-center px-4 py-2 bg-slate-900 border border-slate-100 text-white text-sm font-bold uppercase tracking-wider hover:bg-slate-50 hover:text-slate-700 transition-colors">
+        <a href="{{ route('admin.posts.create') }}" class="inline-flex items-center px-6 py-2.5 bg-orange-600 text-white text-sm font-bold uppercase tracking-wider hover:bg-orange-700 transition-colors rounded-xl shadow-sm">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
             </svg>

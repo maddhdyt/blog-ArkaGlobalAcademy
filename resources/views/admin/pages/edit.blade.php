@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="mb-6 flex items-center justify-between">
-        <a href="{{ route('admin.pages.index') }}" class="text-[slate-900] hover:text-brand-primary font-bold text-sm uppercase tracking-wider transition flex items-center gap-2">
+        <a href="{{ route('admin.pages.index') }}" class="text-slate-700 hover:text-brand-primary font-bold text-sm uppercase tracking-wider transition flex items-center gap-2">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
             Back to Pages
         </a>
@@ -38,7 +38,7 @@
 
                 <!-- Editor -->
                 <div class="card p-0">
-                    <div class="p-4 border-b border-[slate-900]">
+                    <div class="p-4 border-b border-slate-100">
                         <label class="form-label mb-0" for="content-editor">Content *</label>
                     </div>
                     <div id="content-editor" class="bg-white min-h-[500px] text-lg text-[#433836]" aria-label="Content editor">{!! old('content', $page->content) !!}</div>
@@ -66,7 +66,7 @@
                 <div class="space-y-6 sticky top-6">
                     <!-- Action Card -->
                     <div class="card p-6">
-                        <h3 class="text-sm font-bold text-[slate-900] mb-4 pb-2 border-b border-[slate-900] uppercase tracking-wider mt-0">Publish</h3>
+                        <h3 class="text-sm font-bold text-slate-700 mb-4 pb-2 border-b border-slate-100 uppercase tracking-wider mt-0">Publish</h3>
                         <div class="space-y-4">
                             <div>
                                 <label class="form-label" for="status">Status *</label>
@@ -78,7 +78,7 @@
                                     <p class="text-red-500 text-xs mt-1 font-bold">{{ $message }}</p>
                                 @enderror
                             </div>
-                            <div class="pt-4 border-t border-[slate-900] flex gap-3">
+                            <div class="pt-4 border-t border-slate-100 flex gap-3">
                                 <button type="submit" class="w-full btn-primary py-3">Update Page</button>
                             </div>
                         </div>
