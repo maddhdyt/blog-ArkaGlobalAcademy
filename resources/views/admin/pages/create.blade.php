@@ -44,7 +44,7 @@
                     </div>
 
                     <!-- Sticky Pill Wrapper -->
-                    <div class="sticky top-6 z-50 w-full flex justify-center mt-4 mb-2 pointer-events-none px-4">
+                    <div class="sticky top-2 z-50 w-full flex justify-center mt-4 mb-2 pointer-events-none px-4">
                         <div id="toolbar-container" class="pointer-events-auto w-max max-w-full bg-white/95 backdrop-blur-md rounded-full shadow-lg border border-slate-200/60 transition-all">
                         </div>
                     </div>
