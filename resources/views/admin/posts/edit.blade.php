@@ -33,7 +33,7 @@
 
                 <!-- Editor -->
                 <div class="card p-0 !overflow-visible">
-                    <div id="editor-header" class="sticky top-0 z-20 bg-white/95 backdrop-blur-sm rounded-t-2xl shadow-sm border border-slate-100 -mx-[1px] -mt-[1px] transition-all duration-300">
+                    <div id="editor-header" class="rounded-t-2xl transition-all duration-300">
                         <div class="p-4 border-b border-slate-100/50">
                             <label class="form-label mb-0" for="content-editor">Content *</label>
                         </div>
