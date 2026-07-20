@@ -31,7 +31,7 @@
     <div class="flex min-h-screen overflow-hidden">
         <!-- Sidebar -->
         <aside :class="sidebarOpen ? 'ml-0' : '-ml-64'" class="w-64 shrink-0 bg-white border-r border-slate-900 flex flex-col transition-all duration-300 h-screen overflow-hidden">
-            <div class="h-20 border-b border-slate-900 flex items-center justify-start px-4 shrink-0">
+            <div class="h-20 border-b border-slate-900 flex items-center justify-start px-8 shrink-0">
                 <a href="{{ route('admin.dashboard') }}" class="inline-block">
                     <img src="{{ $siteLogo }}" alt="Arka Global Academy" class="h-10 w-auto object-contain">
                 </a>
