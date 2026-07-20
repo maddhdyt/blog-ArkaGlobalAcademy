@@ -53,6 +53,11 @@
                             top: 50% !important;
                             opacity: 0 !important;
                         }
+                        /* Increase Editor Text Size */
+                        .ql-editor {
+                            font-size: 18px !important;
+                            line-height: 1.7 !important;
+                        }
                     </style>
                     <div id="editor-header" class="rounded-t-2xl transition-all duration-300 relative">
                         <div id="sticky-sentinel" class="absolute w-full h-px pointer-events-none" style="top: 8px;"></div>
