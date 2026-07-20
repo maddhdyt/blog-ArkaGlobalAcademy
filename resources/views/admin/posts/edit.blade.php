@@ -31,13 +31,15 @@
                     </div>
                 </div>
 
-                <!-- Editor -->
-                <div class="card p-0 !overflow-visible">
-                    <div id="editor-header" class="sticky top-0 z-20 bg-white/85 backdrop-blur-md rounded-t-2xl shadow-[0_10px_15px_-3px_rgba(0,0,0,0.03)] border-b border-slate-200">
-                        <div class="p-4 border-b border-slate-100/50">
-                            <label class="form-label mb-0" for="content-editor">Content *</label>
-                        </div>
+                <!-- Editor Header (Sticky) -->
+                <div id="editor-header" class="card p-0 sticky top-0 z-20 bg-white/90 backdrop-blur-md mb-6 shadow-md border-slate-200 transition-all duration-300">
+                    <div class="p-4 border-b border-slate-100/50">
+                        <label class="form-label mb-0" for="content-editor">Content *</label>
                     </div>
+                </div>
+
+                <!-- Editor Content -->
+                <div class="card p-0">
                     <div id="content-editor" class="bg-white min-h-[500px] text-lg text-[#433836]" aria-label="Content editor">{!! old('content', $post->content) !!}</div>
                     <input type="hidden" name="content" id="content" value="{{ old('content', $post->content) }}" required>
                 </div>
