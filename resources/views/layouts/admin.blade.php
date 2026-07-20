@@ -27,10 +27,10 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-slate-100 text-slate-800 font-sans p-4 sm:p-6 lg:p-8 min-h-screen flex" x-data="{ sidebarOpen: true }">
-    <div class="flex flex-1 bg-white rounded-[2.5rem] shadow-2xl overflow-hidden h-[calc(100vh-2rem)] sm:h-[calc(100vh-3rem)] lg:h-[calc(100vh-4rem)] border border-slate-200/50">
+<body class="bg-slate-50 text-slate-800 font-sans" x-data="{ sidebarOpen: true }">
+    <div class="flex min-h-screen overflow-hidden">
         <!-- Sidebar -->
-        <aside :class="sidebarOpen ? 'ml-0' : '-ml-72'" class="w-72 shrink-0 bg-white flex flex-col transition-all duration-300 h-full overflow-hidden">
+        <aside :class="sidebarOpen ? 'ml-0' : '-ml-72'" class="w-72 shrink-0 bg-white flex flex-col transition-all duration-300 h-screen overflow-hidden">
             <div class="h-24 flex items-center justify-start px-8 shrink-0">
                 <a href="{{ route('admin.dashboard') }}" class="inline-block">
                     <img src="{{ $siteLogo }}" alt="Arka Global Academy" class="h-10 w-auto object-contain">
@@ -150,7 +150,7 @@
         </aside>
 
         <!-- Main Content -->
-        <div class="flex-1 flex flex-col overflow-hidden h-full bg-slate-50/30">
+        <div class="flex-1 flex flex-col overflow-hidden h-screen bg-slate-50/30">
             <!-- Header -->
             <header class="bg-transparent h-24 shrink-0">
                 <div class="flex items-center justify-between px-8 h-full">
