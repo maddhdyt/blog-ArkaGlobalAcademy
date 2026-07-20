@@ -13,7 +13,7 @@
     <form action="{{ route('admin.posts.update', $post) }}" method="POST" enctype="multipart/form-data" class="block">
         @csrf
         @method('PUT')
-        <div class="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+        <div class="grid grid-cols-1 xl:grid-cols-12 gap-8">
             
             <!-- Left Column: Main Content Area -->
             <div class="xl:col-span-8 space-y-6">
