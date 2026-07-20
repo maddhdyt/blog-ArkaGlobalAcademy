@@ -19,9 +19,9 @@
     <!-- NProgress CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" />
     <style>
-        #nprogress .bar { background: slate-900 !important; height: 3px !important; }
-        #nprogress .peg { box-shadow: 0 0 10px slate-900, 0 0 5px slate-900 !important; }
-        #nprogress .spinner-icon { border-top-color: slate-900 !important; border-left-color: slate-900 !important; }
+        #nprogress .bar { background: #ea580c !important; height: 3px !important; }
+        #nprogress .peg { box-shadow: 0 0 10px #ea580c, 0 0 5px #ea580c !important; }
+        #nprogress .spinner-icon { border-top-color: #ea580c !important; border-left-color: #ea580c !important; }
     </style>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -30,8 +30,8 @@
 <body class="bg-slate-50 text-slate-800 font-sans" x-data="{ sidebarOpen: true }">
     <div class="flex min-h-screen overflow-hidden">
         <!-- Sidebar -->
-        <aside :class="sidebarOpen ? 'ml-0' : '-ml-64'" class="w-64 shrink-0 bg-white border-r border-slate-900 flex flex-col transition-all duration-300 h-screen overflow-hidden">
-            <div class="h-20 border-b border-slate-900 flex items-center justify-start px-8 shrink-0">
+        <aside :class="sidebarOpen ? 'ml-0' : '-ml-64'" class="w-64 shrink-0 bg-white border-r border-slate-200 flex flex-col transition-all duration-300 h-screen overflow-hidden">
+            <div class="h-20 border-b border-slate-200 flex items-center justify-start px-8 shrink-0">
                 <a href="{{ route('admin.dashboard') }}" class="inline-block">
                     <img src="{{ $siteLogo }}" alt="Arka Global Academy" class="h-10 w-auto object-contain">
                 </a>
@@ -40,7 +40,7 @@
             <nav class="p-4 overflow-y-auto flex-1">
                 <!-- Utama -->
                 <div class="mb-6">
-                    <div class="px-4 mb-2 text-xs font-bold text-slate-900/50 uppercase tracking-widest">Utama</div>
+                    <div class="px-4 mb-2 text-xs font-bold text-slate-500 uppercase tracking-widest">Utama</div>
                     <div class="flex flex-col gap-1">
                         <a href="{{ route('admin.dashboard') }}"
                             class="sidebar-link {{ request()->routeIs('admin.dashboard') ? 'sidebar-link-active' : '' }}">
@@ -56,7 +56,7 @@
 
                 <!-- Konten -->
                 <div class="mb-6">
-                    <div class="px-4 mb-2 text-xs font-bold text-slate-900/50 uppercase tracking-widest">Konten</div>
+                    <div class="px-4 mb-2 text-xs font-bold text-slate-500 uppercase tracking-widest">Konten</div>
                     <div class="flex flex-col gap-1">
                         <a href="{{ route('admin.posts.index') }}"
                             class="sidebar-link {{ request()->routeIs('admin.posts.*') ? 'sidebar-link-active' : '' }}">
@@ -101,7 +101,7 @@
 
                 <!-- Komunitas -->
                 <div class="mb-6">
-                    <div class="px-4 mb-2 text-xs font-bold text-slate-900/50 uppercase tracking-widest">Komunitas</div>
+                    <div class="px-4 mb-2 text-xs font-bold text-slate-500 uppercase tracking-widest">Komunitas</div>
                     <div class="flex flex-col gap-1">
                         <a href="{{ route('admin.subscribers.index') }}"
                             class="sidebar-link {{ request()->routeIs('admin.subscribers.*') ? 'sidebar-link-active' : '' }}">
@@ -125,7 +125,7 @@
 
                 <!-- Pengaturan -->
                 <div class="mb-6">
-                    <div class="px-4 mb-2 text-xs font-bold text-slate-900/50 uppercase tracking-widest">Pengaturan</div>
+                    <div class="px-4 mb-2 text-xs font-bold text-slate-500 uppercase tracking-widest">Pengaturan</div>
                     <div class="flex flex-col gap-1">
                         <a href="{{ route('admin.menus.index') }}"
                             class="sidebar-link {{ request()->routeIs('admin.menus.*') ? 'sidebar-link-active' : '' }}">
@@ -152,33 +152,33 @@
         <!-- Main Content -->
         <div class="flex-1 flex flex-col overflow-hidden h-screen">
             <!-- Header -->
-            <header class="bg-slate-50 border-b border-slate-900 h-20 shrink-0">
+            <header class="bg-white border-b border-slate-200 shadow-sm h-20 shrink-0">
                 <div class="flex items-center justify-between px-8 h-full">
                     <div class="flex items-center gap-4">
-                        <button @click="sidebarOpen = !sidebarOpen" class="text-slate-900 hover:text-brand-primary transition-colors focus:outline-none">
+                        <button @click="sidebarOpen = !sidebarOpen" class="text-slate-800 hover:text-brand-primary transition-colors focus:outline-none">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                             </svg>
                         </button>
-                        <h1 class="text-3xl font-heading text-slate-900 tracking-tight">@yield('page_title', 'Dashboard')</h1>
+                        <h1 class="text-3xl font-heading text-slate-800 tracking-tight">@yield('page_title', 'Dashboard')</h1>
                     </div>
 
                     <div class="flex items-center gap-6">
                         <a href="{{ route('home') }}" target="_blank"
-                            class="text-sm font-bold uppercase tracking-wider text-slate-900 hover:text-brand-primary transition-colors flex items-center gap-2">
+                            class="text-sm font-bold uppercase tracking-wider text-slate-800 hover:text-brand-primary transition-colors flex items-center gap-2">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                             View Site
                         </a>
                         
-                        <div class="h-6 w-px bg-slate-900"></div>
+                        <div class="h-6 w-px bg-slate-300"></div>
 
                         <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 rounded-full border border-slate-900 bg-white flex items-center justify-center text-slate-900 font-bold">
+                            <div class="w-8 h-8 rounded-full border border-slate-200 bg-slate-100 flex items-center justify-center text-slate-700 font-bold">
                                 {{ substr(auth()->user()->name ?? 'A', 0, 1) }}
                             </div>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <button type="submit" class="text-sm font-bold uppercase tracking-wider text-slate-900 hover:text-red-600 transition-colors">Logout</button>
+                                <button type="submit" class="text-sm font-bold uppercase tracking-wider text-slate-800 hover:text-red-600 transition-colors">Logout</button>
                             </form>
                         </div>
                     </div>
@@ -188,9 +188,9 @@
             <!-- Content -->
             <main class="flex-1 p-6 overflow-y-auto overflow-x-hidden">
                 @if (session('success'))
-                    <div x-data="{ show: true }" x-show="show" class="mb-6 p-4 bg-green-100 border border-slate-900 text-slate-900 font-semibold text-sm flex justify-between items-center">
+                    <div x-data="{ show: true }" x-show="show" class="mb-6 p-4 bg-green-50 border border-green-200 text-green-700 font-semibold text-sm flex justify-between items-center rounded-xl">
                         <span>{{ session('success') }}</span>
-                        <button @click="show = false" class="text-slate-900 hover:text-black focus:outline-none">
+                        <button @click="show = false" class="text-green-700 hover:text-black focus:outline-none">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                         </button>
                     </div>
