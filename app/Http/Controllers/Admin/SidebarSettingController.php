@@ -35,14 +35,7 @@ class SidebarSettingController extends Controller
             'footer_x_url' => ['nullable', 'url'],
             'footer_github_url' => ['nullable', 'url'],
             'footer_youtube_url' => ['nullable', 'url'],
-            'author_name' => ['nullable', 'string', 'max:255'],
-            'author_role' => ['nullable', 'string', 'max:255'],
-            'author_avatar_url' => ['nullable', 'url'],
-            'author_avatar' => ['nullable', 'image', 'max:2048'],
-            'author_bio' => ['nullable', 'string'],
-            'author_tiktok_url' => ['nullable', 'url'],
-            'author_youtube_url' => ['nullable', 'url'],
-            'author_newsletter_url' => ['nullable', 'url'],
+
             'trending_title' => ['nullable', 'string', 'max:255'],
             'trending_link_text' => ['nullable', 'string', 'max:255'],
             'trending_link_url' => ['nullable', 'url'],
@@ -62,10 +55,7 @@ class SidebarSettingController extends Controller
             $data['site_logo_url'] = Storage::url($path);
         }
 
-        if ($request->hasFile('author_avatar')) {
-            $path = $request->file('author_avatar')->store('sidebar/avatars', 'public');
-            $data['author_avatar_url'] = Storage::url($path);
-        }
+
 
         $setting->fill($data);
         $setting->save();

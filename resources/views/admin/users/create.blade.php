@@ -10,7 +10,7 @@
         </a>
     </div>
 
-    <form action="{{ route('admin.users.store') }}" method="POST" class="block">
+    <form action="{{ route('admin.users.store') }}" method="POST" class="block" enctype="multipart/form-data">
         @csrf
         <div class="grid grid-cols-1 xl:grid-cols-12 gap-8">
             
@@ -32,6 +32,46 @@
                         @error('email')
                             <p class="text-red-500 text-xs mt-1 font-bold">{{ $message }}</p>
                         @enderror
+                    </div>
+                </div>
+
+                <!-- Profil Penulis -->
+                <div class="card p-6 space-y-6">
+                    <h3 class="text-sm font-bold text-slate-700 mb-4 pb-2 border-b border-slate-100 uppercase tracking-wider mt-0">Profil Penulis</h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="form-label" for="role_title">Jabatan / Peran (Tampil di Publik)</label>
+                            <input type="text" name="role_title" id="role_title" class="form-input" value="{{ old('role_title') }}" placeholder="Contoh: Kontributor, CEO">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="form-label" for="avatar_url">Avatar URL</label>
+                            <input type="url" name="avatar_url" id="avatar_url" class="form-input" value="{{ old('avatar_url') }}" placeholder="https://...">
+                        </div>
+                        <div>
+                            <label class="form-label" for="avatar">Upload Avatar Lokal</label>
+                            <input type="file" name="avatar" id="avatar" class="form-input bg-white p-1.5" accept="image/*">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="form-label" for="bio">Bio Singkat</label>
+                        <textarea name="bio" id="bio" rows="3" class="form-input">{{ old('bio') }}</textarea>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div>
+                            <label class="form-label" for="tiktok_url">TikTok URL</label>
+                            <input type="url" name="tiktok_url" id="tiktok_url" class="form-input" value="{{ old('tiktok_url') }}">
+                        </div>
+                        <div>
+                            <label class="form-label" for="youtube_url">YouTube URL</label>
+                            <input type="url" name="youtube_url" id="youtube_url" class="form-input" value="{{ old('youtube_url') }}">
+                        </div>
+                        <div>
+                            <label class="form-label" for="newsletter_url">Newsletter URL</label>
+                            <input type="url" name="newsletter_url" id="newsletter_url" class="form-input" value="{{ old('newsletter_url') }}">
+                        </div>
                     </div>
                 </div>
 

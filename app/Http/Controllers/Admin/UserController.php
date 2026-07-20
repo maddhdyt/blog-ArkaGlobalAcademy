@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -30,6 +31,13 @@ class UserController extends Controller
             'email' => ['required', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'confirmed', 'min:8'],
             'role' => ['required', 'in:admin,user'],
+            'role_title' => ['nullable', 'string', 'max:255'],
+            'avatar_url' => ['nullable', 'url'],
+            'avatar' => ['nullable', 'image', 'max:2048'],
+            'bio' => ['nullable', 'string'],
+            'tiktok_url' => ['nullable', 'url'],
+            'youtube_url' => ['nullable', 'url'],
+            'newsletter_url' => ['nullable', 'url'],
         ]);
 
         $user = User::create([
@@ -37,6 +45,20 @@ class UserController extends Controller
             'email' => $data['email'],
             'password' => $data['password'],
         ]);
+
+        if ($request->hasFile('avatar')) {
+            $path = $request->file('avatar')->store('users/avatars', 'public');
+            $user->avatar_url = Storage::url($path);
+        } else if (!empty($data['avatar_url'])) {
+            $user->avatar_url = $data['avatar_url'];
+        }
+
+        $user->role_title = $data['role_title'] ?? null;
+        $user->bio = $data['bio'] ?? null;
+        $user->tiktok_url = $data['tiktok_url'] ?? null;
+        $user->youtube_url = $data['youtube_url'] ?? null;
+        $user->newsletter_url = $data['newsletter_url'] ?? null;
+        $user->save();
 
         $role = Role::firstOrCreate(['name' => $data['role']]);
         $user->syncRoles([$role]);
@@ -57,6 +79,13 @@ class UserController extends Controller
             'email' => ['required', 'email', 'max:255', 'unique:users,email,' . $user->id],
             'password' => ['nullable', 'confirmed', 'min:8'],
             'role' => ['required', 'in:admin,user'],
+            'role_title' => ['nullable', 'string', 'max:255'],
+            'avatar_url' => ['nullable', 'url'],
+            'avatar' => ['nullable', 'image', 'max:2048'],
+            'bio' => ['nullable', 'string'],
+            'tiktok_url' => ['nullable', 'url'],
+            'youtube_url' => ['nullable', 'url'],
+            'newsletter_url' => ['nullable', 'url'],
         ]);
 
         $user->name = $data['name'];
@@ -64,6 +93,20 @@ class UserController extends Controller
         if (!empty($data['password'])) {
             $user->password = $data['password'];
         }
+
+        if ($request->hasFile('avatar')) {
+            $path = $request->file('avatar')->store('users/avatars', 'public');
+            $user->avatar_url = Storage::url($path);
+        } else if (array_key_exists('avatar_url', $data)) {
+            $user->avatar_url = $data['avatar_url'];
+        }
+
+        $user->role_title = $data['role_title'] ?? null;
+        $user->bio = $data['bio'] ?? null;
+        $user->tiktok_url = $data['tiktok_url'] ?? null;
+        $user->youtube_url = $data['youtube_url'] ?? null;
+        $user->newsletter_url = $data['newsletter_url'] ?? null;
+
         $user->save();
 
         $role = Role::firstOrCreate(['name' => $data['role']]);

@@ -76,57 +76,6 @@
                 </div>
 
 
-                <!-- Profil Penulis -->
-                <div class="p-6 md:p-8 grid grid-cols-1 lg:grid-cols-3 gap-8 bg-slate-50">
-                    <div class="lg:col-span-1">
-                        <h2 class="text-lg font-bold uppercase tracking-wider text-slate-700">Profil Penulis</h2>
-                        <p class="text-sm font-semibold text-slate-700/70 mt-2">Informasi pembuat atau pemilik blog yang muncul di area sidebar.</p>
-                    </div>
-                    <div class="lg:col-span-2 space-y-4">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="form-label" for="author_name">Nama</label>
-                                <input type="text" name="author_name" id="author_name" class="form-input" value="{{ old('author_name', optional($setting)->author_name) }}">
-                            </div>
-                            <div>
-                                <label class="form-label" for="author_role">Peran</label>
-                                <input type="text" name="author_role" id="author_role" class="form-input" value="{{ old('author_role', optional($setting)->author_role) }}">
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="form-label" for="author_avatar_url">Avatar URL</label>
-                                <input type="url" name="author_avatar_url" id="author_avatar_url" class="form-input" value="{{ old('author_avatar_url', optional($setting)->author_avatar_url) }}" placeholder="https://...">
-                            </div>
-                            <div>
-                                <label class="form-label" for="author_avatar">Upload Avatar Lokal</label>
-                                <input type="file" name="author_avatar" id="author_avatar" class="form-input bg-white p-1.5" accept="image/*">
-                                @if (optional($setting)->author_avatar_url)
-                                    <p class="text-xs font-bold text-slate-700 mt-2">Saat ini: <a href="{{ optional($setting)->author_avatar_url }}" class="text-blue-600 underline" target="_blank">Lihat Avatar</a></p>
-                                @endif
-                            </div>
-                        </div>
-                        <div>
-                            <label class="form-label" for="author_bio">Bio Singkat</label>
-                            <textarea name="author_bio" id="author_bio" rows="3" class="form-input">{{ old('author_bio', optional($setting)->author_bio) }}</textarea>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                            <div>
-                                <label class="form-label" for="author_tiktok_url">TikTok URL</label>
-                                <input type="url" name="author_tiktok_url" id="author_tiktok_url" class="form-input" value="{{ old('author_tiktok_url', optional($setting)->author_tiktok_url) }}">
-                            </div>
-                            <div>
-                                <label class="form-label" for="author_youtube_url">YouTube URL</label>
-                                <input type="url" name="author_youtube_url" id="author_youtube_url" class="form-input" value="{{ old('author_youtube_url', optional($setting)->author_youtube_url) }}">
-                            </div>
-                            <div>
-                                <label class="form-label" for="author_newsletter_url">Newsletter URL</label>
-                                <input type="url" name="author_newsletter_url" id="author_newsletter_url" class="form-input" value="{{ old('author_newsletter_url', optional($setting)->author_newsletter_url) }}">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- CTA -->
                 <div class="p-6 md:p-8 grid grid-cols-1 lg:grid-cols-3 gap-8 bg-white">
                     <div class="lg:col-span-1">
