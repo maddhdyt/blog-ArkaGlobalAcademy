@@ -3,7 +3,7 @@
 @section('page_title', 'Gallery')
 
 @section('content')
-    <div class="flex items-center justify-between mb-6">
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
         <h2 class="text-xl font-heading font-bold text-slate-700 tracking-tight">Galeri Foto</h2>
         <a href="{{ route('admin.galleries.create') }}" class="inline-flex items-center px-6 py-2.5 bg-orange-600 text-white text-sm font-bold uppercase tracking-wider hover:bg-orange-700 transition-colors rounded-xl shadow-sm">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

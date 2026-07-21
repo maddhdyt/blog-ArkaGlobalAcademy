@@ -32,6 +32,10 @@
             .responsive-sidebar { position: relative !important; z-index: 40 !important; box-shadow: none !important; }
             .responsive-backdrop { display: none !important; }
         }
+
+        /* Responsive Data Tables */
+        .data-table th, .data-table td { white-space: nowrap; }
+        .data-table .wrap-content { white-space: normal; min-width: 200px; }
     </style>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])

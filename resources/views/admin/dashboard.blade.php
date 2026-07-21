@@ -146,7 +146,7 @@
                 <a href="{{ route('admin.posts.index') }}" class="text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-orange-600 transition-colors">Semua &rarr;</a>
             </div>
             <div class="overflow-x-auto flex-1">
-                <table class="w-full text-left border-collapse">
+                <table class="w-full text-left border-collapse data-table">
                     <thead>
                         <tr class="bg-slate-50/50">
                             <th class="py-3 px-4 text-[11px] font-bold text-slate-500 uppercase tracking-wider border-b border-slate-100">Artikel</th>
@@ -194,7 +194,7 @@
                 <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Berdasarkan Views</span>
             </div>
             <div class="overflow-x-auto flex-1">
-                <table class="w-full text-left border-collapse">
+                <table class="w-full text-left border-collapse data-table">
                     <thead>
                         <tr class="bg-slate-50/50">
                             <th class="py-3 px-4 text-[11px] font-bold text-slate-500 uppercase tracking-wider border-b border-slate-100">Artikel</th>

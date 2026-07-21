@@ -3,7 +3,7 @@
 @section('page_title', 'Users Management')
 
 @section('content')
-    <div class="mb-6 flex justify-between items-center">
+    <div class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h2 class="text-xl font-heading font-bold text-slate-700 tracking-tight">Pengguna Sistem</h2>
         <a href="{{ route('admin.users.create') }}" class="inline-flex items-center px-6 py-2.5 bg-orange-600 text-white text-sm font-bold uppercase tracking-wider hover:bg-orange-700 transition-colors rounded-xl shadow-sm">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -17,7 +17,7 @@
 
     <div class="card bg-white mt-4">
         <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse">
+            <table class="w-full text-left border-collapse data-table">
                 <thead>
                     <tr class="bg-slate-50">
                         <th class="py-4 px-6 text-xs font-bold text-slate-700 uppercase tracking-wider border-b border-slate-100">Nama</th>

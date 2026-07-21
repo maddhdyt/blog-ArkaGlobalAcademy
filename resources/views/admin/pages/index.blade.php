@@ -3,7 +3,7 @@
 @section('page_title', 'Page Management')
 
 @section('content')
-    <div class="mb-6 flex justify-between items-center">
+    <div class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h2 class="text-xl font-heading font-bold text-slate-700 tracking-tight">Daftar Halaman</h2>
         <a href="{{ route('admin.pages.create') }}" class="inline-flex items-center px-6 py-2.5 bg-orange-600 text-white text-sm font-bold uppercase tracking-wider hover:bg-orange-700 transition-colors rounded-xl shadow-sm">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -17,7 +17,7 @@
 
     <div class="card bg-white mt-4">
         <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse">
+            <table class="w-full text-left border-collapse data-table">
                 <thead>
                     <tr class="bg-slate-50">
                         <th class="py-4 px-6 text-xs font-bold text-slate-700 uppercase tracking-wider border-b border-slate-100">Title</th>
@@ -30,7 +30,7 @@
                 <tbody class="divide-y divide-slate-100">
                     @forelse($pages as $page)
                         <tr class="hover:bg-slate-50 transition-colors group">
-                            <td class="py-4 px-6">
+                            <td class="py-4 px-6 wrap-content">
                                 <div class="text-sm font-bold text-slate-700">{{ $page->title }}</div>
                                 <div class="text-xs text-slate-700/70">{{ Str::limit($page->excerpt, 50) }}</div>
                             </td>

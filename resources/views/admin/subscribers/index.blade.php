@@ -11,7 +11,7 @@
 
     <div class="card bg-white mt-4">
         <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse">
+            <table class="w-full text-left border-collapse data-table">
                 <thead>
                     <tr class="bg-slate-50">
                         <th class="py-4 px-6 text-xs font-bold text-slate-700 uppercase tracking-wider border-b border-slate-100">Nama</th>
