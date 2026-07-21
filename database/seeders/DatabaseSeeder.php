@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
         // Create admin user
         $admin = User::create([
             'name' => 'Admin',
-            'email' => 'admin@arkaseo.com',
+            'email' => 'admin@arkaglobalacademy.com',
             'password' => Hash::make('password'),
         ]);
         
@@ -74,8 +74,8 @@ class DatabaseSeeder extends Seeder
         $aboutPage = Page::create([
             'title' => 'About Us',
             'slug' => 'about',
-            'content' => '<h1>About ArkaSEO</h1><p>We are a leading SEO and digital marketing agency.</p>',
-            'meta_description' => 'Learn more about ArkaSEO',
+            'content' => '<h1>About Arka Global Academy</h1><p>We are a leading educational platform and agency.</p>',
+            'meta_description' => 'Learn more about Arka Global Academy',
             'status' => 'published',
         ]);
         
@@ -83,7 +83,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'Contact',
             'slug' => 'contact',
             'content' => '<h1>Contact Us</h1><p>Get in touch with our team.</p>',
-            'meta_description' => 'Contact ArkaSEO',
+            'meta_description' => 'Contact Arka Global Academy',
             'status' => 'published',
         ]);
         
@@ -91,7 +91,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'Services',
             'slug' => 'services',
             'content' => '<h1>Our Services</h1><p>SEO, Content Marketing, PPC, and more.</p>',
-            'meta_description' => 'ArkaSEO Services',
+            'meta_description' => 'Arka Global Academy Services',
             'status' => 'published',
         ]);
         

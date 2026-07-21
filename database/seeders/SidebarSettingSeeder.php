@@ -19,7 +19,7 @@ class SidebarSettingSeeder extends Seeder
             'theme_text_color' => '#111827',
             'theme_text_muted_color' => '#4b5563',
             'theme_border_color' => '#e5e7eb',
-            'footer_description' => 'ArkaSEO menghadirkan berita, tips, dan insight terbaru dunia crypto & blockchain.',
+            'footer_description' => 'Arka Global Academy menghadirkan berita, tips, dan insight terbaru seputar pendidikan dan teknologi.',
             'footer_facebook_url' => '#',
             'footer_instagram_url' => '#',
             'footer_x_url' => '#',

@@ -168,7 +168,7 @@
             <div class="content">
                 <div class="meta">
                     <span class="pill">{{ $post->category->name ?? 'Umum' }}</span>
-                    <span>{{ optional($post->user)->name ?? 'Redaksi ArkaSEO' }}</span>
+                    <span>{{ optional($post->user)->name ?? 'Redaksi Arka Global Academy' }}</span>
                 </div>
                 <p class="excerpt">
                     {{ $post->excerpt ?: \Illuminate\Support\Str::limit(strip_tags($post->content), 180) }}</p>
@@ -179,7 +179,7 @@
             </div>
 
             <div class="footer">
-                <p style="margin:0 0 6px;">Kamu menerima email ini karena telah berlangganan di ArkaSEO.</p>
+                <p style="margin:0 0 6px;">Kamu menerima email ini karena telah berlangganan di Arka Global Academy.</p>
                 <p style="margin:0;">Jika tautan tidak berfungsi, salin URL berikut:
                     {{ route('posts.show', $post->slug) }}</p>
             </div>

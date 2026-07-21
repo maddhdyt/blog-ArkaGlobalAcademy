@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // --- Update Preview ---
         previewUrl.textContent = `${domain}/${slug}`;
-        previewTitle.textContent = title ? `${title} - Nusa Education` : 'Judul Postingan Akan Muncul Di Sini - Nusa Education';
+        previewTitle.textContent = title ? `${title} - Arka Global Academy` : 'Judul Postingan Akan Muncul Di Sini - Arka Global Academy';
         previewDesc.textContent = metaDesc ? metaDesc : 'Deskripsi meta belum diisi. Masukkan deskripsi meta agar muncul di hasil pencarian Google dengan rapi.';
 
         // --- Check conditions ---
