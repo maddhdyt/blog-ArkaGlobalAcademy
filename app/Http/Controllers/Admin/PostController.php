@@ -125,14 +125,14 @@ class PostController extends Controller
         $validated['content'] = clean($validated['content']);
         
         if ($request->has('remove_thumbnail') && $request->remove_thumbnail == '1') {
-            if ($post->thumbnail) {
-                Storage::disk('public')->delete($post->thumbnail);
+            if ($post->thumbnail && file_exists(public_path('storage/' . $post->thumbnail))) {
+                unlink(public_path('storage/' . $post->thumbnail));
             }
             $validated['thumbnail'] = null;
         } elseif ($request->hasFile('thumbnail')) {
             // Delete old thumbnail
-            if ($post->thumbnail) {
-                Storage::disk('public')->delete($post->thumbnail);
+            if ($post->thumbnail && file_exists(public_path('storage/' . $post->thumbnail))) {
+                unlink(public_path('storage/' . $post->thumbnail));
             }
             $file = $request->file('thumbnail');
             $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
@@ -165,8 +165,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        if ($post->thumbnail) {
-            Storage::disk('public')->delete($post->thumbnail);
+        if ($post->thumbnail && file_exists(public_path('storage/' . $post->thumbnail))) {
+            unlink(public_path('storage/' . $post->thumbnail));
         }
         
         $post->delete();
