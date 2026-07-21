@@ -20,7 +20,7 @@ class SidebarSettingController extends Controller
     {
         $data = $request->validate([
             'site_logo_url' => ['nullable', 'url'],
-            'site_logo' => ['nullable', 'image', 'max:2048'],
+            'site_logo' => ['nullable', 'file', 'max:2048'],
             'theme_primary_color' => ['nullable', 'string', 'max:20'],
             'theme_primary_strong_color' => ['nullable', 'string', 'max:20'],
             'theme_primary_soft_color' => ['nullable', 'string', 'max:20'],
@@ -51,8 +51,10 @@ class SidebarSettingController extends Controller
         $setting = SidebarSetting::first() ?? new SidebarSetting();
 
         if ($request->hasFile('site_logo')) {
-            $path = $request->file('site_logo')->store('sidebar/logo', 'public');
-            $data['site_logo_url'] = Storage::url($path);
+            $file = $request->file('site_logo');
+            $filename = time() . '_' . \Illuminate\Support\Str::random(10) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('storage/sidebar/logo'), $filename);
+            $data['site_logo_url'] = Storage::url('sidebar/logo/' . $filename);
         }
 
 

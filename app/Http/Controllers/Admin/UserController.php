@@ -33,7 +33,7 @@ class UserController extends Controller
             'role' => ['required', 'in:admin,user'],
             'role_title' => ['nullable', 'string', 'max:255'],
             'avatar_url' => ['nullable', 'url'],
-            'avatar' => ['nullable', 'image', 'max:2048'],
+            'avatar' => ['nullable', 'file', 'max:2048'],
             'bio' => ['nullable', 'string'],
             'tiktok_url' => ['nullable', 'url'],
             'youtube_url' => ['nullable', 'url'],
@@ -47,8 +47,10 @@ class UserController extends Controller
         ]);
 
         if ($request->hasFile('avatar')) {
-            $path = $request->file('avatar')->store('users/avatars', 'public');
-            $user->avatar_url = Storage::url($path);
+            $file = $request->file('avatar');
+            $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('storage/users/avatars'), $filename);
+            $user->avatar_url = Storage::url('users/avatars/' . $filename);
         } else if (!empty($data['avatar_url'])) {
             $user->avatar_url = $data['avatar_url'];
         }
@@ -81,7 +83,7 @@ class UserController extends Controller
             'role' => ['required', 'in:admin,user'],
             'role_title' => ['nullable', 'string', 'max:255'],
             'avatar_url' => ['nullable', 'url'],
-            'avatar' => ['nullable', 'image', 'max:2048'],
+            'avatar' => ['nullable', 'file', 'max:2048'],
             'bio' => ['nullable', 'string'],
             'tiktok_url' => ['nullable', 'url'],
             'youtube_url' => ['nullable', 'url'],
@@ -95,8 +97,10 @@ class UserController extends Controller
         }
 
         if ($request->hasFile('avatar')) {
-            $path = $request->file('avatar')->store('users/avatars', 'public');
-            $user->avatar_url = Storage::url($path);
+            $file = $request->file('avatar');
+            $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('storage/users/avatars'), $filename);
+            $user->avatar_url = Storage::url('users/avatars/' . $filename);
         } else if (array_key_exists('avatar_url', $data)) {
             $user->avatar_url = $data['avatar_url'];
         }

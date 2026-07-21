@@ -46,7 +46,7 @@ class PostController extends Controller
             'slug' => 'nullable|string|unique:posts,slug',
             'excerpt' => 'nullable|string',
             'content' => 'required|string',
-            'thumbnail' => 'nullable|image|max:2048',
+            'thumbnail' => 'nullable|file|max:2048',
             'meta_description' => 'nullable|string|max:160',
             'focus_keyword' => 'nullable|string|max:255',
             'seo_score' => 'nullable|integer',
@@ -61,7 +61,10 @@ class PostController extends Controller
         $validated['content'] = clean($validated['content']);
         
         if ($request->hasFile('thumbnail')) {
-            $validated['thumbnail'] = $request->file('thumbnail')->store('thumbnails', 'public');
+            $file = $request->file('thumbnail');
+            $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('storage/thumbnails'), $filename);
+            $validated['thumbnail'] = 'thumbnails/' . $filename;
         }
         
         if ($validated['status'] === 'published' && empty($validated['published_at'])) {
@@ -108,7 +111,7 @@ class PostController extends Controller
             'slug' => 'nullable|string|unique:posts,slug,' . $post->id,
             'excerpt' => 'nullable|string',
             'content' => 'required|string',
-            'thumbnail' => 'nullable|image|max:2048',
+            'thumbnail' => 'nullable|file|max:2048',
             'meta_description' => 'nullable|string|max:160',
             'focus_keyword' => 'nullable|string|max:255',
             'seo_score' => 'nullable|integer',
@@ -131,7 +134,10 @@ class PostController extends Controller
             if ($post->thumbnail) {
                 Storage::disk('public')->delete($post->thumbnail);
             }
-            $validated['thumbnail'] = $request->file('thumbnail')->store('thumbnails', 'public');
+            $file = $request->file('thumbnail');
+            $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('storage/thumbnails'), $filename);
+            $validated['thumbnail'] = 'thumbnails/' . $filename;
         }
         
         if ($validated['status'] === 'published' && empty($validated['published_at'])) {
@@ -215,13 +221,15 @@ class PostController extends Controller
     public function uploadImage(Request $request)
     {
         $request->validate([
-            'image' => 'required|image|max:5120', // Max 5MB
+            'image' => 'required|file|max:5120', // Max 5MB
         ]);
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('post-images', 'public');
+            $file = $request->file('image');
+            $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('storage/post-images'), $filename);
             return response()->json([
-                'url' => Storage::url($path)
+                'url' => Storage::url('post-images/' . $filename)
             ]);
         }
 
