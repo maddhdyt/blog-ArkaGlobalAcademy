@@ -8,8 +8,8 @@
     <!-- Diagonal grid pattern for texture -->
     <div class="absolute inset-0 opacity-[0.03]" style="background-image: repeating-linear-gradient(45deg, #000 0, #000 1px, transparent 0, transparent 50%); background-size: 10px 10px;"></div>
     
-    <!-- Center Icon/Text -->
-    <div class="relative z-10 w-14 h-14 bg-white/60 backdrop-blur-md rounded-2xl shadow-sm border border-white/50 flex items-center justify-center text-2xl font-bold text-orange-500 font-heading">
-        {{ strtoupper(substr($category, 0, 1)) }}
+    <!-- Center Text -->
+    <div class="relative z-10 px-6 py-3 bg-white/60 backdrop-blur-md rounded-2xl shadow-sm border border-white/50 flex items-center justify-center text-lg sm:text-xl font-bold text-orange-600 font-heading tracking-wide">
+        {{ $category }}
     </div>
 </div>
