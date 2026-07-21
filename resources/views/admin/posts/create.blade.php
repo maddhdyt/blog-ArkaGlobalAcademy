@@ -390,7 +390,11 @@
                         document.getElementById('focus_keyword').value = draft.focus_keyword;
                     }
                     if (draft.category_id && !document.getElementById('category_id').value) {
-                        document.getElementById('category_id').value = draft.category_id;
+                        if (typeof categoryTomSelect !== 'undefined') {
+                            categoryTomSelect.setValue(draft.category_id);
+                        } else {
+                            document.getElementById('category_id').value = draft.category_id;
+                        }
                     }
                     if (draft.status) {
                         document.getElementById('status').value = draft.status;
@@ -540,7 +544,7 @@
         }
 
         // Initialize TomSelect for Category
-        new TomSelect("#category_id", {
+        const categoryTomSelect = new TomSelect("#category_id", {
             create: function(input, callback) {
                 const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
                 indicator.textContent = 'Menambahkan kategori...';
