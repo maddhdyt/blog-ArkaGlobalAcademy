@@ -34,7 +34,7 @@
                             <!-- Right: Content -->
                             <div class="p-8 lg:p-12 flex flex-col justify-center">
                                 <div class="inline-flex items-center gap-2 text-xs font-bold text-slate-500 uppercase tracking-widest mb-6">
-                                    <span class="px-3 py-1 bg-slate-100 rounded-full">Artikel Utama</span>
+                                    <span class="px-3 py-1 bg-slate-100 rounded-full">Artikel Populer</span>
                                 </div>
                                 <h3 class="text-3xl lg:text-4xl font-bold text-slate-900 leading-tight mb-4 group-hover:text-orange-600 transition">
                                     <a href="{{ route('posts.show', $heroPost->slug) }}">
