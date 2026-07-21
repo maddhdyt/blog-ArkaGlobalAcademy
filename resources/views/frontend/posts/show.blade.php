@@ -218,8 +218,7 @@
                 </article>
 
                 <!-- Sidebar -->
-                <aside class="lg:col-span-4 xl:col-span-3 lg:border-l border-slate-200 lg:pl-10 xl:pl-12 h-full relative">
-                    <div class="space-y-12 lg:sticky lg:top-32 max-h-[calc(100vh-8rem)] overflow-y-auto pr-2 pb-8">
+                <aside class="lg:col-span-4 xl:col-span-3 space-y-12 lg:border-l border-slate-200 lg:pl-10 xl:pl-12 h-full relative">
                     
                     {{-- Author Profile Widget --}}
                     <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 space-y-6">
@@ -303,7 +302,7 @@
                     </div>
 
                     {{-- CTA Widget --}}
-                    <div class="bg-slate-900 text-slate-50 p-8 rounded-3xl space-y-6 overflow-hidden relative">
+                    <div class="bg-slate-900 text-slate-50 p-8 rounded-3xl space-y-6 overflow-hidden relative lg:sticky lg:top-32">
                         <div class="absolute -top-12 -right-12 w-32 h-32 bg-orange-600/20 rounded-full blur-2xl pointer-events-none"></div>
                         @if (optional($sidebar)->cta_badge)
                             <p class="text-[11px] font-bold uppercase tracking-widest text-orange-500 font-mono">
@@ -331,7 +330,7 @@
                             @endif
                         </div>
                     </div>
-                    </div>
+
                 </aside>
             </div>
         </div>
