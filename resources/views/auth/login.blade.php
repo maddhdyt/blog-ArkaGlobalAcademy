@@ -2,14 +2,16 @@
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
         
         <!-- Logo -->
-        <a href="{{ route('home') }}" class="inline-block mb-4">
-            <img src="{{ $siteLogo ?? '' }}" alt="Arka Global Academy" class="h-16 w-auto -ml-3">
-        </a>
+        <div class="mb-6 flex">
+            <a href="{{ route('home') }}" class="inline-block">
+                <img src="{{ $siteLogo ?? '' }}" alt="Arka Global Academy" class="h-12 w-auto object-contain">
+            </a>
+        </div>
 
         <!-- Title -->
         <div class="mb-10">
-            <h2 class="text-3xl font-heading font-bold text-slate-900 tracking-tight mb-2">Selamat Datang Kembali</h2>
-            <p class="text-slate-500">Log in untuk mengelola Blog Arka Global Academy.</p>
+            <h2 class="text-2xl lg:text-3xl font-heading font-bold text-slate-800 tracking-tight mb-2">Selamat Datang Kembali</h2>
+            <p class="text-sm text-slate-500">Log in untuk mengelola Blog Arka Global Academy.</p>
         </div>
 
         <!-- Session Status -->
@@ -20,17 +22,17 @@
 
             <!-- Email Address -->
             <div>
-                <label for="email" class="block text-sm font-bold text-slate-700 mb-2">Email</label>
+                <label for="email" class="block text-sm font-bold text-slate-600 mb-2">Email</label>
                 <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="username"
-                    class="w-full h-12 bg-slate-50 border border-slate-200 px-4 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent rounded-xl shadow-sm transition-colors">
+                    class="w-full h-12 bg-slate-50 border border-slate-200 px-4 py-2 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent rounded-xl shadow-sm transition-colors">
                 <x-input-error :messages="$errors->get('email')" class="mt-2 text-red-600 text-sm font-medium" />
             </div>
 
             <!-- Password -->
             <div>
-                <label for="password" class="block text-sm font-bold text-slate-700 mb-2">Password</label>
+                <label for="password" class="block text-sm font-bold text-slate-600 mb-2">Password</label>
                 <input id="password" type="password" name="password" required autocomplete="current-password"
-                    class="w-full h-12 bg-slate-50 border border-slate-200 px-4 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent rounded-xl shadow-sm transition-colors">
+                    class="w-full h-12 bg-slate-50 border border-slate-200 px-4 py-2 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent rounded-xl shadow-sm transition-colors">
                 <x-input-error :messages="$errors->get('password')" class="mt-2 text-red-600 text-sm font-medium" />
             </div>
 
