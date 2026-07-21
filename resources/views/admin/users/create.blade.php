@@ -81,7 +81,13 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label class="form-label" for="password">Password *</label>
-                            <input type="password" name="password" id="password" class="form-input @error('password') border-red-500 @enderror" required>
+                            <div x-data="{ show: false }" class="relative">
+                                <input :type="show ? 'text' : 'password'" name="password" id="password" class="form-input pr-10 @error('password') border-red-500 @enderror" required>
+                                <button type="button" @click="show = !show" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 focus:outline-none">
+                                    <svg x-show="!show" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                                    <svg x-show="show" x-cloak class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.542-7a9.978 9.978 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.542 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" /></svg>
+                                </button>
+                            </div>
                             @error('password')
                                 <p class="text-red-500 text-xs mt-1 font-bold">{{ $message }}</p>
                             @enderror
@@ -89,7 +95,13 @@
 
                         <div>
                             <label class="form-label" for="password_confirmation">Confirm Password *</label>
-                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-input" required>
+                            <div x-data="{ show: false }" class="relative">
+                                <input :type="show ? 'text' : 'password'" name="password_confirmation" id="password_confirmation" class="form-input pr-10" required>
+                                <button type="button" @click="show = !show" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 focus:outline-none">
+                                    <svg x-show="!show" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                                    <svg x-show="show" x-cloak class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.542-7a9.978 9.978 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.542 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" /></svg>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -104,13 +116,21 @@
                         <div class="space-y-4">
                             <div>
                                 <label class="form-label" for="role">Role *</label>
-                                <select name="role" id="role" class="form-input @error('role') border-red-500 @enderror" required>
-                                    @foreach ($roles as $role)
-                                        <option value="{{ $role }}" {{ old('role') == $role ? 'selected' : '' }}>
-                                            {{ ucfirst($role) }}
-                                        </option>
-                                    @endforeach
-                                </select>
+                                <div x-data="{ open: false, selected: '{{ old('role', collect($roles)->first() ?? '') }}' }" class="relative">
+                                    <input type="hidden" name="role" :value="selected">
+                                    <button type="button" @click="open = !open" @click.outside="open = false" class="form-input flex items-center justify-between text-left w-full @error('role') border-red-500 @enderror">
+                                        <span x-text="selected.charAt(0).toUpperCase() + selected.slice(1)" class="block truncate"></span>
+                                        <svg class="w-5 h-5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                    </button>
+                                    <div x-show="open" x-cloak x-transition.opacity.duration.200ms class="absolute z-10 w-full mt-2 bg-white border border-slate-200 rounded-xl shadow-xl overflow-hidden py-1">
+                                        @foreach ($roles as $role)
+                                            <button type="button" @click="selected = '{{ $role }}'; open = false" class="w-full text-left px-4 py-2.5 hover:bg-slate-50 transition-colors flex items-center justify-between" :class="selected === '{{ $role }}' ? 'text-brand-primary font-bold bg-orange-50/50' : 'text-slate-700'">
+                                                {{ ucfirst($role) }}
+                                                <svg x-show="selected === '{{ $role }}'" class="w-4 h-4 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                            </button>
+                                        @endforeach
+                                    </div>
+                                </div>
                                 @error('role')
                                     <p class="text-red-500 text-xs mt-1 font-bold">{{ $message }}</p>
                                 @enderror
