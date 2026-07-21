@@ -180,12 +180,12 @@
                         </div>
                         <div class="flex items-center gap-2">
                             <input type="file" name="thumbnail" id="thumbnail" class="form-input flex-1" accept="image/*">
-                            <button type="button" id="remove-thumbnail-btn" class="p-3 text-red-500 bg-red-50 hover:bg-red-100 border border-red-200 rounded-xl transition-colors shrink-0" title="Hapus Thumbnail">
+                            <button type="button" id="remove-thumbnail-btn" class="p-3 text-red-500 bg-red-50 hover:bg-red-100 border border-red-200 rounded-xl transition-colors shrink-0" title="Batal Pilih">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
                             </button>
                         </div>
-                        <input type="hidden" name="remove_thumbnail" id="remove_thumbnail" value="0">
                         <p class="text-xs font-bold text-gray-500 mt-2 uppercase tracking-wider">PNG, JPG, GIF up to 2MB</p>
+                        <p id="thumbnail-warning" class="text-xs font-bold mt-1 uppercase tracking-wider hidden"></p>
                     </div>
                 </div>
                 </div>
@@ -242,9 +242,10 @@
         }
     </style>
 
-    {{-- Quill assets and init --}}
+    {{-- Quill & Compressor assets --}}
     <link href="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.snow.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/quill@1.3.7/dist/quill.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/compressorjs@1.2.1/dist/compressor.min.js"></script>
     <script>
         function imageHandler() {
             const input = document.createElement('input');
@@ -252,35 +253,49 @@
             input.setAttribute('accept', 'image/*');
             input.click();
 
-            input.onchange = async () => {
-                const file = input.files[0];
-                const formData = new FormData();
-                formData.append('image', file);
+            input.onchange = () => {
+                const originalFile = input.files[0];
+                if (!originalFile) return;
 
-                try {
-                    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-                    const response = await fetch("{{ route('admin.posts.upload-image') }}", {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'X-CSRF-TOKEN': csrfToken
+                new Compressor(originalFile, {
+                    quality: 0.8,
+                    maxWidth: 1920,
+                    maxHeight: 1920,
+                    async success(result) {
+                        if (result.size > 2 * 1024 * 1024) {
+                            alert(`Gambar terlalu besar (${(result.size / 1024 / 1024).toFixed(2)}MB). Harap pilih gambar di bawah 2MB.`);
+                            return;
                         }
-                    });
 
-                    if (response.ok) {
-                        const data = await response.json();
-                        let range = quill.getSelection();
-                        let index = range ? range.index : quill.getLength();
-                        quill.insertEmbed(index, 'image', data.url);
-                        quill.setSelection(index + 1);
-                    } else {
-                        console.error('Upload failed', await response.text());
-                        alert('Gagal mengunggah gambar. Pastikan format benar dan ukuran di bawah 5MB.');
-                    }
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('Terjadi kesalahan JavaScript saat mengunggah gambar. Lihat console untuk detailnya.');
-                }
+                        const formData = new FormData();
+                        formData.append('image', result, result.name || 'image.jpg');
+
+                        try {
+                            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                            const response = await fetch("{{ route('admin.posts.upload-image') }}", {
+                                method: 'POST',
+                                body: formData,
+                                headers: {
+                                    'X-CSRF-TOKEN': csrfToken
+                                }
+                            });
+
+                            if (response.ok) {
+                                const data = await response.json();
+                                let range = quill.getSelection(true);
+                                quill.insertEmbed(range.index, 'image', data.url);
+                                quill.setSelection(range.index + 1);
+                            } else {
+                                alert('Gagal mengunggah gambar.');
+                            }
+                        } catch (error) {
+                            console.error('Error:', error);
+                        }
+                    },
+                    error(err) {
+                        console.error(err.message);
+                    },
+                });
             };
         }
 
@@ -291,20 +306,12 @@
             modules: {
                 toolbar: {
                     container: [
-                        [{
-                            header: [1, 2, 3, false]
-                        }],
+                        [{ header: [1, 2, 3, false] }],
                         ['bold', 'italic', 'underline', 'strike'],
-                        [{
-                            list: 'ordered'
-                        }, {
-                            list: 'bullet'
-                        }],
+                        [{ list: 'ordered' }, { list: 'bullet' }],
                         ['link', 'image'],
                         ['blockquote', 'code-block'],
-                        [{
-                            align: []
-                        }],
+                        [{ align: [] }],
                         ['clean']
                     ],
                     handlers: {
@@ -317,37 +324,21 @@
         const toolbar = quill.getModule('toolbar').container;
         document.getElementById('toolbar-container').appendChild(toolbar);
 
-        
-        
-        
         const sentinel = document.getElementById('sticky-sentinel');
         const tbContainer = document.getElementById('toolbar-container');
         const mainScroll = document.querySelector('main');
         
         if (sentinel && tbContainer && mainScroll) {
             const observer = new IntersectionObserver((entries) => {
-                if (!entries[0].isIntersecting) {
-                    tbContainer.classList.add('is-stuck');
-                } else {
-                    tbContainer.classList.remove('is-stuck');
-                }
-            }, {
-                root: mainScroll,
-                threshold: 0,
-                rootMargin: "0px"
-            });
+                tbContainer.classList.toggle('is-stuck', !entries[0].isIntersecting);
+            }, { root: mainScroll, threshold: 0, rootMargin: "0px" });
             observer.observe(sentinel);
         }
-
-
-
-
 
         const contentInput = document.getElementById('content');
         quill.on('text-change', () => {
             contentInput.value = quill.root.innerHTML;
         });
-        contentInput.value = quill.root.innerHTML;
 
         // Auto-Save Logic (LocalStorage)
         const form = document.getElementById('post-form');
@@ -355,45 +346,23 @@
         const draftKey = 'arka_post_draft_{{ $post->id }}';
         let autoSaveTimer;
 
-        // Restore draft on load
         function restoreDraft() {
             const draftStr = localStorage.getItem(draftKey);
             if (draftStr) {
                 try {
                     const draft = JSON.parse(draftStr);
-                    let hasRestored = false;
-                    
-                    // In edit mode, we overwrite the blade-provided values with our local draft
-                    // because the draft represents the user's latest unsaved changes.
-                    if (draft.title) { document.getElementById('title').value = draft.title; hasRestored = true; }
+                    if (draft.title) document.getElementById('title').value = draft.title;
                     if (draft.slug !== undefined) document.getElementById('slug').value = draft.slug;
                     if (draft.excerpt !== undefined) document.getElementById('excerpt').value = draft.excerpt;
                     if (draft.meta_description !== undefined) document.getElementById('meta_description').value = draft.meta_description;
                     if (draft.focus_keyword !== undefined) document.getElementById('focus_keyword').value = draft.focus_keyword;
                     if (draft.category_id) document.getElementById('category_id').value = draft.category_id;
                     if (draft.status) document.getElementById('status').value = draft.status;
-                    
-                    if (draft.content) {
-                        quill.clipboard.dangerouslyPasteHTML(draft.content);
-                        hasRestored = true;
-                    }
-                    
-                    if (hasRestored) {
-                        indicator.textContent = 'Memulihkan draft lokal...';
-                        indicator.classList.remove('opacity-0');
-                        setTimeout(() => indicator.classList.add('opacity-0'), 3000);
-                        
-                        // trigger input event to update SEO preview
-                        document.getElementById('title').dispatchEvent(new Event('input'));
-                        document.getElementById('meta_description').dispatchEvent(new Event('input'));
-                    }
-                } catch (e) {
-                    console.error("Error restoring draft", e);
-                }
+                    if (draft.content) quill.clipboard.dangerouslyPasteHTML(draft.content);
+                } catch (e) { console.error("Error restoring draft", e); }
             }
         }
 
-        // Save draft
         function saveDraft() {
             const draft = {
                 title: document.getElementById('title').value,
@@ -405,34 +374,22 @@
                 status: document.getElementById('status').value,
                 content: quill.root.innerHTML
             };
-            
             localStorage.setItem(draftKey, JSON.stringify(draft));
-            
             const now = new Date();
-            const timeStr = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
-            
-            indicator.textContent = `Tersimpan di browser pukul ${timeStr}`;
+            indicator.textContent = `Tersimpan pukul ${now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })}`;
             indicator.classList.remove('opacity-0');
         }
 
-        // Listen for changes on form elements
-        const inputElements = form.querySelectorAll('input, select, textarea');
-        inputElements.forEach(el => {
+        form.querySelectorAll('input, select, textarea').forEach(el => {
             el.addEventListener('input', () => {
-                if (el.type === 'file') return; // Don't auto-save file inputs
+                if (el.type === 'file') return;
                 clearTimeout(autoSaveTimer);
                 indicator.textContent = 'Menyimpan...';
                 indicator.classList.remove('opacity-0');
                 autoSaveTimer = setTimeout(saveDraft, 2000);
             });
-            el.addEventListener('change', () => {
-                if (el.type === 'file') return;
-                clearTimeout(autoSaveTimer);
-                saveDraft();
-            });
         });
 
-        // Listen for changes on Quill
         quill.on('text-change', () => {
             clearTimeout(autoSaveTimer);
             indicator.textContent = 'Menyimpan...';
@@ -440,39 +397,83 @@
             autoSaveTimer = setTimeout(saveDraft, 2000);
         });
 
-        // Clear draft on successful submit
-        form.addEventListener('submit', () => {
-            localStorage.removeItem(draftKey);
-        });
-
-        // Initialize restore
+        form.addEventListener('submit', () => localStorage.removeItem(draftKey));
         setTimeout(restoreDraft, 500);
 
-        // Thumbnail removal logic
+        // Thumbnail removal and compression logic
         const removeThumbnailBtn = document.getElementById('remove-thumbnail-btn');
         const thumbnailInput = document.getElementById('thumbnail');
         const removeThumbnailInput = document.getElementById('remove_thumbnail');
-        const thumbnailPreview = document.getElementById('thumbnail-preview-container');
+        const thumbnailWarning = document.getElementById('thumbnail-warning');
+        const submitBtn = document.querySelector('button[type="submit"]');
 
-        if (removeThumbnailBtn) {
+        if (removeThumbnailBtn && thumbnailInput) {
             removeThumbnailBtn.addEventListener('click', () => {
-                // Clear the file input
-                if (thumbnailInput) thumbnailInput.value = '';
-                // Set hidden input to 1 so backend knows to delete existing DB image
-                if (removeThumbnailInput) removeThumbnailInput.value = '1';
-                // Hide preview if it exists
-                if (thumbnailPreview) thumbnailPreview.style.display = 'none';
-                
-                // Trigger change to autosave
-                if (thumbnailInput) thumbnailInput.dispatchEvent(new Event('change'));
+                thumbnailInput.value = '';
+                if (removeThumbnailInput) {
+                    removeThumbnailInput.value = '1';
+                }
+                const currentThumbnail = document.getElementById('current-thumbnail-container');
+                if (currentThumbnail) currentThumbnail.style.display = 'none';
+                thumbnailWarning.classList.add('hidden');
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
             });
         }
-        
-        // If user selects a new file, reset the remove flag
+
         if (thumbnailInput) {
-            thumbnailInput.addEventListener('change', () => {
-                if (thumbnailInput.value && removeThumbnailInput) {
+            thumbnailInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file && removeThumbnailInput) {
                     removeThumbnailInput.value = '0';
+                }
+                
+                if (!file) {
+                    thumbnailWarning.classList.add('hidden');
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    return;
+                }
+
+                if (file.size > 2 * 1024 * 1024) {
+                    thumbnailWarning.textContent = `Ukuran asli ${(file.size / 1024 / 1024).toFixed(2)}MB. Sedang mengompresi...`;
+                    thumbnailWarning.classList.remove('hidden', 'text-red-500', 'text-green-500');
+                    thumbnailWarning.classList.add('text-orange-500');
+                    submitBtn.disabled = true;
+                    submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+
+                    new Compressor(file, {
+                        quality: 0.8,
+                        maxWidth: 1920,
+                        maxHeight: 1920,
+                        success(result) {
+                            if (result.size > 2 * 1024 * 1024) {
+                                thumbnailWarning.textContent = `Gagal! Setelah dikompresi ukuran masih ${(result.size / 1024 / 1024).toFixed(2)}MB (>2MB). Harap ganti gambar.`;
+                                thumbnailWarning.classList.remove('text-orange-500', 'text-green-500');
+                                thumbnailWarning.classList.add('text-red-500');
+                            } else {
+                                thumbnailWarning.textContent = `Sukses! Dikompresi menjadi ${(result.size / 1024).toFixed(0)}KB. Aman diunggah.`;
+                                thumbnailWarning.classList.remove('text-orange-500', 'text-red-500');
+                                thumbnailWarning.classList.add('text-green-500');
+                                submitBtn.disabled = false;
+                                submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                                
+                                const dataTransfer = new DataTransfer();
+                                dataTransfer.items.add(new File([result], result.name || 'thumbnail.jpg', { type: result.type }));
+                                thumbnailInput.files = dataTransfer.files;
+                            }
+                        },
+                        error(err) {
+                            console.error(err.message);
+                            thumbnailWarning.textContent = 'Gagal mengompresi gambar.';
+                            thumbnailWarning.classList.remove('text-orange-500', 'text-green-500');
+                            thumbnailWarning.classList.add('text-red-500');
+                        },
+                    });
+                } else {
+                    thumbnailWarning.classList.add('hidden');
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
                 }
             });
         }
