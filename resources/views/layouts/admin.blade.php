@@ -38,7 +38,7 @@
              x-transition:leave="transition-opacity ease-linear duration-300" 
              x-transition:leave-start="opacity-100" 
              x-transition:leave-end="opacity-0" 
-             class="fixed inset-0 bg-slate-900/80 z-40 lg:hidden backdrop-blur-sm" 
+             class="fixed inset-0 bg-slate-900/80 z-[50] lg:hidden backdrop-blur-sm" 
              @click="sidebarOpen = false"></div>
 
         <!-- Sidebar -->
@@ -46,7 +46,7 @@
                 'translate-x-0': sidebarOpen, 
                 '-translate-x-full lg:-ml-72': !sidebarOpen 
                }" 
-               class="fixed lg:static inset-y-0 left-0 z-50 w-72 bg-white flex flex-col transition-all duration-300 ease-in-out border-r border-slate-200 shadow-xl lg:shadow-none shrink-0 h-full overflow-hidden">
+               class="fixed lg:static inset-y-0 left-0 z-[60] w-72 bg-white flex flex-col transition-all duration-300 ease-in-out border-r border-slate-200 shadow-xl lg:shadow-none shrink-0 h-full overflow-hidden">
             <div class="h-24 flex items-center justify-start px-8 shrink-0">
                 <a href="{{ route('admin.dashboard') }}" class="inline-block">
                     <img src="{{ $siteLogo }}" alt="Arka Global Academy" class="h-10 w-auto object-contain">
