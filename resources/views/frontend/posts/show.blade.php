@@ -196,6 +196,8 @@
                                             @if ($related->thumbnail)
                                                 <img src="{{ $related->thumbnail_url }}" alt="{{ $related->title }}"
                                                     class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                                            @else
+                                                <x-post-fallback-image :category="$related->category->name ?? 'A'" />
                                             @endif
                                         </div>
                                         <div class="space-y-3">
@@ -279,6 +281,8 @@
                                         <div class="w-20 h-20 shrink-0 rounded-xl overflow-hidden bg-slate-100">
                                             @if($trend->thumbnail_url)
                                                 <img src="{{ $trend->thumbnail_url }}" alt="{{ $trend->title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                                            @else
+                                                <x-post-fallback-image :category="$trend->category->name ?? 'A'" />
                                             @endif
                                         </div>
                                         <div>

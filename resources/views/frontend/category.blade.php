@@ -34,9 +34,7 @@
                                     <img src="{{ $post->thumbnail_url }}" alt="{{ $post->title }}"
                                         class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
                                 @else
-                                    <div class="w-full h-full bg-[slate-900] group-hover:scale-105 transition duration-700 flex items-center justify-center text-3xl font-bold text-[slate-50] font-heading">
-                                        {{ Str::upper(Str::substr($post->title, 0, 1)) }}
-                                    </div>
+                                    <x-post-fallback-image :category="$post->category->name ?? 'A'" />
                                 @endif
                             </div>
 

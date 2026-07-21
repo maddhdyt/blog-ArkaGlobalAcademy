@@ -61,8 +61,8 @@
                                         <img src="{{ $post->thumbnail_url }}" alt="{{ $post->title }}"
                                             class="absolute inset-0 h-full w-full object-cover transition duration-1000 group-hover:scale-105 opacity-90 group-hover:opacity-100">
                                     @else
-                                        <div class="absolute inset-0 flex items-center justify-center opacity-10">
-                                            <span class="text-[5rem] font-bold text-[slate-50] font-heading">{{ Str::upper(Str::substr($post->title, 0, 1)) }}</span>
+                                        <div class="absolute inset-0 h-full w-full">
+                                            <x-post-fallback-image :category="$post->category->name ?? 'A'" />
                                         </div>
                                     @endif
                                 </a>

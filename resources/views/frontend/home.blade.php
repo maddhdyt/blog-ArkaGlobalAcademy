@@ -24,11 +24,13 @@
                         <div class="grid lg:grid-cols-2 items-stretch">
                             <!-- Left: Image -->
                             <div class="relative min-h-[300px] lg:min-h-[400px] bg-slate-100 overflow-hidden">
-                                @if($heroPost->thumbnail_url)
-                                    <a href="{{ route('posts.show', $heroPost->slug) }}" class="absolute inset-0">
+                                <a href="{{ route('posts.show', $heroPost->slug) }}" class="absolute inset-0">
+                                    @if($heroPost->thumbnail_url)
                                         <img src="{{ $heroPost->thumbnail_url }}" alt="{{ $heroPost->title }}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-                                    </a>
-                                @endif
+                                    @else
+                                        <x-post-fallback-image :category="$heroPost->category->name ?? 'A'" />
+                                    @endif
+                                </a>
                             </div>
                             
                             <!-- Right: Content -->
@@ -104,13 +106,13 @@
                 
                 <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     @forelse ($featureGridPosts as $post)
-                        @php
-                            $image = $post->thumbnail_url ?? 'https://placehold.co/900x600?text=No+Image';
-                        @endphp
                         <article class="flex flex-col group bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-md transition-shadow">
                             <a href="{{ route('posts.show', $post->slug) }}" class="block overflow-hidden aspect-video w-full">
-                                <img src="{{ $image }}" alt="{{ $post->title }}"
-                                    class="h-full w-full object-cover group-hover:scale-105 transition duration-700">
+                                @if($post->thumbnail_url)
+                                    <img src="{{ $post->thumbnail_url }}" alt="{{ $post->title }}" class="h-full w-full object-cover group-hover:scale-105 transition duration-700">
+                                @else
+                                    <x-post-fallback-image :category="$post->category->name ?? 'A'" />
+                                @endif
                             </a>
                             <div class="flex flex-1 flex-col p-6 sm:p-8">
                                 <h3 class="text-[22px] sm:text-2xl font-normal text-faux-medium leading-snug text-slate-900 font-heading group-hover:text-brand-primary transition mb-3">
@@ -217,13 +219,13 @@
                     
                     <div class="grid gap-6 md:grid-cols-2 flex-1">
                         @forelse ($trendingPosts as $post)
-                            @php
-                                $image = $post->thumbnail_url ?? $placeholder;
-                            @endphp
                             <article class="flex gap-5 group items-start pb-4 border-b border-gray-100 last:border-0 last:pb-0">
                                 <a href="{{ route('posts.show', $post->slug) }}" class="block shrink-0 overflow-hidden w-28 aspect-[4/3]">
-                                    <img src="{{ $image }}" alt="{{ $post->title }}"
-                                        class="h-full w-full object-cover group-hover:scale-105 transition duration-700">
+                                    @if($post->thumbnail_url)
+                                        <img src="{{ $post->thumbnail_url }}" alt="{{ $post->title }}" class="h-full w-full object-cover group-hover:scale-105 transition duration-700">
+                                    @else
+                                        <x-post-fallback-image :category="$post->category->name ?? 'A'" />
+                                    @endif
                                 </a>
                                 <div class="flex flex-1 flex-col">
                                     <div class="inline-flex items-center gap-1.5 text-[11px] text-slate-500 font-mono mb-2 uppercase tracking-widest">
