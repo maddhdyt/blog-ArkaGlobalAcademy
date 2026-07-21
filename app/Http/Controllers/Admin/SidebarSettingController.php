@@ -54,7 +54,7 @@ class SidebarSettingController extends Controller
             $file = $request->file('site_logo');
             $filename = time() . '_' . \Illuminate\Support\Str::random(10) . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('storage/sidebar/logo'), $filename);
-            $data['site_logo_url'] = Storage::url('sidebar/logo/' . $filename);
+            $data['site_logo_url'] = asset('storage/sidebar/logo/' . $filename);
         }
 
 

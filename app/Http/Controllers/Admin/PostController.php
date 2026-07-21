@@ -229,7 +229,7 @@ class PostController extends Controller
             $filename = time() . '_' . Str::random(10) . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('storage/post-images'), $filename);
             return response()->json([
-                'url' => Storage::url('post-images/' . $filename)
+                'url' => asset('storage/post-images/' . $filename)
             ]);
         }
 
