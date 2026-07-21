@@ -22,6 +22,16 @@
         #nprogress .bar { background: #ea580c !important; height: 3px !important; }
         #nprogress .peg { box-shadow: 0 0 10px #ea580c, 0 0 5px #ea580c !important; }
         #nprogress .spinner-icon { border-top-color: #ea580c !important; border-left-color: #ea580c !important; }
+
+        /* Bulletproof Responsive Sidebar without relying on Tailwind JIT */
+        @media (max-width: 1023px) {
+            .responsive-sidebar { position: fixed !important; z-index: 60 !important; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+            .responsive-backdrop { position: fixed !important; top: 0; right: 0; bottom: 0; left: 0; background-color: rgba(15, 23, 42, 0.8); z-index: 50; }
+        }
+        @media (min-width: 1024px) {
+            .responsive-sidebar { position: relative !important; z-index: 40 !important; box-shadow: none !important; }
+            .responsive-backdrop { display: none !important; }
+        }
     </style>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -32,21 +42,13 @@
         
         <!-- Mobile Backdrop -->
         <div x-show="sidebarOpen" 
-             x-transition:enter="transition-opacity ease-linear duration-300" 
-             x-transition:enter-start="opacity-0" 
-             x-transition:enter-end="opacity-100" 
-             x-transition:leave="transition-opacity ease-linear duration-300" 
-             x-transition:leave-start="opacity-100" 
-             x-transition:leave-end="opacity-0" 
-             class="fixed inset-0 bg-slate-900/80 z-[50] lg:hidden backdrop-blur-sm" 
+             x-transition.opacity
+             class="responsive-backdrop" 
              @click="sidebarOpen = false"></div>
 
         <!-- Sidebar -->
-        <aside :class="{ 
-                'translate-x-0': sidebarOpen, 
-                '-translate-x-full lg:-ml-72': !sidebarOpen 
-               }" 
-               class="fixed lg:static inset-y-0 left-0 z-[60] w-72 bg-white flex flex-col transition-all duration-300 ease-in-out border-r border-slate-200 shadow-xl lg:shadow-none shrink-0 h-full overflow-hidden">
+        <aside :class="sidebarOpen ? 'ml-0' : '-ml-72'" 
+               class="responsive-sidebar inset-y-0 left-0 w-72 bg-white flex flex-col transition-all duration-300 ease-in-out border-r border-slate-200 shrink-0 h-full overflow-hidden">
             <div class="h-24 flex items-center justify-start px-8 shrink-0">
                 <a href="{{ route('admin.dashboard') }}" class="inline-block">
                     <img src="{{ $siteLogo }}" alt="Arka Global Academy" class="h-10 w-auto object-contain">
