@@ -410,6 +410,8 @@
 
         if (removeThumbnailBtn && thumbnailInput) {
             removeThumbnailBtn.addEventListener('click', () => {
+                if (!confirm('Apakah kamu yakin ingin menghapus thumbnail ini?')) return;
+                
                 thumbnailInput.value = '';
                 if (removeThumbnailInput) {
                     removeThumbnailInput.value = '1';
