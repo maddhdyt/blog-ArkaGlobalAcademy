@@ -178,6 +178,7 @@
                                 </div>
                             @endif
                         </div>
+                        <input type="hidden" name="remove_thumbnail" id="remove_thumbnail" value="0">
                         <div class="flex items-center gap-2">
                             <input type="file" name="thumbnail" id="thumbnail" class="form-input flex-1" accept="image/*">
                             <button type="button" id="remove-thumbnail-btn" class="p-3 text-red-500 bg-red-50 hover:bg-red-100 border border-red-200 rounded-xl transition-colors shrink-0" title="Batal Pilih">
@@ -413,7 +414,7 @@
                 if (removeThumbnailInput) {
                     removeThumbnailInput.value = '1';
                 }
-                const currentThumbnail = document.getElementById('current-thumbnail-container');
+                const currentThumbnail = document.getElementById('thumbnail-preview-container');
                 if (currentThumbnail) currentThumbnail.style.display = 'none';
                 thumbnailWarning.classList.add('hidden');
                 submitBtn.disabled = false;
