@@ -61,15 +61,6 @@
                             font-size: 16px !important;
                             line-height: 1.7 !important;
                         }
-                        /* Responsive Toolbar Scrolling */
-                        .scrollbar-hide::-webkit-scrollbar { display: none; }
-                        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-                        #toolbar-container .ql-toolbar {
-                            display: flex !important;
-                            flex-wrap: nowrap !important;
-                            width: max-content !important;
-                            padding: 8px 12px !important;
-                        }
                     </style>
                     <div id="editor-header" class="rounded-t-2xl transition-all duration-300 relative">
                         <div id="sticky-sentinel" class="absolute w-full h-px pointer-events-none" style="top: 8px;"></div>
@@ -79,8 +70,8 @@
                     </div>
 
                     <!-- Sticky Pill Wrapper -->
-                    <div class="sticky top-0 z-40 w-full text-left sm:text-right sm:-mt-12 mt-2 mb-2 pointer-events-none px-4" id="sticky-toolbar-wrapper">
-                        <div id="toolbar-container" class="pointer-events-auto inline-block text-left max-w-full overflow-x-auto bg-white sm:bg-transparent rounded-xl sm:rounded-full shadow-sm sm:shadow-none border border-slate-200 sm:border-transparent transition-all duration-300 scrollbar-hide align-middle">
+                    <div class="sticky top-0 z-40 w-full flex justify-start sm:justify-end sm:-mt-12 mt-2 mb-2 pointer-events-none sm:px-4" id="sticky-toolbar-wrapper">
+                        <div id="toolbar-container" class="pointer-events-auto w-full sm:w-max max-w-full bg-white sm:bg-transparent rounded-xl sm:rounded-full shadow-sm sm:shadow-none border border-slate-200 sm:border-transparent transition-all duration-300">
                         </div>
                     </div>
                     <div id="content-editor" class="bg-white min-h-[500px] text-lg text-[#433836] rounded-b-2xl overflow-hidden relative" aria-label="Content editor">{!! old('content') !!}</div>
