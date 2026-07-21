@@ -168,30 +168,30 @@
         </aside>
 
         <!-- Main Content -->
-        <div class="flex-1 h-full p-4 sm:p-6 flex flex-col">
-            <div class="flex-1 flex flex-col overflow-hidden bg-slate-50/50 rounded-3xl border border-slate-200/60 shadow-sm">
+        <div class="flex-1 h-full p-2 sm:p-6 flex flex-col min-w-0">
+            <div class="flex-1 flex flex-col overflow-hidden bg-slate-50/50 rounded-xl sm:rounded-3xl border border-slate-200/60 shadow-sm min-w-0">
             <!-- Header -->
-            <header class="bg-transparent h-24 shrink-0">
-                <div class="flex items-center justify-between px-8 h-full">
-                    <div class="flex items-center gap-4">
-                        <button @click="sidebarOpen = !sidebarOpen" class="text-slate-800 hover:text-brand-primary transition-colors focus:outline-none">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <header class="bg-transparent h-20 sm:h-24 shrink-0">
+                <div class="flex items-center justify-between px-4 sm:px-8 h-full gap-4">
+                    <div class="flex items-center gap-3 sm:gap-4 min-w-0">
+                        <button @click="sidebarOpen = !sidebarOpen" class="text-slate-800 hover:text-brand-primary transition-colors focus:outline-none shrink-0">
+                            <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                             </svg>
                         </button>
-                        <h1 class="text-3xl font-heading text-slate-800 tracking-tight">@yield('page_title', 'Dashboard')</h1>
+                        <h1 class="text-xl sm:text-3xl font-heading text-slate-800 tracking-tight truncate">@yield('page_title', 'Dashboard')</h1>
                     </div>
 
-                    <div class="flex items-center gap-6">
+                    <div class="flex items-center gap-4 sm:gap-6 shrink-0">
                         <a href="{{ route('home') }}" target="_blank"
-                            class="text-sm font-bold uppercase tracking-wider text-slate-800 hover:text-brand-primary transition-colors flex items-center gap-2">
+                            class="hidden sm:flex text-sm font-bold uppercase tracking-wider text-slate-800 hover:text-brand-primary transition-colors items-center gap-2">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                             View Site
                         </a>
                         
-                        <div class="h-6 w-px bg-slate-300"></div>
+                        <div class="hidden sm:block h-6 w-px bg-slate-300"></div>
 
-                        <div class="flex items-center gap-3">
+                        <div class="flex items-center gap-2 sm:gap-3">
                             @if(auth()->user()->avatar_url)
                                 <img src="{{ auth()->user()->avatar_url }}" alt="{{ auth()->user()->name }}" class="w-8 h-8 rounded-full border border-slate-200 object-cover bg-slate-50">
                             @else
