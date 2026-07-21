@@ -28,9 +28,25 @@
 </head>
 
 <body class="bg-white text-slate-800 font-sans">
-    <div x-data="{ sidebarOpen: true }" class="flex h-screen overflow-hidden">
+    <div x-data="{ sidebarOpen: window.innerWidth >= 1024 }" @resize.window="sidebarOpen = window.innerWidth >= 1024" class="flex h-screen overflow-hidden bg-slate-50 relative">
+        
+        <!-- Mobile Backdrop -->
+        <div x-show="sidebarOpen" 
+             x-transition:enter="transition-opacity ease-linear duration-300" 
+             x-transition:enter-start="opacity-0" 
+             x-transition:enter-end="opacity-100" 
+             x-transition:leave="transition-opacity ease-linear duration-300" 
+             x-transition:leave-start="opacity-100" 
+             x-transition:leave-end="opacity-0" 
+             class="fixed inset-0 bg-slate-900/80 z-40 lg:hidden backdrop-blur-sm" 
+             @click="sidebarOpen = false"></div>
+
         <!-- Sidebar -->
-        <aside :class="sidebarOpen ? 'ml-0' : '-ml-72'" class="w-72 shrink-0 bg-white flex flex-col transition-all duration-300 h-full overflow-hidden">
+        <aside :class="{ 
+                'translate-x-0': sidebarOpen, 
+                '-translate-x-full lg:-ml-72': !sidebarOpen 
+               }" 
+               class="fixed lg:static inset-y-0 left-0 z-50 w-72 bg-white flex flex-col transition-all duration-300 ease-in-out border-r border-slate-200 shadow-xl lg:shadow-none shrink-0 h-full overflow-hidden">
             <div class="h-24 flex items-center justify-start px-8 shrink-0">
                 <a href="{{ route('admin.dashboard') }}" class="inline-block">
                     <img src="{{ $siteLogo }}" alt="Arka Global Academy" class="h-10 w-auto object-contain">

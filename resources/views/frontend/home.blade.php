@@ -96,8 +96,8 @@
 
             {{-- Latest grid (Full width now, no sidebar) --}}
             <section id="terbaru" class="space-y-6">
-                <div class="flex items-center justify-between pb-4 border-b border-gray-200">
-                    <h2 class="text-3xl font-normal text-faux-semibold text-gray-900 font-heading">Artikel Terbaru</h2>
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-gray-200 gap-4">
+                    <h2 class="text-2xl sm:text-3xl font-normal text-faux-semibold text-gray-900 font-heading">Artikel Terbaru</h2>
                     <a href="{{ route('posts.index') }}"
                         class="inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold text-slate-900 border border-slate-900 hover:bg-slate-900 hover:text-white transition-colors duration-200 rounded-full">
                         Lihat semua
@@ -138,10 +138,10 @@
 
             {{-- Gallery preview --}}
             <section class="space-y-6">
-                <div class="flex items-center justify-between pb-4 border-b border-gray-200">
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between pb-4 border-b border-gray-200 gap-4">
                     <div>
                         <p class="text-[13px] font-bold text-gray-500 uppercase tracking-widest font-mono mb-2">Galeri</p>
-                        <h2 class="text-3xl font-normal text-faux-semibold text-gray-900 font-heading mb-1">Momen Terbaru</h2>
+                        <h2 class="text-2xl sm:text-3xl font-normal text-faux-semibold text-gray-900 font-heading mb-1">Momen Terbaru</h2>
                         <p class="text-[15px] text-gray-600">Klik foto untuk melihat ukuran penuh.</p>
                     </div>
                     <a href="{{ route('gallery.index') }}"
@@ -204,8 +204,8 @@
                 </div>
 
                 <div class="lg:col-span-2 bg-white p-8 border border-slate-200 shadow-sm flex flex-col rounded-2xl">
-                    <div class="flex items-center justify-between pb-4 border-b border-gray-200 mb-6">
-                        <h3 class="text-2xl font-normal text-faux-medium text-slate-900 font-heading">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-gray-200 mb-6 gap-4">
+                        <h3 class="text-xl sm:text-2xl font-normal text-faux-medium text-slate-900 font-heading">
                             {{ optional($sidebar)->trending_title ?? 'Sedang Tren' }}
                         </h3>
                         @if (optional($sidebar)->trending_link_url && optional($sidebar)->trending_link_text)
