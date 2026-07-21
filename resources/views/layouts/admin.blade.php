@@ -177,7 +177,7 @@
                             <div class="w-8 h-8 rounded-full border border-slate-200 bg-slate-100 flex items-center justify-center text-slate-700 font-bold">
                                 {{ substr(auth()->user()->name ?? 'A', 0, 1) }}
                             </div>
-                            <form method="POST" action="{{ route('logout') }}">
+                            <form method="POST" action="{{ route('logout') }}" onsubmit="return confirm('Apakah Anda yakin ingin logout dari panel admin?');">
                                 @csrf
                                 <button type="submit" class="text-sm font-bold uppercase tracking-wider text-slate-800 hover:text-red-600 transition-colors">Logout</button>
                             </form>
