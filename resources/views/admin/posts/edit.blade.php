@@ -410,17 +410,35 @@
 
         if (removeThumbnailBtn && thumbnailInput) {
             removeThumbnailBtn.addEventListener('click', () => {
-                if (!confirm('Apakah kamu yakin ingin menghapus thumbnail ini?')) return;
-                
-                thumbnailInput.value = '';
-                if (removeThumbnailInput) {
-                    removeThumbnailInput.value = '1';
-                }
-                const currentThumbnail = document.getElementById('thumbnail-preview-container');
-                if (currentThumbnail) currentThumbnail.style.display = 'none';
-                thumbnailWarning.classList.add('hidden');
-                submitBtn.disabled = false;
-                submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                Swal.fire({
+                    title: 'Hapus Thumbnail?',
+                    text: 'Thumbnail ini akan dihapus saat postingan di-update.',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#ea580c',
+                    cancelButtonColor: '#64748b',
+                    confirmButtonText: 'Ya, Hapus',
+                    cancelButtonText: 'Batal',
+                    background: '#ffffff',
+                    customClass: {
+                        title: 'text-slate-800 font-bold',
+                        popup: 'rounded-3xl shadow-xl border border-slate-100',
+                        confirmButton: 'rounded-xl font-bold tracking-wider',
+                        cancelButton: 'rounded-xl font-bold tracking-wider'
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        thumbnailInput.value = '';
+                        if (removeThumbnailInput) {
+                            removeThumbnailInput.value = '1';
+                        }
+                        const currentThumbnail = document.getElementById('thumbnail-preview-container');
+                        if (currentThumbnail) currentThumbnail.style.display = 'none';
+                        thumbnailWarning.classList.add('hidden');
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    }
+                });
             });
         }
 

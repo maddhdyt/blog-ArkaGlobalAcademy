@@ -44,8 +44,8 @@
                                         EDIT
                                     </a>
                                     @if (auth()->id() !== $user->id)
-                                        <form action="{{ route('admin.users.destroy', $user) }}" method="POST" class="inline"
-                                            onsubmit="return confirm('Hapus user ini?');">
+                                        <form action="{{ route('admin.users.destroy', $user) }}" method="POST" class="inline-block"
+                                            onsubmit="confirmDelete(event, this, 'Hapus Pengguna?', 'Pengguna yang dihapus tidak dapat dikembalikan.')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="inline-flex items-center px-3 py-1.5 border border-slate-100 bg-white text-red-600 hover:bg-[#ffccb0] hover:text-red-700 transition-colors text-xs font-bold uppercase tracking-wider">

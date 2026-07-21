@@ -34,8 +34,8 @@
                                     <a href="{{ route('admin.galleries.edit', $item) }}"
                                         class="hover:underline font-bold uppercase">Edit</a>
                                     <span class="text-slate-700/30">|</span>
-                                    <form action="{{ route('admin.galleries.destroy', $item) }}" method="POST"
-                                        onsubmit="return confirm('Hapus foto ini?')">
+                                    <form action="{{ route('admin.galleries.destroy', $item) }}" method="POST" class="w-full"
+                                        onsubmit="confirmDelete(event, this, 'Hapus Foto?', 'Foto ini akan dihapus permanen dari galeri.')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="text-red-600 hover:underline font-bold uppercase">Hapus</button>

@@ -66,7 +66,7 @@
                                         EDIT
                                     </a>
                                     <form action="{{ route('admin.posts.destroy', $post) }}" method="POST" class="inline"
-                                        onsubmit="return confirm('Are you sure?')">
+                                        onsubmit="confirmDelete(event, this, 'Hapus Postingan?', 'Postingan yang dihapus tidak dapat dikembalikan.')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="inline-flex items-center px-3 py-1.5 bg-white border border-red-200 text-red-600 hover:bg-red-50 hover:text-red-700 rounded-xl transition-colors text-xs font-bold uppercase tracking-wider shadow-sm">

@@ -259,6 +259,31 @@
                 }
             });
         }
+
+        function confirmDelete(event, formElement, title = 'Apakah Anda yakin?', message = 'Data yang dihapus tidak dapat dikembalikan!') {
+            event.preventDefault();
+            Swal.fire({
+                title: title,
+                text: message,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#ea580c',
+                cancelButtonColor: '#64748b',
+                confirmButtonText: 'Ya, Hapus',
+                cancelButtonText: 'Batal',
+                background: '#ffffff',
+                customClass: {
+                    title: 'text-slate-800 font-bold',
+                    popup: 'rounded-3xl shadow-xl border border-slate-100',
+                    confirmButton: 'rounded-xl font-bold tracking-wider',
+                    cancelButton: 'rounded-xl font-bold tracking-wider'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    formElement.submit();
+                }
+            });
+        }
         
         document.addEventListener('DOMContentLoaded', function() {
             NProgress.configure({ showSpinner: false });
