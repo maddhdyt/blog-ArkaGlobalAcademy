@@ -177,7 +177,7 @@
                             <div class="w-8 h-8 rounded-full border border-slate-200 bg-slate-100 flex items-center justify-center text-slate-700 font-bold">
                                 {{ substr(auth()->user()->name ?? 'A', 0, 1) }}
                             </div>
-                            <form method="POST" action="{{ route('logout') }}" onsubmit="return confirm('Apakah Anda yakin ingin logout dari panel admin?');">
+                            <form id="logout-form" method="POST" action="{{ route('logout') }}" onsubmit="confirmLogout(event, this)">
                                 @csrf
                                 <button type="submit" class="text-sm font-bold uppercase tracking-wider text-slate-800 hover:text-red-600 transition-colors">Logout</button>
                             </form>
@@ -227,7 +227,35 @@
 
     <!-- NProgress JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+    
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
+        function confirmLogout(event, formElement) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Keluar dari Admin?',
+                text: 'Anda akan dialihkan ke halaman login.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#ea580c',
+                cancelButtonColor: '#64748b',
+                confirmButtonText: 'Ya, Logout',
+                cancelButtonText: 'Batal',
+                background: '#ffffff',
+                customClass: {
+                    title: 'text-slate-800 font-bold',
+                    popup: 'rounded-3xl shadow-xl border border-slate-100',
+                    confirmButton: 'rounded-xl font-bold tracking-wider',
+                    cancelButton: 'rounded-xl font-bold tracking-wider'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    formElement.submit();
+                }
+            });
+        }
+        
         document.addEventListener('DOMContentLoaded', function() {
             NProgress.configure({ showSpinner: false });
             document.querySelectorAll('a').forEach(function(anchor) {
