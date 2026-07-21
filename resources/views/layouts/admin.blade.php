@@ -174,9 +174,13 @@
                         <div class="h-6 w-px bg-slate-300"></div>
 
                         <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 rounded-full border border-slate-200 bg-slate-100 flex items-center justify-center text-slate-700 font-bold">
-                                {{ substr(auth()->user()->name ?? 'A', 0, 1) }}
-                            </div>
+                            @if(auth()->user()->avatar_url)
+                                <img src="{{ auth()->user()->avatar_url }}" alt="{{ auth()->user()->name }}" class="w-8 h-8 rounded-full border border-slate-200 object-cover bg-slate-50">
+                            @else
+                                <div class="w-8 h-8 rounded-full border border-slate-200 bg-slate-100 flex items-center justify-center text-slate-700 font-bold">
+                                    {{ substr(auth()->user()->name ?? 'A', 0, 1) }}
+                                </div>
+                            @endif
                             <form id="logout-form" method="POST" action="{{ route('logout') }}" onsubmit="confirmLogout(event, this)">
                                 @csrf
                                 <button type="submit" class="text-sm font-bold uppercase tracking-wider text-slate-800 hover:text-red-600 transition-colors">Logout</button>
