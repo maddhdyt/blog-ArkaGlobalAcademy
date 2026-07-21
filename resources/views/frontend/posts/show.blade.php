@@ -218,7 +218,7 @@
                 </article>
 
                 <!-- Sidebar -->
-                <aside class="lg:col-span-4 xl:col-span-3 space-y-12 lg:border-l border-slate-200 lg:pl-10 xl:pl-12">
+                <aside class="lg:col-span-4 xl:col-span-3 space-y-12 lg:border-l border-slate-200 lg:pl-10 xl:pl-12 lg:sticky lg:top-32 self-start">
                     
                     {{-- Author Profile Widget --}}
                     <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 space-y-6">

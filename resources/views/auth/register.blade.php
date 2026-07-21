@@ -3,7 +3,7 @@
         
         <!-- Logo -->
         <a href="{{ route('home') }}" class="inline-block mb-4">
-            <img src="https://ik.imagekit.io/yqhp1cmbp/logo%20nusa%20education.png?tr=w-640,q-75,f-auto" alt="Arka Global Academy" class="h-16 w-auto -ml-3">
+            <img src="{{ $siteLogo ?? '' }}" alt="Arka Global Academy" class="h-16 w-auto -ml-3">
         </a>
 
         <!-- Title -->

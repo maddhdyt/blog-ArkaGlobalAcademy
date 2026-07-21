@@ -8,8 +8,8 @@
         <title>{{ isset($title) ? $title . ' - ' . config('app.name', 'Arka Global Academy') : config('app.name', 'Arka Global Academy') }}</title>
 
         <!-- Favicon -->
-        <link rel="icon" href="https://ik.imagekit.io/yqhp1cmbp/Logo%20Nusa%203%20(1).png?updatedAt=1783657933278" type="image/png">
-        <link rel="apple-touch-icon" href="https://ik.imagekit.io/yqhp1cmbp/Logo%20Nusa%203%20(1).png?updatedAt=1783657933278">
+        <link rel="icon" href="https://res.cloudinary.com/dzwbyqnau/image/upload/v1772547450/logoap_ph63ev.webp" type="image/webp">
+        <link rel="apple-touch-icon" href="https://res.cloudinary.com/dzwbyqnau/image/upload/v1772547450/logoap_ph63ev.webp">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
