@@ -245,56 +245,48 @@
             input.click();
 
             input.onchange = async () => {
-                const originalFile = input.files[0];
-                if (!originalFile) return;
+                const file = input.files[0];
+                if (!file) return;
 
-                if (originalFile.size > 5 * 1024 * 1024) {
-                    alert(`Gambar cukup besar (${(originalFile.size / 1024 / 1024).toFixed(2)}MB). Memulai kompresi agar tidak membebani server...`);
+                const uploadFile = async (fileToUpload) => {
+                    const formData = new FormData();
+                    formData.append('image', fileToUpload, fileToUpload.name || 'image.jpg');
+                    try {
+                        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                        const response = await fetch("{{ route('admin.posts.upload-image') }}", {
+                            method: 'POST',
+                            body: formData,
+                            headers: { 'X-CSRF-TOKEN': csrfToken }
+                        });
+                        if (response.ok) {
+                            const data = await response.json();
+                            let range = quill.getSelection(true);
+                            let index = range ? range.index : quill.getLength();
+                            quill.insertEmbed(index, 'image', data.url);
+                            quill.setSelection(index + 1);
+                        } else {
+                            alert('Gagal mengunggah gambar. Pastikan ukuran di bawah 5MB.');
+                        }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('Terjadi kesalahan jaringan saat mengunggah.');
+                    }
+                };
+
+                if (file.size > 1024 * 1024) {
+                    new Compressor(file, {
+                        quality: 0.8,
+                        maxWidth: 1920,
+                        maxHeight: 1920,
+                        success(result) { uploadFile(result); },
+                        error(err) { 
+                            console.error('Compression error:', err.message);
+                            uploadFile(file);
+                        },
+                    });
+                } else {
+                    uploadFile(file);
                 }
-
-                new Compressor(originalFile, {
-                    quality: 0.8,
-                    maxWidth: 1920,
-                    maxHeight: 1920,
-                    async success(result) {
-                        if (result.size > 5 * 1024 * 1024) {
-                            alert(`Gambar masih terlalu besar setelah dikompresi (${(result.size / 1024 / 1024).toFixed(2)}MB). Harap pilih gambar lain.`);
-                            return;
-                        }
-
-                        const formData = new FormData();
-                        formData.append('image', result, result.name || 'image.jpg');
-
-                        try {
-                            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-                            const response = await fetch("{{ route('admin.posts.upload-image') }}", {
-                                method: 'POST',
-                                body: formData,
-                                headers: {
-                                    'X-CSRF-TOKEN': csrfToken
-                                }
-                            });
-
-                            if (response.ok) {
-                                const data = await response.json();
-                                let range = quill.getSelection(true);
-                                let index = range ? range.index : quill.getLength();
-                                quill.insertEmbed(index, 'image', data.url);
-                                quill.setSelection(index + 1);
-                            } else {
-                                console.error('Upload failed', await response.text());
-                                alert('Gagal mengunggah gambar. Pastikan format benar dan ukuran di bawah 5MB.');
-                            }
-                        } catch (error) {
-                            console.error('Error:', error);
-                            alert('Terjadi kesalahan JavaScript saat mengunggah gambar. Lihat console untuk detailnya.');
-                        }
-                    },
-                    error(err) {
-                        console.error(err.message);
-                        alert('Terjadi kesalahan saat mengompresi gambar.');
-                    },
-                });
             };
         }
 

@@ -253,49 +253,49 @@
             input.setAttribute('accept', 'image/*');
             input.click();
 
-            input.onchange = () => {
-                const originalFile = input.files[0];
-                if (!originalFile) return;
+            input.onchange = async () => {
+                const file = input.files[0];
+                if (!file) return;
 
-                new Compressor(originalFile, {
-                    quality: 0.8,
-                    maxWidth: 1920,
-                    maxHeight: 1920,
-                    async success(result) {
-                        if (result.size > 2 * 1024 * 1024) {
-                            alert(`Gambar terlalu besar (${(result.size / 1024 / 1024).toFixed(2)}MB). Harap pilih gambar di bawah 2MB.`);
-                            return;
+                const uploadFile = async (fileToUpload) => {
+                    const formData = new FormData();
+                    formData.append('image', fileToUpload, fileToUpload.name || 'image.jpg');
+                    try {
+                        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                        const response = await fetch("{{ route('admin.posts.upload-image') }}", {
+                            method: 'POST',
+                            body: formData,
+                            headers: { 'X-CSRF-TOKEN': csrfToken }
+                        });
+                        if (response.ok) {
+                            const data = await response.json();
+                            let range = quill.getSelection(true);
+                            let index = range ? range.index : quill.getLength();
+                            quill.insertEmbed(index, 'image', data.url);
+                            quill.setSelection(index + 1);
+                        } else {
+                            alert('Gagal mengunggah gambar. Pastikan ukuran di bawah 5MB.');
                         }
+                    } catch (error) {
+                        console.error('Error:', error);
+                        alert('Terjadi kesalahan jaringan saat mengunggah.');
+                    }
+                };
 
-                        const formData = new FormData();
-                        formData.append('image', result, result.name || 'image.jpg');
-
-                        try {
-                            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-                            const response = await fetch("{{ route('admin.posts.upload-image') }}", {
-                                method: 'POST',
-                                body: formData,
-                                headers: {
-                                    'X-CSRF-TOKEN': csrfToken
-                                }
-                            });
-
-                            if (response.ok) {
-                                const data = await response.json();
-                                let range = quill.getSelection(true);
-                                quill.insertEmbed(range.index, 'image', data.url);
-                                quill.setSelection(range.index + 1);
-                            } else {
-                                alert('Gagal mengunggah gambar.');
-                            }
-                        } catch (error) {
-                            console.error('Error:', error);
-                        }
-                    },
-                    error(err) {
-                        console.error(err.message);
-                    },
-                });
+                if (file.size > 1024 * 1024) {
+                    new Compressor(file, {
+                        quality: 0.8,
+                        maxWidth: 1920,
+                        maxHeight: 1920,
+                        success(result) { uploadFile(result); },
+                        error(err) { 
+                            console.error('Compression error:', err.message);
+                            uploadFile(file);
+                        },
+                    });
+                } else {
+                    uploadFile(file);
+                }
             };
         }
 
